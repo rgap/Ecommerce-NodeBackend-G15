@@ -1,5 +1,5 @@
 import { prisma } from "../../db";
-import { responseError, responseSuccess } from "../../network/responses.js";
+import { responseError, responseSuccess } from "../../network/responses";
 
 // READ
 
