@@ -11,19 +11,86 @@ datasource db {
 }
 
 model User {
-  id          Int       @id @default(autoincrement())
+  id          Int       @id @default(autoincrement()) @map("user_id")
+  name        String    @map("user_name") @db.VarChar(120)
+  email       String    @unique @map("user_email") @db.VarChar(120)
+  password    String    @map("user_password") @db.VarChar(120)
+  phoneNumber String?   @map("user_phone_number") @db.VarChar(20)
+  address     String?   @map("user_address") @db.VarChar(255)
+  city        String?   @map("user_city") @db.VarChar(50)
+  region      String?   @map("user_region") @db.VarChar(50)
+  country     String?   @map("user_country") @db.VarChar(50)
+  cardNumber  String?   @map("user_card_number") @db.VarChar(20)
   createdAt   DateTime? @default(now()) @map("created_at")
   updatedAt   DateTime  @updatedAt @map("updated_at")
-  name        String    @db.VarChar(120)
-  email       String    @unique @db.VarChar(120)
-  password    String    @db.VarChar(120)
-  phoneNumber String?   @map("phone_number") @db.VarChar(20)
-  address     String?   @db.VarChar(255)
-  city        String?   @db.VarChar(50)
-  region      String?   @db.VarChar(50)
-  country     String?   @db.VarChar(50)
-  cardNumber  String?   @map("card_number") @db.VarChar(20)
 
   @@map("user")
 }
 
+model Color {
+  id        Int      @id @default(autoincrement()) @map("color_id")
+  name      String   @map("color_name") @db.VarChar(255)
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+  
+  Stock   Stock[]
+
+  @@map("color")
+
+}
+
+model Size {
+  id        Int      @id @default(autoincrement()) @map("size_id")
+  name      String   @map("size_name") @db.VarChar(255)
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  Stock Stock[]
+
+  @@map("size")
+}
+
+model Product {
+  id               Int      @id @default(autoincrement()) @map("product_id")
+  title            String   @map("product_title") @db.VarChar(84)
+  description      String   @map("product_description") @db.VarChar(255)
+  shortDescription String   @map("product_short_description") @db.VarChar(28)
+  mainImage        String   @map("product_main_image") @db.VarChar(255)
+  material         String   @map("product_material") @db.VarChar(255)
+  care             String   @map("product_care") @db.VarChar(255)
+  createdAt        DateTime @default(now()) @map("created_at")
+  updatedAt        DateTime @updatedAt @map("updated_at")
+
+  Image Image[]
+  Stock Stock[]
+
+  @@map("product")
+}
+
+model Image {
+  id        Int     @default(autoincrement()) @map("image_id")
+  url       String? @map("image_url") @db.VarChar(255)
+  productId Int     @map("image_product_id") 
+  product   Product @relation(fields: [productId], references: [id])
+
+  @@id([id, productId])
+  @@map("image")
+}
+
+model Stock{
+  id       Int  @default(autoincrement()) @map("stock_id")
+  productId Int @map("stock_product_id") 
+  product   Product @relation(fields: [productId], references: [id])
+  
+  colorId   Int @map("stock_color_id")
+  color     Color @relation(fields:[colorId],references: [id])
+  
+  sizeId    Int @map("stock_size_id")
+  size      Size @relation(fields:[sizeId],references:[id])
+
+  quantity  Int @map("stock_quantity")
+  price     Float 
+
+@@id([id, productId,colorId,sizeId])
+@@map("stock")
+}
