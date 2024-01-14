@@ -3,7 +3,6 @@ import { prisma } from "../../db";
 import { responseError, responseSuccess } from "../../network/responses";
 
 // READ
-
 export async function list(req, res) {
   try {
     const users = await prisma.user.findMany();
