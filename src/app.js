@@ -1,4 +1,3 @@
-
 //Creacion de servidor
 
 import express from "express";
@@ -9,6 +8,4 @@ export const app = express();
 
 app.use(express.json());
 
-// app.use(`${apiVersion}/users`, userRouter);
-app.use(`${apiVersion}/stock`, userRouter);
-
+app.use(`${apiVersion}/users`, userRouter);
