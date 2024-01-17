@@ -30,6 +30,7 @@ model User {
 model Color {
   id        Int      @id @default(autoincrement()) @map("color_id")
   name      String   @map("color_name") @db.VarChar(255)
+  code      String   @map("hex_color") @db.VarChar(7) 
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
   
