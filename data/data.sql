@@ -104,3 +104,165 @@ INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quanti
 INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (2, 5, 4, 5, 85.00);
 -- Talla XL, Color Gris
 INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (2, 6, 4, 4, 85.00);
+
+
+-- ------------------------------------------- 
+-- ------------------------------------------- PRODUCT 3
+-- -------------------------------------------
+
+-- Insert new colors if not present
+INSERT INTO color (color_name, hex_color, created_at, updated_at) VALUES ('amarillo', '#FFFF00', NOW(), NOW());
+INSERT INTO color (color_name, hex_color, created_at, updated_at) VALUES ('rojo', '#FF0000', NOW(), NOW());
+INSERT INTO color (color_name, hex_color, created_at, updated_at) VALUES ('índigo', '#4B0082', NOW(), NOW());
+
+-- Insert new product
+INSERT INTO product 
+(product_title, product_description, product_short_description, product_main_image, product_material, product_care, created_at, updated_at) 
+VALUES 
+('Polo Billabong Amarillo', 'Este polo Billabong en amarillo vibrante es ideal para un estilo juvenil y desenfadado. Excelente para el día a día, combinando comodidad y moda.', 'Vibrante y Confortable', 'https://raw.githubusercontent.com/rgap/Ecommerce-G15-ImageRepository/main/images/polo-%20amarillo-billabong-logo.jpg', 'Confección de calidad, 50% algodón, 50% modal, perfecto para el uso diario.', 'Lavado suave en ciclo delicado. No usar secadora. Planchar a temperatura baja.', '2023-10-31 14:20:00', '2023-10-31 14:20:00');
+
+-- Insert additional images for this product
+INSERT INTO image (image_url, image_product_id) VALUES ('https://raw.githubusercontent.com/rgap/Ecommerce-G15-ImageRepository/main/images/polo-morado-adidas.jpg', 3);
+INSERT INTO image (image_url, image_product_id) VALUES ('https://raw.githubusercontent.com/rgap/Ecommerce-G15-ImageRepository/main/images/polo-gris-nike.jpg', 3);
+INSERT INTO image (image_url, image_product_id) VALUES ('https://raw.githubusercontent.com/rgap/Ecommerce-G15-ImageRepository/main/images/polo-negro-volcom.jpg', 3);
+INSERT INTO image (image_url, image_product_id) VALUES ('https://raw.githubusercontent.com/rgap/Ecommerce-G15-ImageRepository/main/images/polo-azul-claro-ripcurl.jpg', 3);
+INSERT INTO image (image_url, image_product_id) VALUES ('https://raw.githubusercontent.com/rgap/Ecommerce-G15-ImageRepository/main/images/polo-rojo-quiksilver.jpg', 3);
+
+-- Insert stock information for each size and color variant
+-- Replace color_id and size_id with the correct IDs from your tables
+
+-- Talla S, Color Amarillo
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (3, 7, 1, 18, 48.00);
+-- Talla S, Color Rojo
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (3, 8, 1, 14, 48.00);
+-- Talla S, Color Índigo
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (3, 9, 1, 11, 48.00);
+
+-- Talla M, Color Amarillo
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (3, 7, 2, 16, 58.00);
+-- Talla M, Color Rojo
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (3, 8, 2, 10, 58.00);
+-- Talla M, Color Índigo
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (3, 9, 2, 15, 58.00);
+
+-- Talla L, Color Amarillo
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (3, 7, 3, 14, 68.00);
+-- Talla L, Color Rojo
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (3, 8, 3, 12, 68.00);
+-- Talla L, Color Índigo
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (3, 9, 3, 8, 68.00);
+
+-- Talla XL, Color Amarillo
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (3, 7, 4, 10, 78.00);
+-- Talla XL, Color Rojo
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (3, 8, 4, 8, 78.00);
+-- Talla XL, Color Índigo
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (3, 9, 4, 5, 78.00);
+
+
+-- ------------------------------------------- 
+-- ------------------------------------------- PRODUCT 4
+-- -------------------------------------------
+
+-- Insert new colors if not present
+INSERT INTO color (color_name, hex_color, created_at, updated_at) VALUES ('marrón', '#A52A2A', NOW(), NOW());
+INSERT INTO color (color_name, hex_color, created_at, updated_at) VALUES ('crema', '#FFFDD0', NOW(), NOW());
+INSERT INTO color (color_name, hex_color, created_at, updated_at) VALUES ('rosado', '#FFC0CB', NOW(), NOW());
+
+-- Insert new product
+INSERT INTO product 
+(product_title, product_description, product_short_description, product_main_image, product_material, product_care, created_at, updated_at) 
+VALUES 
+('Polo Ripcurl Marrón Floreado', 'El Polo Ripcurl Marrón Floreado combina estilo y confort, ideal para un look casual pero llamativo. Perfecto para cualquier ocasión.', 'Casual y Atractivo', 'https://raw.githubusercontent.com/rgap/Ecommerce-G15-ImageRepository/main/images/polo-marron-ripcurl-floreado.jpg', 'Composición mezclada: 60% algodón y 40% poliéster. Duradero y cómodo.', 'No usar lejía. Lavar a máquina temperatura normal. No secar en secadora. Planchar a temperatura media.', '2023-10-31 15:00:00', '2023-10-31 15:00:00');
+
+-- Insert additional images for this product
+INSERT INTO image (image_url, image_product_id) VALUES ('https://raw.githubusercontent.com/rgap/Ecommerce-G15-ImageRepository/main/images/polo-blanco-quiksilver.jpg', 4);
+INSERT INTO image (image_url, image_product_id) VALUES ('https://raw.githubusercontent.com/rgap/Ecommerce-G15-ImageRepository/main/images/polo-rojojaspeado-quiksilver.jpg', 4);
+INSERT INTO image (image_url, image_product_id) VALUES ('https://raw.githubusercontent.com/rgap/Ecommerce-G15-ImageRepository/main/images/polo-azul-nike.jpg', 4);
+INSERT INTO image (image_url, image_product_id) VALUES ('https://raw.githubusercontent.com/rgap/Ecommerce-G15-ImageRepository/main/images/polo-celeste-quiksilver.jpg', 4);
+INSERT INTO image (image_url, image_product_id) VALUES ('https://raw.githubusercontent.com/rgap/Ecommerce-G15-ImageRepository/main/images/polo-verdesuave-ripcurl.jpg', 4);
+
+-- Insert stock information for each size and color variant
+-- Replace color_id and size_id with the correct IDs from your tables
+
+-- Talla S, Color Marrón
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (4, 10, 1, 20, 50.00);
+-- Talla S, Color Crema
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (4, 11, 1, 15, 50.00);
+-- Talla S, Color Rosado
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (4, 12, 1, 10, 50.00);
+
+-- Talla M, Color Marrón
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (4, 10, 2, 18, 60.00);
+-- Talla M, Color Crema
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (4, 11, 2, 12, 60.00);
+-- Talla M, Color Rosado
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (4, 12, 2, 8, 60.00);
+
+-- Talla L, Color Marrón
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (4, 10, 3, 15, 70.00);
+-- Talla L, Color Crema
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (4, 11, 3, 10, 70.00);
+-- Talla L, Color Rosado
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (4, 12, 3, 5, 70.00);
+
+-- Talla XL, Color Marrón
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (4, 10, 4, 12, 80.00);
+-- Talla XL, Color Crema
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (4, 11, 4, 8, 80.00);
+-- Talla XL, Color Rosado
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (4, 12, 4, 3, 80.00);
+
+
+-- ------------------------------------------- 
+-- ------------------------------------------- PRODUCT 5
+-- -------------------------------------------
+
+-- Insert new colors if not present
+INSERT INTO color (color_name, hex_color, created_at, updated_at) VALUES ('azul verdoso', '#008080', NOW(), NOW());
+INSERT INTO color (color_name, hex_color, created_at, updated_at) VALUES ('azul', '#0000FF', NOW(), NOW());
+INSERT INTO color (color_name, hex_color, created_at, updated_at) VALUES ('gris', '#808080', NOW(), NOW());
+
+-- Insert new product
+INSERT INTO product 
+(product_title, product_description, product_short_description, product_main_image, product_material, product_care, created_at, updated_at) 
+VALUES 
+('Polo Nike Azul Claro', 'Este polo Nike en azul claro es la combinación perfecta de comodidad y estilo, ideal para un look relajado y deportivo.', 'Cómodo y Estilizado', 'https://raw.githubusercontent.com/rgap/Ecommerce-G15-ImageRepository/main/images/polo-azul-claro-nike-m.jpg', '100% Algodón orgánico. Suave al tacto y amigable con el medio ambiente.', 'Lavado en ciclo suave con colores similares. No usar blanqueador. Secar a baja temperatura.', '2023-10-31 15:10:00', '2023-10-31 15:10:00');
+
+-- Insert additional images for this product
+INSERT INTO image (image_url, image_product_id) VALUES ('https://raw.githubusercontent.com/rgap/Ecommerce-G15-ImageRepository/main/images/polo-morado-adidas.jpg', 5);
+INSERT INTO image (image_url, image_product_id) VALUES ('https://raw.githubusercontent.com/rgap/Ecommerce-G15-ImageRepository/main/images/polo-rojo-adidas.jpg', 5);
+INSERT INTO image (image_url, image_product_id) VALUES ('https://raw.githubusercontent.com/rgap/Ecommerce-G15-ImageRepository/main/images/polo-azul-ripcurl.jpg', 5);
+INSERT INTO image (image_url, image_product_id) VALUES ('https://raw.githubusercontent.com/rgap/Ecommerce-G15-ImageRepository/main/images/polo-verdepasto-quiksilver.jpg', 5);
+INSERT INTO image (image_url, image_product_id) VALUES ('https://raw.githubusercontent.com/rgap/Ecommerce-G15-ImageRepository/main/images/polo-durazno-volcom.jpg', 5);
+
+-- Insert stock information for each size and color variant
+-- Replace color_id and size_id with the correct IDs from your tables
+
+-- Talla S, Color Azul Verdoso
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (5, 13, 1, 22, 49.00);
+-- Talla S, Color Azul
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (5, 14, 1, 18, 49.00);
+-- Talla S, Color Gris
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (5, 15, 1, 16, 49.00);
+
+-- Talla M, Color Azul Verdoso
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (5, 13, 2, 20, 59.00);
+-- Talla M, Color Azul
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (5, 14, 2, 15, 59.00);
+-- Talla M, Color Gris
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (5, 15, 2, 14, 59.00);
+
+-- Talla L, Color Azul Verdoso
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (5, 13, 3, 18, 69.00);
+-- Talla L, Color Azul
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (5, 14, 3, 12, 69.00);
+-- Talla L, Color Gris
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (5, 15, 3, 10, 69.00);
+
+-- Talla XL, Color Azul Verdoso
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (5, 13, 4, 15, 79.00);
+-- Talla XL, Color Azul
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (5, 14, 4, 10, 79.00);
+-- Talla XL, Color Gris
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (5, 15, 4, 8, 79.00);
