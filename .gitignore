@@ -195,3 +195,7 @@ dist
 ## Database
 
 prisma/migrations
+
+## Packages
+
+package-lock.json
