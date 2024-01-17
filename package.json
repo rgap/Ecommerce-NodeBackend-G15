@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+<<<<<<< HEAD
+=======
+  "type": "module",
+>>>>>>> d224ccb (Agregando package.json)
   "scripts": {
     "dev": "nodemon --exec babel-node index.js"
   },
@@ -30,8 +34,14 @@
     "@babel/cli": "^7.23.4",
     "@babel/core": "^7.23.7",
     "@babel/node": "^7.22.19",
+<<<<<<< HEAD
     "@babel/preset-env": "^7.23.7",
     "nodemon": "^3.0.2",
     "prisma": "^5.7.1"
+=======
+    "@babel/preset-env": "^7.23.8",
+    "nodemon": "^3.0.3",
+    "prisma": "^5.8.1"
+>>>>>>> d224ccb (Agregando package.json)
   }
 }
