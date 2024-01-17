@@ -6,7 +6,7 @@ import { responseError, responseSuccess } from "../../network/responses";
 
 export async function list(req, res) {
     try {
-      const products = await prisma.user.findMany();
+      const products = await prisma.product.findMany();
       return responseSuccess({ res, data: products, status: 203 });
     } catch (error) {
       return responseError({ res, data: error.message });
