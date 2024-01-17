@@ -81,5 +81,3 @@ export async function update(req, res) {
       return responseError({ res, data: error.message });
     }
   }
-
-  
