@@ -3,10 +3,9 @@ import { prisma } from "../../db";
 import { responseError, responseSuccess } from "../../network/responses";
 
 //READ
-
 export async function list(req, res) {
     try {
-      const products = await prisma.user.findMany();
+      const products = await prisma.product.findMany();
       return responseSuccess({ res, data: products, status: 203 });
     } catch (error) {
       return responseError({ res, data: error.message });
@@ -14,7 +13,6 @@ export async function list(req, res) {
   }
 
 // READ by id
-
 export async function getById(req, res) {
     try {
       const product = await prisma.product.findUnique({
@@ -34,7 +32,6 @@ export async function getById(req, res) {
   }
 
   // CREATE
-
   export async function store(req,res){
     try{
         const product = req.body;
@@ -49,7 +46,6 @@ export async function getById(req, res) {
 }
 
 //UPDATE
-
 export async function update(req, res) {
     try {
       const product = await prisma.product.update({
@@ -70,6 +66,8 @@ export async function update(req, res) {
   }
 
 // DELETE
+// VALIDAR SI TIENE DATOS EN TABLA IMAGE
+// VALIDAR SI PRODUCTO TIENE STOCK ANTES DE SER ELIMINADO
 
   export async function destroy(req, res) {
     try {
@@ -83,3 +81,5 @@ export async function update(req, res) {
       return responseError({ res, data: error.message });
     }
   }
+
+  
