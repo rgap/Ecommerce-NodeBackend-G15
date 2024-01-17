@@ -1,7 +1,12 @@
 //Creacion de servidor
 import cors from "cors";
 import express from "express";
-import { userRouter,colorRouter,sizeRouter,productRouter } from "./components";
+import {
+  colorRouter,
+  productRouter,
+  sizeRouter,
+  userRouter,
+} from "./components";
 import { apiVersion } from "./config";
 
 export const app = express();
