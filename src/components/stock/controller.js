@@ -3,13 +3,19 @@ import { prisma } from "../../db";
 import { responseError, responseSuccess } from "../../network/responses";
 
 // READING STOCK BY PRODUCT,COLOR,SIZE
-export async function list(req, res) {
+export async function getQuantityAndPrice(req, res) {
   try {
+    const { productId, colorId, sizeId } = req.body;
+
     const stock = await prisma.stock.findUnique({
       where: {
-        productId: req.params.productId,
-        colorId: req.params.colorId,
-        sizeId: req.params.sizeId,
+        productId: productId,
+        colorId: colorId,
+        sizeId: sizeId,
+      },
+      select: {
+        stock_quantity: true,
+        price: true,
       },
     });
 
