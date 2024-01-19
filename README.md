@@ -4,6 +4,12 @@
 npm install
 ```
 
+## Create .env
+
+```
+DATABASE_URL=""
+```
+
 ## Database Migration
 
 ```
