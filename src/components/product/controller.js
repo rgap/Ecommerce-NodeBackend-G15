@@ -66,7 +66,6 @@ export async function update(req, res) {
   }
 
 // DELETE
-// VALIDAR SI TIENE DATOS EN TABLA IMAGE
 // VALIDAR SI PRODUCTO TIENE STOCK ANTES DE SER ELIMINADO
 
   export async function destroy(req, res) {
@@ -81,3 +80,22 @@ export async function update(req, res) {
       return responseError({ res, data: error.message });
     }
   }
+
+  // VALIDAR SI TIENE DATOS EN TABLA IMAGE
+  export async function validateImage(req, res) {
+    try {
+      const image = await prisma.image.findMany();
+
+      if (image.length > 0) {
+        return responseSuccess({ res, data: "Image Table has data" });
+      } else {
+        return responseError({ res, data: "Image Table has no data" });
+      }
+    } catch (error) {
+      return responseError({ res, data: error.message });
+    } finally {
+      await prisma.$disconnect();
+    }
+  }
+
+  
