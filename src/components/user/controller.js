@@ -38,39 +38,6 @@ export async function getById(req, res) {
   }
 }
 
-// CREATE
-// POST
-
-export async function store(req, res) {
-  try {
-    const { password, ...otherUserData } = req.body;
-
-    // Hash the password
-    const hashedPassword = hash(password);
-
-    await prisma.user.create({
-      data: {
-        ...otherUserData,
-        password: hashedPassword,
-      },
-    });
-
-    return responseSuccess({ res, data: "User created", status: 201 });
-  } catch (error) {
-    if (error instanceof prismaError) {
-      // Unique constraint failed
-      if (error.code === "P2002") {
-        return responseError({
-          res,
-          data: "A new user cannot be created with this email",
-          status: 400,
-        });
-      }
-    }
-    return responseError({ res, data: error.message });
-  }
-}
-
 // UPDATE
 // PUT
 

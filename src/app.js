@@ -18,5 +18,5 @@ app.use(express.json());
 app.use(`${apiVersion}/users`, userRouter);
 app.use(`${apiVersion}/color`, colorRouter);
 app.use(`${apiVersion}/size`, sizeRouter);
-app.use(`${apiVersion}/product`, productRouter);
+app.use(`${apiVersion}/products`, productRouter);
 app.use(`${apiVersion}/stock`, stockRouter);
