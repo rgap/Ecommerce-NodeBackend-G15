@@ -65,37 +65,50 @@ export async function update(req, res) {
     }
   }
 
-// DELETE
-// VALIDAR SI PRODUCTO TIENE STOCK ANTES DE SER ELIMINADO
+// DELETE Y VALIDAR SI TIENE DATOS EN TABLA IMAGE 
+export async function destroy(req, res) {
+  try {
+    const productId = Number(req.params.id);
 
-  export async function destroy(req, res) {
-    try {
-      await prisma.product.delete({
+    const product = await prisma.product.findUnique({
+      where: {
+        id: productId,
+      },
+      include: {
+        image: true,
+      },
+    });
+
+    if (!product) {
+      return responseError({ res, data: "Product not found" });
+    }
+
+    await prisma.product.delete({
+      where: {
+        id: productId,
+      },
+    });
+
+    if (product.image) {
+      await prisma.image.delete({
         where: {
-          id: Number(req.params.id),
+          id: product.image.id,
         },
       });
-      return responseSuccess({ res, data: "Product deleted" });
-    } catch (error) {
-      return responseError({ res, data: error.message });
     }
-  }
 
-  // VALIDAR SI TIENE DATOS EN TABLA IMAGE
-  export async function validateImage(req, res) {
-    try {
-      const image = await prisma.image.findMany();
-
-      if (image.length > 0) {
-        return responseSuccess({ res, data: "Image Table has data" });
-      } else {
-        return responseError({ res, data: "Image Table has no data" });
-      }
-    } catch (error) {
-      return responseError({ res, data: error.message });
-    } finally {
-      await prisma.$disconnect();
-    }
+    return responseSuccess({ res, data: "Product and associated image deleted" });
+  } catch (error) {
+    return responseError({ res, data: error.message });
+  } finally {
+    await prisma.$disconnect();
   }
+}
+
+
+
+
+
+
 
   
