@@ -10,11 +10,15 @@ userRouter.route("/register").post(Controller.register);
 // GETBYEMAIL
 userRouter.route("/findbyemail").post(Controller.findByEmail);
 
-// CRUD
+////////// CRUD //////////
+
+// READ
 userRouter.route("/").get(Controller.list);
+// READ BY ID
 userRouter.route("/:id").get(Controller.getById);
-userRouter.route("/").post(Controller.store);
+// UPDATE BY ID
 userRouter.route("/:id").put(Controller.update);
+// DESTROY BY ID
 userRouter.route("/:id").delete(Controller.destroy);
 
 export default userRouter;
