@@ -80,3 +80,5 @@ export async function destroy(req, res) {
     return responseError({ res, data: error.message });
   }
 }
+
+
