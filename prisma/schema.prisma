@@ -62,19 +62,18 @@ model Product {
   createdAt        DateTime @default(now()) @map("created_at")
   updatedAt        DateTime @updatedAt @map("updated_at")
 
-  Image Image[]
+  Image Image[] @relation("ProductToImage")
   Stock Stock[]
 
   @@map("product")
 }
 
 model Image {
-  id        Int     @default(autoincrement()) @map("image_id")
-  url       String? @map("image_url") @db.VarChar(255)
-  productId Int     @map("image_product_id")
-  product   Product @relation(fields: [productId], references: [id])
+  id        Int      @id @default(autoincrement()) @map("image_id")
+  url       String   @map("image_url") @db.VarChar(255)
+  productId Int      @map("image_product_id")
+  product   Product  @relation("ProductToImage", fields: [productId], references: [id])
 
-  @@id([id, productId])
   @@map("image")
 }
 
@@ -95,3 +94,4 @@ model Stock {
   @@id([id, productId, colorId, sizeId])
   @@map("stock")
 }
+

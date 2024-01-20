@@ -1,5 +1,4 @@
 import { prisma } from "../../db";
-
 import { responseError, responseSuccess } from "../../network/responses";
 
 //READ
@@ -51,6 +50,7 @@ export async function update(req, res) {
       const product = await prisma.product.update({
         where: {
           id: Number(req.params.id),
+          
         },
         data: req.body,
       });

@@ -81,6 +81,7 @@ export async function destroy(req, res) {
   }
 }
 
+
  // VALIDAR SI PRODUCTO TIENE STOCK ANTES DE SER ELIMINADO
  /*export async function validateStock(req, res) {
   try {
@@ -117,3 +118,4 @@ export async function destroy(req, res) {
     await prisma.$disconnect();
   }
 }*/
+
