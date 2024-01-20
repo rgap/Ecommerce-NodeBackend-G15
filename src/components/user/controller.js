@@ -155,7 +155,7 @@ export async function login(req, res) {
 
 export async function findByEmail(req, res) {
   try {
-    const { email } = req.query;
+    const { email } = req.body;
 
     if (!email) {
       return responseError({

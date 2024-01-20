@@ -8,7 +8,7 @@ userRouter.route("/login").post(Controller.login);
 // REGISTER
 userRouter.route("/register").post(Controller.register);
 // GETBYEMAIL
-userRouter.route("/findbyemail").get(Controller.findByEmail);
+userRouter.route("/findbyemail").post(Controller.findByEmail);
 
 // CRUD
 userRouter.route("/").get(Controller.list);

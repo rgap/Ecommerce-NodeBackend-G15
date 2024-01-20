@@ -1,15 +1,14 @@
-//Creacion de servidor
+// CREACION DE SERVIDOR
 import cors from "cors";
 import express from "express";
 import {
   colorRouter,
   productRouter,
   sizeRouter,
-  userRouter,
   stockRouter,
+  userRouter,
 } from "./components";
 import { apiVersion } from "./config";
-
 
 export const app = express();
 
