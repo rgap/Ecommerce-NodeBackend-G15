@@ -80,3 +80,42 @@ export async function destroy(req, res) {
     return responseError({ res, data: error.message });
   }
 }
+
+
+ // VALIDAR SI PRODUCTO TIENE STOCK ANTES DE SER ELIMINADO
+ /*export async function validateStock(req, res) {
+  try {
+    const product = await prisma.product.findUnique({
+      where: { 
+        id: Number(req.params.id), 
+      },
+    });
+
+    if (!product) {
+      return responseError({ res, data: "Product not found" });
+    }
+
+    const { productId} = req.body;
+
+    const stock = await prisma.stock.findUnique({
+      where: { 
+        productId: productId, 
+      },
+    });
+
+    if (!stock) {
+      return responseError({ res, data: "Stock not found for the product" });
+    }
+
+    if (stock.quantity >= cantidadRequerida) {
+      return responseSuccess({ res, data: "Available stock!" });
+    } else {
+      return responseError({ res, data: "Not enough stock!" });
+    }
+  } catch (error) {
+    return responseError({ res, data: error.message });
+  } finally {
+    await prisma.$disconnect();
+  }
+}*/
+

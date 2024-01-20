@@ -55,7 +55,6 @@ export async function store(req, res) {
 
 // UPDATE
 // PUT
-
 export async function update(req, res) {
   try {
     const product = await prisma.product.update({
@@ -75,19 +74,46 @@ export async function update(req, res) {
   }
 }
 
-// DELETE
-// VALIDAR SI PRODUCTO TIENE STOCK ANTES DE SER ELIMINADO
-
+// DELETE Y VALIDAR SI TIENE DATOS EN TABLA IMAGE
 export async function destroy(req, res) {
   try {
-    await prisma.product.delete({
+    const productId = Number(req.params.id);
+
+    const product = await prisma.product.findUnique({
       where: {
-        id: Number(req.params.id),
+        id: productId,
+      },
+      include: {
+        image: true,
       },
     });
-    return responseSuccess({ res, data: "Product deleted" });
+
+    if (!product) {
+      return responseError({ res, data: "Product not found" });
+    }
+
+    await prisma.product.delete({
+      where: {
+        id: productId,
+      },
+    });
+
+    if (product.image) {
+      await prisma.image.delete({
+        where: {
+          id: product.image.id,
+        },
+      });
+    }
+
+    return responseSuccess({
+      res,
+      data: "Product and associated image deleted",
+    });
   } catch (error) {
     return responseError({ res, data: error.message });
+  } finally {
+    await prisma.$disconnect();
   }
 }
 
