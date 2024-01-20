@@ -16,7 +16,7 @@ productRouter.route("/:id").get(Controller.getById);
 productRouter.route("/").post(Controller.store);
 // UPDATE BY ID
 productRouter.route("/:id").put(Controller.update);
-// DESTROY BY ID
+// DELETE BY ID
 productRouter.route("/:id").delete(Controller.destroy);
 
 export default productRouter;
