@@ -62,7 +62,6 @@ INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quanti
 INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (1, 2, 4, 10, 85.00); -- azul verdoso
 INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (1, 3, 4, 5, 85.00); -- crema
 
-
 -- ------------------------------------------- 
 -- ------------------------------------------- PRODUCT 2
 -- -------------------------------------------

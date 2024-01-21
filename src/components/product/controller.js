@@ -74,10 +74,9 @@ export async function update(req, res) {
   }
 }
 
-// Before delete : Validate if there's data in Image and Stock 
+// Before delete : Validate if there's data in Image and Stock
 export async function destroy(req, res) {
   try {
-    
     const id = Number(req.params.id);
 
     //Validating if Product has data in Image and Stock models
@@ -166,7 +165,7 @@ export async function getProductsPLP(req, res) {
 
 export async function getProductPDP(req, res) {
   try {
-    // Fetch the product with the given ID, including the related Stock, Color, and Size
+    // Fetch the product with the given ID, including the related Stock, Color, Size, and Images
     const product = await prisma.product.findUnique({
       where: {
         id: Number(req.params.id),
@@ -178,6 +177,7 @@ export async function getProductPDP(req, res) {
             size: true,
           },
         },
+        Image: true, // Include related images
       },
     });
 
@@ -186,38 +186,64 @@ export async function getProductPDP(req, res) {
       return responseError({ res, data: "Product not found", status: 404 });
     }
 
-    // Process the product to include available colors and sizes
-    const availableStock = product.Stock.filter(
-      (stockItem) => stockItem.quantity > 0
-    );
-
-    // Extract unique colors
+    // Initialize structures for stock, prices, sizes, colors, and image array
+    const stock = {};
+    const prices = {};
     const colorMap = new Map();
-    availableStock.forEach((stockItem) => {
-      const colorKey = stockItem.color.name + stockItem.color.code;
-      if (!colorMap.has(colorKey)) {
-        colorMap.set(colorKey, {
-          name: stockItem.color.name,
-          hexCode: stockItem.color.code,
-        });
+    const sizeSet = new Set();
+    const imageArray = product.Image.map((img) => img.url); // Extract image URLs
+    let minPrice = Number.MAX_VALUE;
+    let minimumPriceColor = null;
+    let minimumPriceSize = null;
+
+    // Process each stock item
+    product.Stock.forEach((stockItem) => {
+      if (stockItem.quantity > 0) {
+        const size = stockItem.size.name;
+        const colorName = stockItem.color.name;
+        const hexCode = stockItem.color.code;
+        const price = stockItem.price.toFixed(2);
+
+        // Add color and size to respective sets
+        colorMap.set(colorName, hexCode);
+        sizeSet.add(size);
+
+        // Initialize nested objects if not already present
+        stock[size] = stock[size] || {};
+        prices[size] = prices[size] || {};
+
+        // Assign quantity and price
+        stock[size][colorName] = stockItem.quantity;
+        prices[size][colorName] = price;
+
+        // Update minimum price and corresponding color and size
+        if (parseFloat(price) < minPrice) {
+          minPrice = parseFloat(price);
+          minimumPriceColor = colorName;
+          minimumPriceSize = size;
+        }
       }
     });
 
-    // Extract unique sizes
-    const sizeSet = new Set();
-    availableStock.forEach((stockItem) => {
-      sizeSet.add(stockItem.size.name);
-    });
-
-    const colors = Array.from(colorMap.values());
-    const sizes = Array.from(sizeSet);
+    // Convert sets and maps to arrays
+    const availableSizes = Array.from(sizeSet);
+    const availableColors = Array.from(colorMap, ([name, hexCode]) => ({
+      name,
+      hexCode,
+    }));
 
     // Construct the response object
     const processedProduct = {
       ...product,
-      availableColors: colors,
-      availableSizes: sizes,
+      availableSizes,
+      availableColors,
+      stock,
+      prices,
+      imageArray,
+      minimumPriceColor,
+      minimumPriceSize,
       Stock: undefined, // Exclude the original Stock array
+      Image: undefined, // Exclude the original Image array
     };
 
     // Return the processed product
