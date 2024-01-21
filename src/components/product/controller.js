@@ -164,6 +164,70 @@ export async function getProductsPLP(req, res) {
   }
 }
 
+export async function getProductPDP(req, res) {
+  try {
+    // Fetch the product with the given ID, including the related Stock, Color, and Size
+    const product = await prisma.product.findUnique({
+      where: {
+        id: Number(req.params.id),
+      },
+      include: {
+        Stock: {
+          include: {
+            color: true,
+            size: true,
+          },
+        },
+      },
+    });
+
+    // Check if the product exists
+    if (!product) {
+      return responseError({ res, data: "Product not found", status: 404 });
+    }
+
+    // Process the product to include available colors and sizes
+    const availableStock = product.Stock.filter(
+      (stockItem) => stockItem.quantity > 0
+    );
+
+    // Extract unique colors
+    const colorMap = new Map();
+    availableStock.forEach((stockItem) => {
+      const colorKey = stockItem.color.name + stockItem.color.code;
+      if (!colorMap.has(colorKey)) {
+        colorMap.set(colorKey, {
+          name: stockItem.color.name,
+          hexCode: stockItem.color.code,
+        });
+      }
+    });
+
+    // Extract unique sizes
+    const sizeSet = new Set();
+    availableStock.forEach((stockItem) => {
+      sizeSet.add(stockItem.size.name);
+    });
+
+    const colors = Array.from(colorMap.values());
+    const sizes = Array.from(sizeSet);
+
+    // Construct the response object
+    const processedProduct = {
+      ...product,
+      availableColors: colors,
+      availableSizes: sizes,
+      Stock: undefined, // Exclude the original Stock array
+    };
+
+    // Return the processed product
+    return responseSuccess({ res, data: processedProduct, status: 200 });
+  } catch (error) {
+    // Handle any errors
+    return responseError({ res, data: error.message });
+  }
+}
+
 // VALIDAR SI TIENE DATOS EN TABLA IMAGE
 export async function validateImage(req, res) {
   try {
