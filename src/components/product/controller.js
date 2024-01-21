@@ -149,10 +149,15 @@ export async function getProductsPLP(req, res) {
 
       const colors = Array.from(uniqueColors.values());
 
-      // Return the product with only the top 3 cheapest colors
+      // Find the minimum price among available stock
+      const minimumPrice =
+        sortedByPrice.length > 0 ? sortedByPrice[0].price : null;
+
+      // Return the product with only the top 3 cheapest colors and minimum price
       return {
         ...product,
         availableColors: colors,
+        minimumPrice: minimumPrice,
         Stock: undefined,
       };
     });
