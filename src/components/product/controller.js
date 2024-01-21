@@ -74,46 +74,38 @@ export async function update(req, res) {
   }
 }
 
-// DELETE Y VALIDAR SI TIENE DATOS EN TABLA IMAGE
+// Before delete : Validate if there's data in Image and Stock 
 export async function destroy(req, res) {
   try {
-    const productId = Number(req.params.id);
+    
+    const id = Number(req.params.id);
 
-    const product = await prisma.product.findUnique({
+    //Validating if Product has data in Image and Stock models
+    const image = await prisma.image.findFirst({
       where: {
-        id: productId,
-      },
-      include: {
-        image: true,
+        productId: id,
       },
     });
 
-    if (!product) {
-      return responseError({ res, data: "Product not found" });
+    const stock = await prisma.stock.findFirst({
+      where: {
+        productId: id,
+      },
+    });
+
+    if (image || stock) {
+      return responseError({ res, data: "Product has stock/image" });
     }
 
     await prisma.product.delete({
       where: {
-        id: productId,
+        id: id,
       },
     });
 
-    if (product.image) {
-      await prisma.image.delete({
-        where: {
-          id: product.image.id,
-        },
-      });
-    }
-
-    return responseSuccess({
-      res,
-      data: "Product and associated image deleted",
-    });
+    return responseSuccess({ res, data: "Product was deleted" });
   } catch (error) {
     return responseError({ res, data: error.message });
-  } finally {
-    await prisma.$disconnect();
   }
 }
 

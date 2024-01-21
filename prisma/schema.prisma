@@ -78,7 +78,7 @@ model Image {
 }
 
 model Stock {
-  id        Int     @default(autoincrement()) @map("stock_id")
+
   productId Int     @map("stock_product_id")
   product   Product @relation(fields: [productId], references: [id])
 
@@ -91,7 +91,7 @@ model Stock {
   quantity Int   @map("stock_quantity")
   price    Float
 
-  @@id([id, productId, colorId, sizeId])
+  @@id([productId, colorId, sizeId])
   @@map("stock")
 }
 
