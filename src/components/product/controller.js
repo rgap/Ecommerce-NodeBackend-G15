@@ -125,34 +125,34 @@ export async function getProductsPLP(req, res) {
     });
 
     const processedProducts = products.map((product) => {
-      // Filter out stock items with no available stock
+      // Filter out stock items with no available stock and map to include price info
       const availableStock = product.Stock.filter(
         (stockItem) => stockItem.quantity > 0
-      );
+      ).map((stockItem) => ({
+        ...stockItem,
+        price: stockItem.price,
+        colorName: stockItem.color.name,
+        hexCode: stockItem.color.code,
+      }));
 
-      // Use a map to ensure unique colors
-      const colorMap = new Map();
-      availableStock.forEach((stockItem) => {
-        const colorKey = stockItem.color.name + stockItem.color.code;
-        if (!colorMap.has(colorKey)) {
-          colorMap.set(colorKey, {
-            name: stockItem.color.name,
-            hexCode: stockItem.color.code,
+      // Sort by price and then slice to get the 3 lowest priced colors
+      const sortedByPrice = availableStock.sort((a, b) => a.price - b.price);
+      const uniqueColors = new Map();
+      sortedByPrice.forEach((stockItem) => {
+        if (!uniqueColors.has(stockItem.colorName) && uniqueColors.size < 3) {
+          uniqueColors.set(stockItem.colorName, {
+            name: stockItem.colorName,
+            hexCode: stockItem.hexCode,
           });
         }
       });
 
-      const colors = Array.from(colorMap.values());
+      const colors = Array.from(uniqueColors.values());
 
-      // Calculate minimum price from available stock
-      const prices = availableStock.map((stockItem) => stockItem.price);
-      const minPrice = prices.length > 0 ? Math.min(...prices) : 0;
-
-      // Return the product without the "Stock" array
+      // Return the product with only the top 3 cheapest colors
       return {
         ...product,
         availableColors: colors,
-        minimumPrice: minPrice,
         Stock: undefined,
       };
     });
