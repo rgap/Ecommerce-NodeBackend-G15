@@ -9,12 +9,14 @@ export async function getQuantityAndPrice(req, res) {
 
     const stock = await prisma.stock.findUnique({
       where: {
-        productId: productId,
-        colorId: colorId,
-        sizeId: sizeId,
+        productId_colorId_sizeId: { // Use the compound unique key
+          productId: productId,
+          colorId: colorId !== undefined ? colorId : null,
+          sizeId: sizeId !== undefined ? sizeId : null,
+        },
       },
       select: {
-        stock_quantity: true,
+        quantity: true,
         price: true,
       },
     });
@@ -29,16 +31,18 @@ export async function getQuantityAndPrice(req, res) {
   }
 }
 
-// UPDATE A NIVEL BACKEND
 export async function update(req, res) {
   try {
-    const stock = await prisma.product.update({
+    const { productId, colorId, sizeId } = req.body;
+    const stock = await prisma.stock.update({
       where: {
-        productId: req.params.productId,
-        colorId: req.params.colorId,
-        sizeId: req.params.sizeId,
+        productId_colorId_sizeId: { // Use the compound unique key
+          productId: productId,
+          colorId: colorId !== undefined ? colorId : null,
+          sizeId: sizeId !== undefined ? sizeId : null,
+        },
       },
-      data: req.body,
+      data: {quantity:req.body.quantity,price:req.body.price},
     });
 
     if (!stock) {
@@ -55,7 +59,6 @@ export async function update(req, res) {
 export async function store(req, res) {
   try {
     const stock = req.body;
-
     await prisma.stock.create({
       data: stock,
     });
@@ -68,11 +71,15 @@ export async function store(req, res) {
 // DELETE
 export async function destroy(req, res) {
   try {
+    const { productId, colorId, sizeId } = req.body;
+
     await prisma.stock.delete({
       where: {
-        productId: req.params.productId,
-        colorId: req.params.colorId,
-        sizeId: req.params.sizeId,
+        productId_colorId_sizeId: { // Use the compound unique key
+          productId: productId,
+          colorId: colorId,
+          sizeId: sizeId,
+        },
       },
     });
     return responseSuccess({ res, data: "Stock deleted" });
@@ -81,41 +88,4 @@ export async function destroy(req, res) {
   }
 }
 
-
- // VALIDAR SI PRODUCTO TIENE STOCK ANTES DE SER ELIMINADO
- /*export async function validateStock(req, res) {
-  try {
-    const product = await prisma.product.findUnique({
-      where: { 
-        id: Number(req.params.id), 
-      },
-    });
-
-    if (!product) {
-      return responseError({ res, data: "Product not found" });
-    }
-
-    const { productId} = req.body;
-
-    const stock = await prisma.stock.findUnique({
-      where: { 
-        productId: productId, 
-      },
-    });
-
-    if (!stock) {
-      return responseError({ res, data: "Stock not found for the product" });
-    }
-
-    if (stock.quantity >= cantidadRequerida) {
-      return responseSuccess({ res, data: "Available stock!" });
-    } else {
-      return responseError({ res, data: "Not enough stock!" });
-    }
-  } catch (error) {
-    return responseError({ res, data: error.message });
-  } finally {
-    await prisma.$disconnect();
-  }
-}*/
 
