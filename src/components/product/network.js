@@ -4,7 +4,9 @@ import * as Controller from "./controller.js";
 const productRouter = Router();
 
 // PLP products
-productRouter.route("/get-products-plp").get(Controller.getProductsPLP);
+productRouter
+  .route("/get-products-plp/:numberOfProducts")
+  .get(Controller.getProductsPLP);
 productRouter.route("/get-product-pdp/:id").get(Controller.getProductPDP);
 
 ////////// CRUD //////////

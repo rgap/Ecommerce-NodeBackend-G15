@@ -113,8 +113,10 @@ export async function destroy(req, res) {
 ///////////////////////////// FRONT END ////////////////////////////
 
 export async function getProductsPLP(req, res) {
+  const numberOfProducts = req.params.numberOfProducts;
+
   try {
-    const products = await prisma.product.findMany({
+    let queryOptions = {
       include: {
         Stock: {
           include: {
@@ -122,10 +124,27 @@ export async function getProductsPLP(req, res) {
           },
         },
       },
-    });
+    };
+
+    if (numberOfProducts !== "all") {
+      if (numberOfProducts === "random") {
+        // Logic for fetching random products
+        const totalCount = await prisma.product.count();
+        const randomOffset = Math.max(
+          0,
+          Math.floor(Math.random() * totalCount) - 2
+        );
+        queryOptions.take = 3;
+        queryOptions.skip = randomOffset;
+      } else if (!isNaN(numberOfProducts)) {
+        // If it's a numeric value
+        queryOptions.take = parseInt(numberOfProducts);
+      }
+    }
+
+    const products = await prisma.product.findMany(queryOptions);
 
     const processedProducts = products.map((product) => {
-      // Filter out stock items with no available stock and map to include price info
       const availableStock = product.Stock.filter(
         (stockItem) => stockItem.quantity > 0
       ).map((stockItem) => ({
@@ -135,7 +154,6 @@ export async function getProductsPLP(req, res) {
         hexCode: stockItem.color.code,
       }));
 
-      // Sort by price and then slice to get the 3 lowest priced colors
       const sortedByPrice = availableStock.sort((a, b) => a.price - b.price);
       const uniqueColors = new Map();
       sortedByPrice.forEach((stockItem) => {
@@ -148,12 +166,9 @@ export async function getProductsPLP(req, res) {
       });
 
       const colors = Array.from(uniqueColors.values());
-
-      // Find the minimum price among available stock
       const minimumPrice =
         sortedByPrice.length > 0 ? sortedByPrice[0].price : null;
 
-      // Return the product with only the top 3 cheapest colors and minimum price
       return {
         ...product,
         availableColors: colors,
@@ -162,9 +177,9 @@ export async function getProductsPLP(req, res) {
       };
     });
 
-    return responseSuccess({ res, data: processedProducts, status: 203 });
+    return res.status(200).json({ data: processedProducts });
   } catch (error) {
-    return responseError({ res, data: error.message });
+    return res.status(500).json({ error: error.message });
   }
 }
 

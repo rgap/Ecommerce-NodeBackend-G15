@@ -59,7 +59,7 @@ INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quanti
 -- Insert new colors if not present
 INSERT INTO color (color_name, hex_color, created_at, updated_at) VALUES ('azul', '#0000FF', NOW(), NOW());
 INSERT INTO color (color_name, hex_color, created_at, updated_at) VALUES ('negro', '#000000', NOW(), NOW());
-INSERT INTO color (color_name, hex_color, created_at, updated_at) VALUES ('gris', '#808080', NOW(), NOW());
+INSERT INTO color (color_name, hex_color, created_at, updated_at) VALUES ('gris oscuro', '#808080', NOW(), NOW());
 
 -- Insert new product
 INSERT INTO product 
@@ -166,7 +166,7 @@ INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quanti
 
 -- Insert new colors if not present
 INSERT INTO color (color_name, hex_color, created_at, updated_at) VALUES ('marrón', '#A52A2A', NOW(), NOW());
-INSERT INTO color (color_name, hex_color, created_at, updated_at) VALUES ('crema', '#FFFDD0', NOW(), NOW());
+INSERT INTO color (color_name, hex_color, created_at, updated_at) VALUES ('crema claro', '#FFFDD0', NOW(), NOW());
 INSERT INTO color (color_name, hex_color, created_at, updated_at) VALUES ('rosado', '#FFC0CB', NOW(), NOW());
 
 -- Insert new product
@@ -219,8 +219,8 @@ INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quanti
 -- -------------------------------------------
 
 -- Insert new colors if not present
-INSERT INTO color (color_name, hex_color, created_at, updated_at) VALUES ('azul verdoso', '#008080', NOW(), NOW());
-INSERT INTO color (color_name, hex_color, created_at, updated_at) VALUES ('azul', '#0000FF', NOW(), NOW());
+INSERT INTO color (color_name, hex_color, created_at, updated_at) VALUES ('verde azulado', '#008080', NOW(), NOW());
+INSERT INTO color (color_name, hex_color, created_at, updated_at) VALUES ('azul claro', '#0000FF', NOW(), NOW());
 INSERT INTO color (color_name, hex_color, created_at, updated_at) VALUES ('gris', '#808080', NOW(), NOW());
 INSERT INTO color (color_name, hex_color, created_at, updated_at) VALUES ('morado', '#800080', NOW(), NOW()); -- Morado
 
