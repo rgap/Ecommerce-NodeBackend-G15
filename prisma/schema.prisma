@@ -30,7 +30,7 @@ model User {
 
 model Color {
   id        Int      @id @default(autoincrement()) @map("color_id")
-  name      String   @map("color_name") @db.VarChar(255)
+  name      String   @unique @map("color_name") @db.VarChar(255)
   code      String   @map("hex_color") @db.VarChar(7)
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
@@ -42,7 +42,7 @@ model Color {
 
 model Size {
   id        Int      @id @default(autoincrement()) @map("size_id")
-  name      String   @map("size_name") @db.VarChar(255)
+  name      String   @unique @map("size_name") @db.VarChar(255)
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
 
@@ -69,16 +69,15 @@ model Product {
 }
 
 model Image {
-  id        Int      @id @default(autoincrement()) @map("image_id")
-  url       String   @map("image_url") @db.VarChar(255)
-  productId Int      @map("image_product_id")
-  product   Product  @relation("ProductToImage", fields: [productId], references: [id])
+  id        Int     @id @default(autoincrement()) @map("image_id")
+  url       String  @map("image_url") @db.VarChar(255)
+  productId Int     @map("image_product_id")
+  product   Product @relation("ProductToImage", fields: [productId], references: [id])
 
   @@map("image")
 }
 
 model Stock {
-
   productId Int     @map("stock_product_id")
   product   Product @relation(fields: [productId], references: [id])
 
@@ -94,4 +93,3 @@ model Stock {
   @@id([productId, colorId, sizeId])
   @@map("stock")
 }
-
