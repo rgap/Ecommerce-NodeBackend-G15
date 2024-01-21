@@ -31,26 +31,15 @@ INSERT INTO image (image_url, image_product_id) VALUES ('https://raw.githubuserc
 
 -- Insertar en la tabla stock con precio uniforme para todas las combinaciones
 -- Asumiendo un precio estándar de $50.00 para el ejemplo
-
-
 -- Talla S
 INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (1, 1, 1, 20, 55.00); -- verde
 INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (1, 2, 1, 15, 55.00); -- azul verdoso
 INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (1, 3, 1, 10, 55.00); -- crema
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (1, 4, 1, 20, 55.00); 
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (1, 5, 1, 20, 55.00); 
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (1, 6, 1, 20, 55.00); 
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (1, 7, 1, 20, 55.00); 
-
 
 -- Talla M
 INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (1, 1, 2, 25, 65.00); -- verde
 INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (1, 2, 2, 20, 65.00); -- azul verdoso
 INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (1, 3, 2, 12, 65.00); -- crema
-
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (1, 4, 2, 12, 65.00); 
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (1, 5, 2, 12, 65.00); 
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (1, 6, 2, 12, 65.00); 
 
 -- Talla L
 INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (1, 1, 3, 30, 75.00); -- verde
@@ -61,6 +50,7 @@ INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quanti
 INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (1, 1, 4, 15, 85.00); -- verde
 INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (1, 2, 4, 10, 85.00); -- azul verdoso
 INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (1, 3, 4, 5, 85.00); -- crema
+
 
 -- ------------------------------------------- 
 -- ------------------------------------------- PRODUCT 2
@@ -86,10 +76,7 @@ INSERT INTO image (image_url, image_product_id) VALUES ('https://raw.githubuserc
 
 -- Insert stock information for each size and color variant
 -- Replace color_id and size_id with the correct IDs from your tables
--- Talla S
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (2, 1, 1, 10, 55.00);
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (2, 2, 1, 20, 55.00);
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (2, 3, 1, 14, 55.00);
+
 -- Talla S, Color Azul
 INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (2, 4, 1, 10, 55.00);
 -- Talla S, Color Negro
@@ -144,22 +131,12 @@ INSERT INTO image (image_url, image_product_id) VALUES ('https://raw.githubuserc
 -- Insert stock information for each size and color variant
 -- Replace color_id and size_id with the correct IDs from your tables
 
--- Talla S
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (3, 1, 1, 20, 48.00);
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (3, 2, 1, 14, 48.00);
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (3, 3, 1, 9, 48.00);
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (3, 4, 1, 10, 48.00);
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (3, 5, 1, 20, 48.00);
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (3, 6, 1, 15, 48.00);
-
 -- Talla S, Color Amarillo
 INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (3, 7, 1, 18, 48.00);
 -- Talla S, Color Rojo
 INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (3, 8, 1, 14, 48.00);
 -- Talla S, Color Índigo
 INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (3, 9, 1, 11, 48.00);
--- Talla S, Color Marron 
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (3, 10, 1, 11, 48.00);
 
 -- Talla M, Color Amarillo
 INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (3, 7, 2, 16, 58.00);
@@ -167,8 +144,6 @@ INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quanti
 INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (3, 8, 2, 10, 58.00);
 -- Talla M, Color Índigo
 INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (3, 9, 2, 15, 58.00);
--- Talla M, color Marron 
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (3, 10, 2, 15, 58.00);
 
 -- Talla L, Color Amarillo
 INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (3, 7, 3, 14, 68.00);
@@ -176,9 +151,6 @@ INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quanti
 INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (3, 8, 3, 12, 68.00);
 -- Talla L, Color Índigo
 INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (3, 9, 3, 8, 68.00);
--- Talla L, Color Marron 
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (3, 10, 3,8, 68.00);
-
 
 -- Talla XL, Color Amarillo
 INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (3, 7, 4, 10, 78.00);
@@ -187,8 +159,6 @@ INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quanti
 -- Talla XL, Color Índigo
 INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (3, 9, 4, 5, 78.00);
 
--- Talla XL, Color Marron
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (3, 10, 4, 5, 78.00);
 
 -- ------------------------------------------- 
 -- ------------------------------------------- PRODUCT 4
@@ -214,13 +184,6 @@ INSERT INTO image (image_url, image_product_id) VALUES ('https://raw.githubuserc
 
 -- Insert stock information for each size and color variant
 -- Replace color_id and size_id with the correct IDs from your tables
-
--- Talla S 
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (4, 1, 1, 22, 50.00);
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (4, 2, 1, 22, 50.00);
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (4, 3, 1, 22, 50.00);
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (4, 4, 1, 22, 50.00);
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (4, 5, 1, 22, 50.00);
 
 -- Talla S, Color Marrón
 INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (4, 10, 1, 20, 50.00);
@@ -259,6 +222,8 @@ INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quanti
 INSERT INTO color (color_name, hex_color, created_at, updated_at) VALUES ('azul verdoso', '#008080', NOW(), NOW());
 INSERT INTO color (color_name, hex_color, created_at, updated_at) VALUES ('azul', '#0000FF', NOW(), NOW());
 INSERT INTO color (color_name, hex_color, created_at, updated_at) VALUES ('gris', '#808080', NOW(), NOW());
+INSERT INTO color (color_name, hex_color, created_at, updated_at) VALUES ('morado', '#800080', NOW(), NOW()); -- Morado
+
 
 -- Insert new product
 INSERT INTO product 
@@ -276,19 +241,14 @@ INSERT INTO image (image_url, image_product_id) VALUES ('https://raw.githubuserc
 -- Insert stock information for each size and color variant
 -- Replace color_id and size_id with the correct IDs from your tables
 
--- Talla S 
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (5, 1, 1, 22, 49.00);
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (5, 2, 1, 22, 49.00);
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (5, 3, 1, 22, 49.00);
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (5, 4, 1, 22, 49.00);
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (5, 5, 1, 22, 49.00);
-
 -- Talla S, Color Azul Verdoso
 INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (5, 13, 1, 22, 49.00);
 -- Talla S, Color Azul
 INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (5, 14, 1, 18, 49.00);
 -- Talla S, Color Gris
 INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (5, 15, 1, 16, 49.00);
+-- Talla S, Color Morado
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (5, 16, 1, 22, 49.00);
 
 -- Talla M, Color Azul Verdoso
 INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (5, 13, 2, 20, 59.00);
