@@ -1,5 +1,5 @@
-import { prisma } from "../../db";
-import { responseError, responseSuccess } from "../../network/responses";
+import { prisma } from "../../db/index.js";
+import { responseError, responseSuccess } from "../../network/responses.js";
 
 //READ
 export async function list(req, res) {
@@ -48,9 +48,7 @@ export async function store(req, res) {
     });
 
     return responseSuccess({ res, data: "Image created", status: 201 });
-
   } catch (error) {
-
     return responseError({ res, data: error.message });
   }
 }
@@ -58,7 +56,6 @@ export async function store(req, res) {
 //UPDATE
 export async function update(req, res) {
   try {
-
     // Step 1: Find the image record first
     const existingImage = await prisma.image.findFirst({
       where: {
@@ -76,7 +73,7 @@ export async function update(req, res) {
       where: {
         id: existingImage.id, // unique identifier
       },
-      data: req.body
+      data: req.body,
     });
 
     return responseSuccess({ res, data: "Image updated" });
@@ -84,7 +81,6 @@ export async function update(req, res) {
     return responseError({ res, data: error.message });
   }
 }
-
 
 //DELETE
 

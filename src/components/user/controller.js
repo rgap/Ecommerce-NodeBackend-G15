@@ -1,7 +1,7 @@
 import dotenv from "dotenv";
-import { generateVerificationToken, hash } from "../../crypto";
-import { prisma, prismaError } from "../../db";
-import { responseError, responseSuccess } from "../../network/responses";
+import { generateVerificationToken, hash } from "../../crypto/index.js";
+import { prisma, prismaError } from "../../db/index.js";
+import { responseError, responseSuccess } from "../../network/responses.js";
 import { sendVerificationEmail } from "../../services/emailService.js"; // Adjust the path as necessary
 
 // Load environment variables from .env file

@@ -1,6 +1,6 @@
-import { prisma } from "../../db";
+import { prisma } from "../../db/index.js";
 
-import { responseError, responseSuccess } from "../../network/responses";
+import { responseError, responseSuccess } from "../../network/responses.js";
 
 // READING STOCK BY PRODUCT,COLOR,SIZE
 export async function getQuantityAndPrice(req, res) {
@@ -9,7 +9,8 @@ export async function getQuantityAndPrice(req, res) {
 
     const stock = await prisma.stock.findUnique({
       where: {
-        productId_colorId_sizeId: { // Use the compound unique key
+        productId_colorId_sizeId: {
+          // Use the compound unique key
           productId: productId,
           colorId: colorId !== undefined ? colorId : null,
           sizeId: sizeId !== undefined ? sizeId : null,
@@ -36,13 +37,14 @@ export async function update(req, res) {
     const { productId, colorId, sizeId } = req.body;
     const stock = await prisma.stock.update({
       where: {
-        productId_colorId_sizeId: { // Use the compound unique key
+        productId_colorId_sizeId: {
+          // Use the compound unique key
           productId: productId,
           colorId: colorId !== undefined ? colorId : null,
           sizeId: sizeId !== undefined ? sizeId : null,
         },
       },
-      data: {quantity:req.body.quantity,price:req.body.price},
+      data: { quantity: req.body.quantity, price: req.body.price },
     });
 
     if (!stock) {
@@ -75,7 +77,8 @@ export async function destroy(req, res) {
 
     await prisma.stock.delete({
       where: {
-        productId_colorId_sizeId: { // Use the compound unique key
+        productId_colorId_sizeId: {
+          // Use the compound unique key
           productId: productId,
           colorId: colorId,
           sizeId: sizeId,
@@ -87,5 +90,3 @@ export async function destroy(req, res) {
     return responseError({ res, data: error.message });
   }
 }
-
-
