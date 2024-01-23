@@ -1,14 +1,14 @@
-use beautipol;
-DELETE FROM user;
-ALTER TABLE user AUTO_INCREMENT = 1;
-DELETE FROM stock;
-ALTER TABLE stock AUTO_INCREMENT = 1;
-DELETE FROM image;
-ALTER TABLE image AUTO_INCREMENT = 1;
-DELETE FROM product;
-ALTER TABLE product AUTO_INCREMENT = 1;
+-- Delete data from tables
+DELETE FROM "user";
 DELETE FROM color;
-ALTER TABLE color AUTO_INCREMENT = 1;
 DELETE FROM size;
-ALTER TABLE size AUTO_INCREMENT = 1;
+DELETE FROM product;
+DELETE FROM image;
+DELETE FROM stock;
 
+-- Reset sequences
+ALTER SEQUENCE user_user_id_seq RESTART WITH 1;
+ALTER SEQUENCE color_color_id_seq RESTART WITH 1;
+ALTER SEQUENCE size_size_id_seq RESTART WITH 1;
+ALTER SEQUENCE product_product_id_seq RESTART WITH 1;
+ALTER SEQUENCE image_image_id_seq RESTART WITH 1;

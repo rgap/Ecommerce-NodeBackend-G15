@@ -38,7 +38,7 @@ export async function getById(req, res) {
 
     return responseSuccess({ res, data: user });
   } catch (error) {
-    return responseError({ res, data: `getById: ${error.message}` });
+    return responseError({ res, data: `${error.message}` });
   }
 }
 
@@ -129,7 +129,7 @@ export async function login(req, res) {
 
 // GET by email
 
-export async function findByEmail(req, res) {
+export async function checkIfEmailExists(req, res) {
   try {
     const { email } = req.body;
 
@@ -168,7 +168,7 @@ export async function findByEmail(req, res) {
 
 export async function register(req, res) {
   try {
-    const { password, email, ...otherUserData } = req.body;
+    const { name, email, password } = req.body;
     const hashedPassword = hash(password);
     const isDebugMode = process.env.DEBUG_MODE === "true";
     // Generate email verification token only if not in debug mode
@@ -177,11 +177,17 @@ export async function register(req, res) {
     // Create new user
     await prisma.user.create({
       data: {
-        ...otherUserData,
+        name,
         email,
         password: hashedPassword,
         emailToken,
         isVerified: isDebugMode,
+        phoneNumber: "",
+        address: "",
+        city: "",
+        region: "",
+        country: "",
+        cardNumber: "",
       },
     });
 
@@ -265,5 +271,35 @@ export async function verifyEmail(req, res) {
       res,
       data: "An error occurred during email verification.",
     });
+  }
+}
+
+export async function getByEmail(req, res) {
+  try {
+    const { email } = req.body;
+    const user = await prisma.user.findUnique({
+      where: {
+        email: email,
+      },
+      select: {
+        id: true,
+        email: true,
+        name: true,
+        phoneNumber: true,
+        address: true,
+        city: true,
+        region: true,
+        country: true,
+        cardNumber: true,
+      },
+    });
+
+    if (!user) {
+      return responseError({ res, data: "User not found" });
+    }
+
+    return responseSuccess({ res, data: user });
+  } catch (error) {
+    return responseError({ res, data: `${error.message}` });
   }
 }
