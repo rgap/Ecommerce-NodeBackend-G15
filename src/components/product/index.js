@@ -1,1 +1,1 @@
-export { default as productRouter  } from "./network";
+export { default as productRouter } from "./network.js";

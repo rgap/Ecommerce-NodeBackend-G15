@@ -1,6 +1,6 @@
-import { prisma } from "../../db";
+import { prisma } from "../../db/index.js";
 
-import { responseError, responseSuccess } from "../../network/responses";
+import { responseError, responseSuccess } from "../../network/responses.js";
 
 ///////////////////////////// CRUD ////////////////////////////
 

@@ -1,1 +1,1 @@
-export { default as stockRouter  } from "./network";
+export { default as stockRouter } from "./network.js";

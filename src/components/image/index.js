@@ -1,1 +1,1 @@
-export {default as imageRouter} from "./network"
+export { default as imageRouter } from "./network.js";

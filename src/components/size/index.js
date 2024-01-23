@@ -1,1 +1,1 @@
-export { default as sizeRouter  } from "./network";
+export { default as sizeRouter } from "./network.js";

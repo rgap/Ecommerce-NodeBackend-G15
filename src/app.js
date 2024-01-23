@@ -3,13 +3,13 @@ import cors from "cors";
 import express from "express";
 import {
   colorRouter,
+  imageRouter,
   productRouter,
   sizeRouter,
   stockRouter,
   userRouter,
-  imageRouter,
-} from "./components";
-import { apiVersion } from "./config";
+} from "./components/index.js";
+import { apiVersion } from "./config/index.js";
 
 export const app = express();
 
