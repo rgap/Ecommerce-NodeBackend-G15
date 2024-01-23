@@ -74,6 +74,26 @@ CREATE TABLE "stock" (
     CONSTRAINT "stock_pkey" PRIMARY KEY ("stock_product_id","stock_color_id","stock_size_id")
 );
 
+-- CreateTable
+CREATE TABLE "payment" (
+    "payment_id" SERIAL NOT NULL,
+    "user_id" INTEGER NOT NULL,
+    "payment_date" TIMESTAMP(3) NOT NULL,
+    "payer_email" VARCHAR(250) NOT NULL,
+    "payer_document_type" VARCHAR(10) NOT NULL,
+    "payer_document_number" VARCHAR(50) NOT NULL,
+    "installments" INTEGER,
+    "issuer_id" VARCHAR(100) NOT NULL,
+    "payment_method_id" VARCHAR(20) NOT NULL,
+    "token" VARCHAR(250) NOT NULL,
+    "status" VARCHAR(10) NOT NULL,
+    "amount" INTEGER NOT NULL,
+    "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updated_at" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "payment_pkey" PRIMARY KEY ("payment_id")
+);
+
 -- CreateIndex
 CREATE UNIQUE INDEX "user_user_email_key" ON "user"("user_email");
 
@@ -97,3 +117,6 @@ ALTER TABLE "stock" ADD CONSTRAINT "stock_stock_color_id_fkey" FOREIGN KEY ("sto
 
 -- AddForeignKey
 ALTER TABLE "stock" ADD CONSTRAINT "stock_stock_size_id_fkey" FOREIGN KEY ("stock_size_id") REFERENCES "size"("size_id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "payment" ADD CONSTRAINT "payment_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "user"("user_id") ON DELETE RESTRICT ON UPDATE CASCADE;
