@@ -7,10 +7,12 @@ const userRouter = Router();
 userRouter.route("/login").post(Controller.login);
 // REGISTER
 userRouter.route("/register").post(Controller.register);
-// GETBYEMAIL
-userRouter.route("/findbyemail").post(Controller.findByEmail);
 // VERIFYEMAIL
 userRouter.route("/verify-email").get(Controller.verifyEmail);
+// GETBYEMAIL
+userRouter.route("/check-if-email-exists").post(Controller.checkIfEmailExists);
+// VERIFYEMAIL
+userRouter.route("/get-by-email").post(Controller.getByEmail);
 
 ////////// CRUD //////////
 
