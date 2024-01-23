@@ -2,5 +2,12 @@
 import { createHmac } from "node:crypto";
 
 export function hash(text) {
-  return createHmac("sha256", "secret").update(text).digest("hex");
+  const secretKey = process.env.HMAC_SECRET_KEY;
+  return createHmac("sha256", secretKey).update(text).digest("hex");
+}
+
+export function generateVerificationToken() {
+  const randomPart = Date.now().toString() + Math.random().toString();
+  const secretKey = process.env.HMAC_SECRET_KEY;
+  return createHmac("sha256", secretKey).update(randomPart).digest("hex");
 }

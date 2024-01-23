@@ -1,7 +1,11 @@
-import { hash } from "../../crypto";
+import dotenv from "dotenv";
+import { generateVerificationToken, hash } from "../../crypto";
 import { prisma, prismaError } from "../../db";
-
 import { responseError, responseSuccess } from "../../network/responses";
+import { sendVerificationEmail } from "../../services/emailService.js"; // Adjust the path as necessary
+
+// Load environment variables from .env file
+dotenv.config();
 
 ///////////////////////////// CRUD ////////////////////////////
 
@@ -94,16 +98,21 @@ export async function login(req, res) {
       },
     });
 
-    // User not found
-    if (!user) {
-      return responseError({ res, data: "User not found", status: 404 });
-    }
-
-    // Password invalid
-    if (user.password !== hash(password)) {
+    // User not found or not verified
+    if (!user || !user.isVerified) {
       return responseError({
         res,
-        data: "Invalid password",
+        data: "Invalid email or password",
+        status: 401,
+      });
+    }
+
+    // Compare hashed passwords
+    const hashedInputPassword = hash(password);
+    if (user.password !== hashedInputPassword) {
+      return responseError({
+        res,
+        data: "Invalid email or password",
         status: 401,
       });
     }
@@ -159,19 +168,39 @@ export async function findByEmail(req, res) {
 
 export async function register(req, res) {
   try {
-    const { password, ...otherUserData } = req.body;
-
-    // Hash the password
+    const { password, email, ...otherUserData } = req.body;
     const hashedPassword = hash(password);
+    const isDebugMode = process.env.DEBUG_MODE === "true";
+    // Generate email verification token only if not in debug mode
+    const emailToken = isDebugMode ? null : generateVerificationToken();
 
+    // Create new user
     await prisma.user.create({
       data: {
         ...otherUserData,
+        email,
         password: hashedPassword,
+        emailToken,
+        isVerified: isDebugMode,
       },
     });
 
-    return responseSuccess({ res, data: "User created", status: 201 });
+    // console.log("process.env.SMTP_USER", process.env.SMTP_USER);
+
+    // Send verification email only if not in debug mode
+    if (!isDebugMode) {
+      await sendVerificationEmail(email, emailToken);
+    }
+
+    const message = isDebugMode
+      ? "User created in debug mode (no email verification)."
+      : "User created. Please check your email to verify your account.";
+
+    return responseSuccess({
+      res,
+      data: message,
+      status: 201,
+    });
   } catch (error) {
     if (error instanceof prismaError) {
       // Unique constraint failed
@@ -184,5 +213,57 @@ export async function register(req, res) {
       }
     }
     return responseError({ res, data: error.message });
+  }
+}
+
+// VERIFY EMAIL
+
+export async function verifyEmail(req, res) {
+  try {
+    const { token } = req.query;
+
+    if (!token) {
+      return responseError({
+        res,
+        data: "Verification token is required.",
+        status: 400,
+      });
+    }
+
+    const user = await prisma.user.findUnique({
+      where: {
+        emailToken: token,
+      },
+    });
+
+    if (!user) {
+      return responseError({
+        res,
+        data: "Invalid or expired token.",
+        status: 400,
+      });
+    }
+
+    await prisma.user.update({
+      where: {
+        id: user.id,
+      },
+      data: {
+        isVerified: true,
+        emailToken: null, // Clear the verification token
+      },
+    });
+
+    return responseSuccess({
+      res,
+      data: "Email verified successfully. You may now log in.",
+      status: 200,
+    });
+  } catch (error) {
+    console.error("Failed to verify email:", error);
+    return responseError({
+      res,
+      data: "An error occurred during email verification.",
+    });
   }
 }
