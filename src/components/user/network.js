@@ -9,6 +9,8 @@ userRouter.route("/login").post(Controller.login);
 userRouter.route("/register").post(Controller.register);
 // GETBYEMAIL
 userRouter.route("/findbyemail").post(Controller.findByEmail);
+// VERIFYEMAIL
+userRouter.route("/verify-email").get(Controller.verifyEmail);
 
 ////////// CRUD //////////
 

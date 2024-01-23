@@ -192,10 +192,6 @@ dist
 .history
 .ionide
 
-## Database
-
-prisma/migrations
-
 ## Packages
 
 package-lock.json
