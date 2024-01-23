@@ -1,10 +1,10 @@
 -- Delete data from tables
-DELETE FROM "user";
+DELETE FROM stock;
+DELETE FROM image;
+DELETE FROM product;
 DELETE FROM color;
 DELETE FROM size;
-DELETE FROM product;
-DELETE FROM image;
-DELETE FROM stock;
+DELETE FROM "user";
 
 -- Reset sequences
 ALTER SEQUENCE user_user_id_seq RESTART WITH 1;
