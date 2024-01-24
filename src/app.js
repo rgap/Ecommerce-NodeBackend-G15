@@ -4,6 +4,7 @@ import express from "express";
 import {
   colorRouter,
   imageRouter,
+  paymentRouter,
   productRouter,
   sizeRouter,
   stockRouter,
@@ -22,3 +23,4 @@ app.use(`${apiVersion}/sizes`, sizeRouter);
 app.use(`${apiVersion}/products`, productRouter);
 app.use(`${apiVersion}/stocks`, stockRouter);
 app.use(`${apiVersion}/images`, imageRouter);
+app.use(`${apiVersion}/payments`, paymentRouter);
