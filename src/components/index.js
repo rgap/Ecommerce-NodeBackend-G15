@@ -4,3 +4,4 @@ export * from "./product/index.js";
 export * from "./size/index.js";
 export * from "./stock/index.js";
 export * from "./user/index.js";
+export * from "./payment/index.js";
