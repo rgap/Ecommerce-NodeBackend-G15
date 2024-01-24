@@ -1,5 +1,7 @@
 import { prisma } from "../../db/index.js";
 import { responseError, responseSuccess } from "../../network/responses.js";
+// Axios es como Requires (Django)
+import axios from "axios";
 
 // C R U D
 
@@ -38,21 +40,50 @@ export async function updatePaymentStatus(req, res) {}
 // Create Payment
 export async function generatePayment(req, res) {
   try {
-    const existingUser = await prisma.user.findUnique({
-      where: {
-        id: req.body.userId,
-      },
-    });
+    // Datos para la solicitud a MercadoPago
+    console.log("estoy aqui");
 
-    if (!existingUser) {
-      return responseError({ res, data: "User not found" });
-    }
+    console.log(req.body);
+
+    const data = {
+      description: "Primera venta",
+      installments: req.body.installments,
+      issuer_id: req.body.issuer_id,
+      payer: {
+        email: req.body.payer_email,
+      },
+      payment_method_id: req.body.payment_method_id,
+      token: req.body.token,
+      transaction_amount: req.body.transaction_amount,
+    };
+
+    console.log(data);
+
+    // Realizar la solicitud a MercadoPago
+    const mercadoPagoResponse = await axios.post(
+      "https://api.mercadopago.com/v1/payments",
+      data,
+      {
+        headers: {
+          "X-Idempotency-Key": "0d5020ed-1af6-469c-ae06-c3bec19954bb",
+          Authorization:
+            "Bearer TEST-5534289180663903-012221-a6e61dd9750ba9f1f7ff4620ffad1046-1651048382",
+          "Content-Type": "application/json",
+        },
+      }
+    );
+
+    console.log("Respuesta de MercadoPago:");
+    console.log("-----------");
+    console.log(mercadoPagoResponse.data);
+    console.log("-----------");
 
     await prisma.payment.create({
       data: req.body,
     });
 
     return responseSuccess({ res, data: "Payment created", status: 201 });
+
   } catch (error) {
     return responseError({ res, data: error.message });
   }
