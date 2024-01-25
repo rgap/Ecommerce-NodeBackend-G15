@@ -8,7 +8,7 @@ paymentRouter.route("/").get(Controller.list)
 paymentRouter.route("/get-by-user").get(Controller.getByUserId)
 paymentRouter.route("/delete").delete(Controller.destroy)
 
-// GENERATE PAYMENT
+// GENERATE PAYMENT on Mercado Pago
 paymentRouter.route("/generate").post(Controller.generatePayment)
 
 export default paymentRouter;

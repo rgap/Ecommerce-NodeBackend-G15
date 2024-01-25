@@ -2,6 +2,10 @@ import { prisma } from "../../db/index.js";
 import { responseError, responseSuccess } from "../../network/responses.js";
 // Axios es como Requires (Django)
 import axios from "axios";
+import dotenv from "dotenv";
+
+dotenv.config(); // Cargar variables de entorno desde el archivo .env
+const { MERCADO_PAGO_TOKEN } = process.env;
 
 // C R U D
 
@@ -34,30 +38,45 @@ export async function getByUserId(req, res) {
   }
 }
 
-// Update Payment Status
-export async function updatePaymentStatus(req, res) {}
-
 // Create Payment
 export async function generatePayment(req, res) {
   try {
+    console.log("lo que envia front",req.body)
+    // Create a tabla Payment
+    const payments = await prisma.payment.create({
+      data:{
+        paymentDate:req.body.payment_date,
+        payerEmail:req.body.payer_email,
+        payerDocumentType:req.body.payer_document_type,
+        payerDocumentNumber:req.body.payer_document_number,
+        installments:req.body.installments,
+        issuerId:req.body.issuer_id,
+        paymentMethodId:req.body.payment_method_id,
+        token:req.body.token,
+        status:req.body.status,
+        amount:req.body.transaction_amount,
+        userId:req.body.userId
+      }
+    });
+
+    if (!payments) {
+      return responseError({ res, data: "Payment not created." });
+    }
+
     // Datos para la solicitud a MercadoPago
-    console.log("estoy aqui");
-
-    console.log(req.body);
-
-    const data = {
-      description: "Primera venta",
+      const data = {
+      description: "Prima venta",
       installments: req.body.installments,
       issuer_id: req.body.issuer_id,
       payer: {
-        email: req.body.payer_email,
+        email: req.body.payer_email
       },
       payment_method_id: req.body.payment_method_id,
       token: req.body.token,
       transaction_amount: req.body.transaction_amount,
     };
 
-    console.log(data);
+    console.log("Entrando a mercado pago",data);
 
     // Realizar la solicitud a MercadoPago
     const mercadoPagoResponse = await axios.post(
@@ -66,22 +85,34 @@ export async function generatePayment(req, res) {
       {
         headers: {
           "X-Idempotency-Key": "0d5020ed-1af6-469c-ae06-c3bec19954bb",
-          Authorization:
-            "Bearer TEST-5534289180663903-012221-a6e61dd9750ba9f1f7ff4620ffad1046-1651048382",
+          Authorization:MERCADO_PAGO_TOKEN,
           "Content-Type": "application/json",
         },
       }
     );
 
     console.log("Respuesta de MercadoPago:");
-    console.log("-----------");
     console.log(mercadoPagoResponse.data);
-    console.log("-----------");
 
-    await prisma.payment.create({
-      data: req.body,
-    });
-
+    //Update a Payment by Token 
+    const idMercadoPago = mercadoPagoResponse.data.id;
+    console.log(idMercadoPago)
+      try {
+        const payments = await prisma.payment.updateMany({
+          where: {
+            token: req.body.token,
+          },
+          data:{paymentId:idMercadoPago},
+        });
+    
+        if (!payments) {
+          return responseError({ res, data: "Payment not found" });
+        }
+        return responseSuccess({ res, data: "Payment updated" });
+      } catch (error) {
+        return responseError({ res, data: error.message });
+      }
+    
     return responseSuccess({ res, data: "Payment created", status: 201 });
 
   } catch (error) {

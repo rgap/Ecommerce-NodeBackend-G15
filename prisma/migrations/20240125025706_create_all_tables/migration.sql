@@ -76,9 +76,10 @@ CREATE TABLE "stock" (
 
 -- CreateTable
 CREATE TABLE "payment" (
-    "payment_id" SERIAL NOT NULL,
+    "id" SERIAL NOT NULL,
+    "payment_id" INTEGER,
     "user_id" INTEGER NOT NULL,
-    "payment_date" TIMESTAMP(3) NOT NULL,
+    "payment_date" TIMESTAMP(3),
     "payer_email" VARCHAR(250) NOT NULL,
     "payer_document_type" VARCHAR(10) NOT NULL,
     "payer_document_number" VARCHAR(50) NOT NULL,
@@ -91,7 +92,7 @@ CREATE TABLE "payment" (
     "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updated_at" TIMESTAMP(3) NOT NULL,
 
-    CONSTRAINT "payment_pkey" PRIMARY KEY ("payment_id")
+    CONSTRAINT "payment_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateIndex
