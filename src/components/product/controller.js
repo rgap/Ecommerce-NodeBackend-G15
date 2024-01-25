@@ -112,9 +112,45 @@ export async function destroy(req, res) {
 
 ///////////////////////////// FRONT END ////////////////////////////
 
+// Shared function to process products
+function processProducts(products) {
+  return products.map((product) => {
+    const availableStock = product.Stock.filter(
+      (stockItem) => stockItem.quantity > 0
+    ).map((stockItem) => ({
+      ...stockItem,
+      price: stockItem.price,
+      colorName: stockItem.color.name,
+      hexCode: stockItem.color.code,
+    }));
+
+    const sortedByPrice = availableStock.sort((a, b) => a.price - b.price);
+    const uniqueColors = new Map();
+    sortedByPrice.forEach((stockItem) => {
+      if (!uniqueColors.has(stockItem.colorName) && uniqueColors.size < 3) {
+        uniqueColors.set(stockItem.colorName, {
+          name: stockItem.colorName,
+          hexCode: stockItem.hexCode,
+        });
+      }
+    });
+
+    const colors = Array.from(uniqueColors.values());
+    const minimumPrice =
+      sortedByPrice.length > 0 ? sortedByPrice[0].price : null;
+
+    return {
+      ...product,
+      availableColors: colors,
+      minimumPrice: minimumPrice,
+      Stock: undefined,
+    };
+  });
+}
+
+// Function to get products for Product Listing Page
 export async function getProductsPLP(req, res) {
   const numberOfProducts = req.params.numberOfProducts;
-
   try {
     let queryOptions = {
       include: {
@@ -128,59 +164,72 @@ export async function getProductsPLP(req, res) {
 
     if (numberOfProducts !== "all") {
       if (numberOfProducts === "random") {
-        // Logic for fetching random products
         const totalCount = await prisma.product.count();
         const randomOffset = Math.max(
           0,
           Math.floor(Math.random() * totalCount) - 2
         );
-        queryOptions.take = 3;
+        queryOptions.take = 4;
         queryOptions.skip = randomOffset;
       } else if (!isNaN(numberOfProducts)) {
-        // If it's a numeric value
         queryOptions.take = parseInt(numberOfProducts);
       }
     }
 
     const products = await prisma.product.findMany(queryOptions);
-
-    const processedProducts = products.map((product) => {
-      const availableStock = product.Stock.filter(
-        (stockItem) => stockItem.quantity > 0
-      ).map((stockItem) => ({
-        ...stockItem,
-        price: stockItem.price,
-        colorName: stockItem.color.name,
-        hexCode: stockItem.color.code,
-      }));
-
-      const sortedByPrice = availableStock.sort((a, b) => a.price - b.price);
-      const uniqueColors = new Map();
-      sortedByPrice.forEach((stockItem) => {
-        if (!uniqueColors.has(stockItem.colorName) && uniqueColors.size < 3) {
-          uniqueColors.set(stockItem.colorName, {
-            name: stockItem.colorName,
-            hexCode: stockItem.hexCode,
-          });
-        }
-      });
-
-      const colors = Array.from(uniqueColors.values());
-      const minimumPrice =
-        sortedByPrice.length > 0 ? sortedByPrice[0].price : null;
-
-      return {
-        ...product,
-        availableColors: colors,
-        minimumPrice: minimumPrice,
-        Stock: undefined,
-      };
-    });
-
+    const processedProducts = processProducts(products);
     return res.status(200).json({ data: processedProducts });
   } catch (error) {
     return res.status(500).json({ error: error.message });
   }
+}
+
+// Function to get related products
+export async function getRelatedProducts(req, res) {
+  const numberOfProducts = req.params.numberOfProducts;
+
+  try {
+    const { title, excludeProductId } = req.body; // Retrieve title and excluded product ID from the request body
+    if (!title) {
+      return responseError({ res, data: "Title is required", status: 400 });
+    }
+
+    let products = await prisma.product.findMany({
+      where: {
+        id: {
+          not: excludeProductId, // Exclude the product with the specified ID
+        },
+      },
+      include: {
+        Stock: {
+          include: {
+            color: true,
+          },
+        },
+      },
+    });
+    let relatedProducts = products
+      .map((product) => ({
+        ...product,
+        similarity: jaccardSimilarity(title, product.title),
+      }))
+      .sort((a, b) => b.similarity - a.similarity)
+      .slice(0, numberOfProducts);
+
+    const processedProducts = processProducts(relatedProducts);
+    return responseSuccess({ res, data: processedProducts });
+  } catch (error) {
+    return responseError({ res, data: error.message });
+  }
+}
+
+// Function to calculate Jaccard Similarity
+function jaccardSimilarity(str1, str2) {
+  const set1 = new Set(str1.split(" "));
+  const set2 = new Set(str2.split(" "));
+  const intersection = new Set([...set1].filter((x) => set2.has(x)));
+  const union = new Set([...set1, ...set2]);
+  return intersection.size / union.size;
 }
 
 export async function getProductPDP(req, res) {
