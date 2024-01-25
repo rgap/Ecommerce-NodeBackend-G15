@@ -5,7 +5,8 @@
 INSERT INTO "user"
 (user_name, user_email, user_password, user_is_verified, user_email_token, user_phone_number, user_address, user_city, user_region, user_country, user_card_number, updated_at) 
 VALUES 
-('Beautipol Alpha', 'beautipol.alpha.1@gmail.com', 'a1234567', true, 'token', '+51999999999', 'Av. Larco 1010, Miraflores', 'Lima', 'Lima', 'Perú', '4111111111111111', NOW());
+('Beautipol Alpha', 'beautipol.alpha.1@gmail.com', 'bc803f8921a459d6e00098c8c09dcfb42778ca286be413fbbc0fb6dbbfe3d537', true, 'token', '+51999999999', 'Av. Larco 1010, Miraflores', 'Lima', 'Lima', 'Perú', '4111111111111111', NOW());
+-- pass: a1234567
 
 -- ------------------------------------------- 
 -- ------------------------------------------- PRODUCT 1
