@@ -533,7 +533,7 @@ INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quanti
 INSERT INTO product 
 (product_title, product_description, product_short_description, product_main_image, product_material, product_care, created_at, updated_at) 
 VALUES 
-('Polo Nike Gris', 'Este polo gris de Nike es la combinación perfecta de estilo y comodidad, ideal para el uso diario y ocasiones casuales.', 'Cómodo y Estilizado', 'https://raw.githubusercontent.com/rgap/Ecommerce-G15-ImageRepository/main/images/polo-gris-nike.jpg', 'Hecho con un 80% de algodón y 20% poliéster, ofrece confort y durabilidad en su uso diario.', 'Lavar en máquina en programa para prendas delicadas, secar colgado, no usar blanqueador.', NOW(), NOW());
+('Polo Nike Gris Naranja', 'Este polo gris con naranja de Nike es la combinación perfecta de estilo y comodidad, ideal para el uso diario y ocasiones casuales.', 'Cómodo y Estilizado', 'https://raw.githubusercontent.com/rgap/Ecommerce-G15-ImageRepository/main/images/polo-melange-nike.jpg', 'Hecho con un 80% de algodón y 20% poliéster, ofrece confort y durabilidad en su uso diario.', 'Lavar en máquina en programa para prendas delicadas, secar colgado, no usar blanqueador.', NOW(), NOW());
 
 -- Insertar imágenes adicionales en la tabla `image`
 INSERT INTO image (image_url, image_product_id) VALUES 
@@ -729,7 +729,7 @@ INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quanti
 INSERT INTO product 
 (product_title, product_description, product_short_description, product_main_image, product_material, product_care, created_at, updated_at) 
 VALUES 
-('Polo Ripcurl Azul Claro', 'El polo Ripcurl en azul claro es perfecto para un look casual de fin de semana. Combina estilo y confort de manera única.', 'Estilo Casual de Finde', 'https://raw.githubusercontent.com/rgap/Ecommerce-G15-ImageRepository/main/images/polo-azul-claro-ripcurl.jpg', 'Confeccionado con 95% algodón y 5% spandex, brindando elasticidad y comodidad todo el día.', 'Lavado suave a máquina a 30°C. No usar cloro. Secar a baja temperatura. No lavar en seco. Planchar a temperatura baja.', NOW(), NOW());
+('Polo Quiksilver Celeste', 'Este polo celeste es perfecto para un look casual de fin de semana. Combina estilo y confort de manera única.', 'Estilo Casual de Finde', 'https://raw.githubusercontent.com/rgap/Ecommerce-G15-ImageRepository/main/images/polo-celeste-quiksilver.jpg', 'Confeccionado con 95% algodón y 5% spandex, brindando elasticidad y comodidad todo el día.', 'Lavado suave a máquina a 30°C. No usar cloro. Secar a baja temperatura. No lavar en seco. Planchar a temperatura baja.', NOW(), NOW());
 
 -- Insertar imágenes adicionales en la tabla `image`
 INSERT INTO image (image_url, image_product_id) VALUES 

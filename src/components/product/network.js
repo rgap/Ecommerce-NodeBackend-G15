@@ -7,7 +7,12 @@ const productRouter = Router();
 productRouter
   .route("/get-products-plp/:numberOfProducts")
   .get(Controller.getProductsPLP);
+// PDP product
 productRouter.route("/get-product-pdp/:id").get(Controller.getProductPDP);
+// Get related products by title
+productRouter
+  .route("/related/:numberOfProducts")
+  .post(Controller.getRelatedProducts);
 
 ////////// CRUD //////////
 
