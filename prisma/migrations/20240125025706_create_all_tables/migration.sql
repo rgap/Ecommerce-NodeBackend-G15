@@ -76,16 +76,10 @@ CREATE TABLE "stock" (
 
 -- CreateTable
 CREATE TABLE "payment" (
-<<<<<<< HEAD:prisma/migrations/20240123193126_create_all_tables/migration.sql
-    "payment_id" SERIAL NOT NULL,
-    "user_id" INTEGER NOT NULL,
-    "payment_date" TIMESTAMP(3) NOT NULL,
-=======
     "id" SERIAL NOT NULL,
     "payment_id" INTEGER,
     "user_id" INTEGER NOT NULL,
     "payment_date" TIMESTAMP(3),
->>>>>>> 4bbe31c (payment completo):prisma/migrations/20240125025706_create_all_tables/migration.sql
     "payer_email" VARCHAR(250) NOT NULL,
     "payer_document_type" VARCHAR(10) NOT NULL,
     "payer_document_number" VARCHAR(50) NOT NULL,
@@ -98,11 +92,7 @@ CREATE TABLE "payment" (
     "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updated_at" TIMESTAMP(3) NOT NULL,
 
-<<<<<<< HEAD:prisma/migrations/20240123193126_create_all_tables/migration.sql
-    CONSTRAINT "payment_pkey" PRIMARY KEY ("payment_id")
-=======
     CONSTRAINT "payment_pkey" PRIMARY KEY ("id")
->>>>>>> 4bbe31c (payment completo):prisma/migrations/20240125025706_create_all_tables/migration.sql
 );
 
 -- CreateIndex
