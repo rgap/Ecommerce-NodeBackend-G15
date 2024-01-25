@@ -171,6 +171,7 @@ export async function register(req, res) {
     const { name, email, password } = req.body;
     const hashedPassword = hash(password);
     const isDebugMode = process.env.DEBUG_MODE === "true";
+    console.log("isDebugMode", isDebugMode);
     // Generate email verification token only if not in debug mode
     const emailToken = isDebugMode ? null : generateVerificationToken();
 
@@ -242,11 +243,19 @@ export async function verifyEmail(req, res) {
       },
     });
 
+    if (user.isVerified) {
+      return responseError({
+        res,
+        data: "Email already verified. Please log in.",
+        status: 409,
+      });
+    }
+
     if (!user) {
       return responseError({
         res,
         data: "Invalid or expired token.",
-        status: 400,
+        status: 404, // or 410 if the token is known to be expired
       });
     }
 
@@ -256,7 +265,6 @@ export async function verifyEmail(req, res) {
       },
       data: {
         isVerified: true,
-        emailToken: null, // Clear the verification token
       },
     });
 
@@ -269,7 +277,8 @@ export async function verifyEmail(req, res) {
     console.error("Failed to verify email:", error);
     return responseError({
       res,
-      data: "An error occurred during email verification.",
+      data: "An error occurred during email verification. Please try again later.",
+      status: 500,
     });
   }
 }
