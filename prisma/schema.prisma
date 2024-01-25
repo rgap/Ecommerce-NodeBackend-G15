@@ -98,21 +98,22 @@ model Stock {
 }
 
 model Payment {
-  paymentId             Int      @id @default(autoincrement()) @map("payment_id")
-  userId                Int      @map("user_id")
-  user                  User     @relation(fields: [userId], references: [id])
-  paymentDate           DateTime @map("payment_date")
-  payerEmail            String   @map("payer_email") @db.VarChar(250)
-  payer_document_type   String   @map("payer_document_type") @db.VarChar(10)
-  payer_document_number String   @map("payer_document_number") @db.VarChar(50)
-  installments          Int?
-  issuer_id             String   @map("issuer_id") @db.VarChar(100)
-  payment_method_id     String   @map("payment_method_id") @db.VarChar(20)
-  token                 String   @db.VarChar(250)
-  status                String   @db.VarChar(10)
-  amount                Int
-  createdAt             DateTime @default(now()) @map("created_at")
-  updatedAt             DateTime @updatedAt @map("updated_at")
+  id                  Int       @id @default(autoincrement())
+  paymentId           Int?      @map("payment_id")
+  userId              Int       @map("user_id")
+  user                User      @relation(fields: [userId], references: [id])
+  paymentDate         DateTime? @map("payment_date")
+  payerEmail          String    @map("payer_email") @db.VarChar(250)
+  payerDocumentType   String    @map("payer_document_type") @db.VarChar(10)
+  payerDocumentNumber String    @map("payer_document_number") @db.VarChar(50)
+  installments        Int?
+  issuerId            String    @map("issuer_id") @db.VarChar(100)
+  paymentMethodId     String    @map("payment_method_id") @db.VarChar(20)
+  token               String    @db.VarChar(250)
+  status              String    @db.VarChar(10)
+  amount              Int
+  createdAt           DateTime  @default(now()) @map("created_at")
+  updatedAt           DateTime  @updatedAt @map("updated_at")
 
   @@map("payment")
 }
