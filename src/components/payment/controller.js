@@ -90,7 +90,6 @@ export async function generatePayment(req, res) {
         },
       }
     );
-
     console.log("Respuesta de MercadoPago:");
     console.log(mercadoPagoResponse.data);
 
@@ -104,7 +103,6 @@ export async function generatePayment(req, res) {
           },
           data:{paymentId:idMercadoPago},
         });
-    
         if (!payments) {
           return responseError({ res, data: "Payment not found" });
         }
