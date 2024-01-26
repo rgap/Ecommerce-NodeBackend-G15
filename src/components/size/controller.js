@@ -35,7 +35,6 @@ export async function getById(req, res) {
 export async function store(req, res) {
   try {
     const size = req.body;
-
     await prisma.size.create({
       data: size,
     });

@@ -90,20 +90,28 @@ export async function generatePayment(req, res) {
         },
       }
     );
-
     console.log("Respuesta de MercadoPago:");
     console.log(mercadoPagoResponse.data);
 
     //Update a Payment by Token
     const idMercadoPago = mercadoPagoResponse.data.id;
-    console.log(idMercadoPago);
-    try {
-      const payments = await prisma.payment.updateMany({
-        where: {
-          token: req.body.token,
-        },
-        data: { paymentId: idMercadoPago },
-      });
+    console.log("Mercado pago ID",idMercadoPago)
+      try {
+        const payments = await prisma.payment.updateMany({
+          where: {
+            token: req.body.token,
+          },
+          data:{paymentId:idMercadoPago},
+        });
+        if (!payments) {
+          return responseError({ res, data: "Payment not found" });
+        }
+        return responseSuccess({ res, data: "Payment updated" });
+      } catch (error) {
+        return responseError({ res, data: error.message });
+      }
+    
+    return responseSuccess({ res, data: "Payment created", status: 201 });
 
       if (!payments) {
         return responseError({ res, data: "Payment not found" });
