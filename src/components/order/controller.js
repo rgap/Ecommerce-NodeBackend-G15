@@ -141,8 +141,7 @@ export async function createOrderMercadoPago(req, res) {
       {
         headers: {
           "X-Idempotency-Key": "0d5020ed-1af6-469c-ae06-c3bec19954bb",
-          Authorization:
-            "Bearer TEST-5534289180663903-012221-a6e61dd9750ba9f1f7ff4620ffad1046-1651048382",
+          Authorization: `Bearer ${process.env.MERCADO_PAGO_TOKEN}`,
           "Content-Type": "application/json",
         },
       }
