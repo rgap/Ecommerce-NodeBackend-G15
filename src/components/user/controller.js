@@ -187,8 +187,7 @@ export async function register(req, res) {
         address: "",
         city: "",
         region: "",
-        country: "",
-        cardNumber: "",
+        country: "Perú",
       },
     });
 
@@ -299,7 +298,6 @@ export async function getByEmail(req, res) {
         city: true,
         region: true,
         country: true,
-        cardNumber: true,
       },
     });
 
