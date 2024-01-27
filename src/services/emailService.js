@@ -35,7 +35,7 @@ const sendEmail = async (mailOptions) => {
  * @param {string} token - The email verification token
  */
 const sendVerificationEmail = async (email, token) => {
-  const verificationLink = `${process.env.HOSTNAME_FRONTEND}/users/verify-email?token=${token}`; // Reemplace con su dominio real
+  const verificationLink = `${process.env.HOSTNAME_FRONTEND}/verify?token=${token}`; // Reemplace con su dominio real
   await sendEmail({
     from: '"Beautipol" <r.guzmanap@gmail.com>', // Reemplace con su email
     to: email,
