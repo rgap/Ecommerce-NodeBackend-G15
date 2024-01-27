@@ -11,7 +11,6 @@ CREATE TABLE "user" (
     "user_city" VARCHAR(50),
     "user_region" VARCHAR(50),
     "user_country" VARCHAR(50),
-    "user_card_number" VARCHAR(20),
     "created_at" TIMESTAMP(3) DEFAULT CURRENT_TIMESTAMP,
     "updated_at" TIMESTAMP(3) NOT NULL,
 
@@ -75,7 +74,7 @@ CREATE TABLE "stock" (
 );
 
 -- CreateTable
-CREATE TABLE "payment" (
+CREATE TABLE "order" (
     "id" SERIAL NOT NULL,
     "payment_id" INTEGER,
     "user_id" INTEGER NOT NULL,
@@ -83,16 +82,30 @@ CREATE TABLE "payment" (
     "payer_email" VARCHAR(250) NOT NULL,
     "payer_document_type" VARCHAR(10) NOT NULL,
     "payer_document_number" VARCHAR(50) NOT NULL,
-    "installments" INTEGER,
+    "installments" INTEGER NOT NULL,
     "issuer_id" VARCHAR(100) NOT NULL,
     "payment_method_id" VARCHAR(20) NOT NULL,
     "token" VARCHAR(250) NOT NULL,
     "status" VARCHAR(10) NOT NULL,
-    "amount" INTEGER NOT NULL,
+    "amount" DECIMAL(65,30) NOT NULL,
     "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updated_at" TIMESTAMP(3) NOT NULL,
 
-    CONSTRAINT "payment_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "order_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "order_item" (
+    "id" SERIAL NOT NULL,
+    "orderId" INTEGER NOT NULL,
+    "productId" INTEGER NOT NULL,
+    "name" VARCHAR(255) NOT NULL,
+    "color" VARCHAR(50) NOT NULL,
+    "imageUrl" VARCHAR(255) NOT NULL,
+    "quantity" INTEGER NOT NULL,
+    "price" DOUBLE PRECISION NOT NULL,
+
+    CONSTRAINT "order_item_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateIndex
@@ -120,4 +133,10 @@ ALTER TABLE "stock" ADD CONSTRAINT "stock_stock_color_id_fkey" FOREIGN KEY ("sto
 ALTER TABLE "stock" ADD CONSTRAINT "stock_stock_size_id_fkey" FOREIGN KEY ("stock_size_id") REFERENCES "size"("size_id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "payment" ADD CONSTRAINT "payment_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "user"("user_id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "order" ADD CONSTRAINT "order_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "user"("user_id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "order_item" ADD CONSTRAINT "order_item_orderId_fkey" FOREIGN KEY ("orderId") REFERENCES "order"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "order_item" ADD CONSTRAINT "order_item_productId_fkey" FOREIGN KEY ("productId") REFERENCES "product"("product_id") ON DELETE RESTRICT ON UPDATE CASCADE;
