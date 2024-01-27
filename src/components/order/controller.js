@@ -7,10 +7,14 @@ dotenv.config(); // Cargar variables de entorno desde el archivo .env
 
 ///////////////////////////// CRUD ////////////////////////////
 
-// Get all orders
+// Get all orders along with their associated order items
 export async function list(req, res) {
   try {
-    const orders = await prisma.order.findMany();
+    const orders = await prisma.order.findMany({
+      include: {
+        OrderItem: true, // This will include the associated OrderItem records in the response
+      },
+    });
     return responseSuccess({ res, data: orders, status: 200 });
   } catch (error) {
     return responseError({ res, data: error.message });
@@ -183,3 +187,11 @@ export async function createOrderMercadoPago(req, res) {
     });
   }
 }
+
+// orderRouter
+//   .route("/send-order-email-to-user")
+//   .post(Controller.sendOrderEmailToUser);
+
+// orderRouter
+//   .route("/send-order-email-to-admin")
+//   .post(Controller.sendOrderEmailToAdmin);
