@@ -2,6 +2,10 @@ import axios from "axios";
 import dotenv from "dotenv";
 import { prisma } from "../../db/index.js";
 import { responseError, responseSuccess } from "../../network/responses.js";
+import {
+  sendOrderConfirmationEmail,
+  sendOrderNotificationToAdmin,
+} from "../../services/emailService.js"; // Adjust the path as necessary
 
 dotenv.config(); // Cargar variables de entorno desde el archivo .env
 
@@ -188,10 +192,36 @@ export async function createOrderMercadoPago(req, res) {
   }
 }
 
-// orderRouter
-//   .route("/send-order-email-to-user")
-//   .post(Controller.sendOrderEmailToUser);
+export async function sendOrderEmailToUser(req, res) {
+  try {
+    const order = req.body; // Extract order data from the request body
 
-// orderRouter
-//   .route("/send-order-email-to-admin")
-//   .post(Controller.sendOrderEmailToAdmin);
+    // Send order confirmation email to the user
+    await sendOrderConfirmationEmail(order);
+
+    res.status(200).json({
+      message: "Email de confirmación de pedido enviado con éxito al usuario.",
+    });
+  } catch (error) {
+    console.error(`Error en sendOrderEmailToUser: ${error}`);
+    res.status(500).json({ message: "Error del servidor interno" });
+  }
+}
+
+export async function sendOrderEmailToAdmin(req, res) {
+  try {
+    const order = req.body; // Extract order data from the request body
+    const adminEmail = "r.guzmanap@gmail.com"; // Replace with the admin's email address
+
+    // Send order notification email to the admin
+    await sendOrderNotificationToAdmin(order, adminEmail);
+
+    res.status(200).json({
+      message:
+        "Notificación de nuevo pedido enviada al administrador con éxito.",
+    });
+  } catch (error) {
+    console.error(`Error en sendOrderEmailToAdmin: ${error}`);
+    res.status(500).json({ message: "Error del servidor interno" });
+  }
+}

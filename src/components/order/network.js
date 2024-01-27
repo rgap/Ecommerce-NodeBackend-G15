@@ -7,14 +7,12 @@ const orderRouter = Router();
 orderRouter.route("/").get(Controller.list);
 orderRouter.route("/:userId").get(Controller.getOrdersByUserId);
 orderRouter.route("/:id").delete(Controller.destroy);
-// orderRouter
-//   .route("/send-order-email-to-user")
-//   .post(Controller.sendOrderEmailToUser);
-// orderRouter
-//   .route("/send-order-email-to-admin")
-//   .post(Controller.sendOrderEmailToAdmin);
-
-// import { sendVerificationEmail } from "../../services/emailService.js"; // Adjust the path as necessary
+orderRouter
+  .route("/send-order-email-to-user")
+  .post(Controller.sendOrderEmailToUser);
+orderRouter
+  .route("/send-order-email-to-admin")
+  .post(Controller.sendOrderEmailToAdmin);
 
 // GENERATE Payment - Mercado Pago
 orderRouter
