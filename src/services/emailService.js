@@ -60,4 +60,78 @@ const sendVerificationEmail = async (email, token) => {
   });
 };
 
-export { sendEmail, sendVerificationEmail };
+/**
+ * Enviar un correo electrónico de confirmación de pedido a un usuario
+ * @param {Object} order - Los datos del pedido
+ */
+const sendOrderConfirmationEmail = async (order) => {
+  let emailBody = `
+    <h3>Confirmación de Pedido</h3>
+    <p>¡Gracias por tu compra!</p>
+    <p>Detalles del Pedido:</p>
+    <ul>
+      <li>Fecha de Pago: ${order.paymentDate}</li>
+      <li>Monto Total: ${order.transactionAmount}</li>
+      <li>Método de Pago: ${order.paymentMethodId}</li>
+    </ul>
+    <p>Artículos en tu Pedido:</p>
+    <ul>`;
+
+  // Agregando cada producto en el pedido al cuerpo del correo
+  order.cart.forEach((product) => {
+    emailBody += `
+      <li>
+        ${product.name} - ${product.color} - Cantidad: ${product.quantity} - Precio: $${product.price}
+      </li>`;
+  });
+
+  emailBody += `</ul><p>Saludos cordiales,<br>Beautipol</p>`;
+
+  await sendEmail({
+    from: '"Beautipol" <r.guzmanap@gmail.com>', // Reemplazar con tu email
+    to: order.payerEmail,
+    subject: "Confirmación de Pedido",
+    html: emailBody,
+  });
+};
+
+/**
+ * Enviar un correo electrónico de notificación de nuevo pedido al administrador del sitio web
+ * @param {Object} order - Los datos del pedido
+ * @param {string} adminEmail - Dirección de correo electrónico del administrador
+ */
+const sendOrderNotificationToAdmin = async (order, adminEmail) => {
+  let emailBody = `
+    <h3>Notificación de Nuevo Pedido</h3>
+    <p>Se ha realizado un nuevo pedido.</p>
+    <p>Detalles del Pedido:</p>
+    <ul>
+      <li>Fecha de Pago: ${order.paymentDate}</li>
+      <li>Monto Total: ${order.transactionAmount}</li>
+      <li>Método de Pago: ${order.paymentMethodId}</li>
+    </ul>
+    <p>Artículos en el Pedido:</p>
+    <ul>`;
+
+  // Agregando cada producto en el pedido al cuerpo del correo
+  order.cart.forEach((product) => {
+    emailBody += `
+      <li>
+        ${product.name} - ${product.color} - Cantidad: ${product.quantity} - Precio: $${product.price}
+      </li>`;
+  });
+
+  await sendEmail({
+    from: '"Beautipol" <r.guzmanap@gmail.com>', // Reemplazar con el email de la empresa
+    to: adminEmail,
+    subject: "Nuevo Pedido Realizado",
+    html: emailBody,
+  });
+};
+
+export {
+  sendEmail,
+  sendOrderConfirmationEmail,
+  sendOrderNotificationToAdmin,
+  sendVerificationEmail,
+};
