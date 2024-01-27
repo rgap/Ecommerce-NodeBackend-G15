@@ -7,8 +7,6 @@ import dotenv from "dotenv";
 dotenv.config(); // Cargar variables de entorno desde el archivo .env
 const { MERCADO_PAGO_TOKEN } = process.env;
 
-// C R U D
-
 // Get all payments
 export async function list(req, res) {
   try {
@@ -95,8 +93,12 @@ export async function generatePayment(req, res) {
 
     //Update a Payment by Token
     const idMercadoPago = mercadoPagoResponse.data.id;
+<<<<<<< HEAD
 
     console.log(idMercadoPago);
+=======
+    console.log("Mercado pago ID", idMercadoPago);
+>>>>>>> 7a19330 (payment-controller)
     try {
       const payments = await prisma.payment.updateMany({
         where: {
@@ -104,14 +106,19 @@ export async function generatePayment(req, res) {
         },
         data: { paymentId: idMercadoPago },
       });
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7a19330 (payment-controller)
       if (!payments) {
         return responseError({ res, data: "Payment not found" });
       }
-      return responseSuccess({ res, data: "Payment updated" });
+      return responseSuccess({ res, data: idMercadoPago });
+
     } catch (error) {
       return responseError({ res, data: error.message });
     }
+
   } catch (error) {
     return responseError({ res, data: error.message });
   }
