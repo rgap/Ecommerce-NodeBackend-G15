@@ -34,7 +34,13 @@ The tools used (besides VS Code) were Postman, pgAdmin, MySQL Workbench, Live Sh
 ## Relational Model
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/rgap/Ecommerce-React-G15/main/models/RelationalModel.png">
+  <img src="https://raw.githubusercontent.com/rgap/Ecommerce-NodeBackend-G15/main/models/RelationalModel.png">
+</p>
+
+## Postman Queries
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/rgap/Ecommerce-NodeBackend-G15/main/models/postman.png">
 </p>
 
 ## Configuration
