@@ -1,7 +1,7 @@
 -- Delete data from tables
 DELETE FROM stock;
 DELETE FROM image;
-DELETE FROM order_item;
+DELETE FROM item;
 DELETE FROM "order";
 DELETE FROM product;
 DELETE FROM color;
@@ -14,5 +14,5 @@ ALTER SEQUENCE color_color_id_seq RESTART WITH 1;
 ALTER SEQUENCE size_size_id_seq RESTART WITH 1;
 ALTER SEQUENCE product_product_id_seq RESTART WITH 1;
 ALTER SEQUENCE image_image_id_seq RESTART WITH 1;
-ALTER SEQUENCE order_id_seq RESTART WITH 1;
-ALTER SEQUENCE order_item_id_seq RESTART WITH 1;
+ALTER SEQUENCE order_order_id_seq RESTART WITH 1;
+ALTER SEQUENCE item_item_id_seq RESTART WITH 1;

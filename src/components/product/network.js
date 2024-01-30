@@ -3,13 +3,13 @@ import * as Controller from "./controller.js";
 
 const productRouter = Router();
 
-// PLP products
+// PLP PRODUCTS
 productRouter
   .route("/get-products-plp/:numberOfProducts")
   .get(Controller.getProductsPLP);
-// PDP product
+// PDP PRODUCT
 productRouter.route("/get-product-pdp/:id").get(Controller.getProductPDP);
-// Get related products by title
+// GET RELATED PRODUCTS BY TITLE
 productRouter
   .route("/related/:numberOfProducts")
   .post(Controller.getRelatedProducts);

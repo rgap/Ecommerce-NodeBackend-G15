@@ -1,7 +1,7 @@
 import { prisma } from "../../db/index.js";
 import { responseError, responseSuccess } from "../../network/responses.js";
 
-/* SIZE CRUD */
+////////// CRUD /////////////
 
 //READ
 export async function list(req, res) {
