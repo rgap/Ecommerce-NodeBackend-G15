@@ -31,18 +31,6 @@ The tools used (besides VS Code) were Postman, pgAdmin, MySQL Workbench, Live Sh
 - axios: Promise-based HTTP client for making web requests and communicating with APIs (for requests to mercadopago).
 - nodemailer: Node.js module to send emails, useful for confirmations and notifications.
 
-## Relational Model
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/rgap/Ecommerce-NodeBackend-G15/main/models/RelationalModel.png">
-</p>
-
-## Postman Queries
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/rgap/Ecommerce-NodeBackend-G15/main/models/postman.png">
-</p>
-
 ## Configuration
 
 ### Install Dependencies
@@ -87,3 +75,15 @@ npx prisma generate
 ```
 npm run dev
 ```
+
+## Relational Model
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/rgap/Ecommerce-NodeBackend-G15/main/models/RelationalModel.png">
+</p>
+
+## Postman Queries
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/rgap/Ecommerce-NodeBackend-G15/main/models/postman.png" width="400">
+</p>
