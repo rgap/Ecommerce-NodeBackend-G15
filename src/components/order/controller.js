@@ -17,7 +17,7 @@ export async function list(req, res) {
   try {
     const orders = await prisma.order.findMany({
       include: {
-        Item: true, // This will include the associated Item records in the response
+        Item: true,
       },
     });
     return responseSuccess({ res, data: orders, status: 200 });
@@ -146,10 +146,7 @@ export async function createPaymentLogic(paymentData) {
     transaction_amount: paymentData.transactionAmount,
   };
 
-  // formatAmount(parseFloat(paymentData.transactionAmount))
-
   try {
-    // console.log(mercadoPagoData);
     const mercadoPagoResponse = await axios.post(
       "https://api.mercadopago.com/v1/payments",
       mercadoPagoData,
@@ -221,7 +218,6 @@ export async function createMercadoPagoOrder(req, res) {
       status: 200,
     });
   } catch (error) {
-    // Handle any errors that occur during the process
     console.error("Error in createMercadoPagoOrder:", error);
     return responseError({
       res,
