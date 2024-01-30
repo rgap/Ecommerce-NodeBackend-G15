@@ -5,18 +5,19 @@ import { responseError, responseSuccess } from "../../network/responses.js";
 import {
   sendOrderConfirmationEmail,
   sendOrderNotificationToAdmin,
-} from "../../services/emailService.js"; // Adjust the path as necessary
+} from "../../services/emailService.js";
+import { formatAmount } from "../../utils/utils.js";
 
-dotenv.config(); // Cargar variables de entorno desde el archivo .env
+dotenv.config();
 
 ///////////////////////////// CRUD ////////////////////////////
 
-// Get all orders along with their associated order items
+// GET ALL ORDERS
 export async function list(req, res) {
   try {
     const orders = await prisma.order.findMany({
       include: {
-        OrderItem: true, // This will include the associated OrderItem records in the response
+        Item: true, // This will include the associated Item records in the response
       },
     });
     return responseSuccess({ res, data: orders, status: 200 });
@@ -25,16 +26,16 @@ export async function list(req, res) {
   }
 }
 
-// Get orders by USER
+// GET ORDERS BY USER
 export async function getOrdersByUserId(req, res) {
   try {
-    const userId = parseInt(req.params.userId); // Assuming userId is passed as a URL parameter
+    const userId = parseInt(req.params.userId);
     const orders = await prisma.order.findMany({
       where: {
         userId: userId,
       },
       // include: {
-      //   OrderItem: true, // If you want to include order items in the response
+      //   Item: true, // Para incluir order items en la respuesta
       // },
     });
 
@@ -55,7 +56,7 @@ export async function getOrdersByUserId(req, res) {
 // Delete an order
 export async function destroy(req, res) {
   try {
-    const orderId = parseInt(req.params.id); // Assuming orderId is passed as a URL parameter
+    const orderId = parseInt(req.params.id);
     await prisma.order.delete({
       where: {
         id: orderId,
@@ -71,46 +72,37 @@ export async function destroy(req, res) {
   }
 }
 
-///////////////////////////// MERCADOPAGO ////////////////////////////
-
-// Create Order and process payment through MercadoPago
-export async function createOrderMercadoPago(req, res) {
-  const {
-    paymentDate,
-    payerEmail,
-    payerDocumentType,
-    payerDocumentNumber,
-    installments,
-    issuerId,
-    paymentMethodId,
-    token,
-    status,
-    transactionAmount,
-    userId,
-    cart,
-  } = req.body;
-
-  let order;
-
-  // Try to create the order
+// Function to handle the core logic of creating an order
+export async function createOrderLogic(orderData) {
   try {
-    order = await prisma.order.create({
+    const order = await prisma.order.create({
       data: {
-        paymentDate: new Date(paymentDate),
-        payerEmail,
-        payerDocumentType,
-        payerDocumentNumber,
-        installments,
-        issuerId,
-        paymentMethodId,
-        token,
-        status,
-        amount: parseFloat(transactionAmount),
-        userId,
-        OrderItem: {
-          create: cart.map((item) => ({
+        paymentDate: new Date(orderData.paymentDate),
+        payerEmail: orderData.payerEmail,
+        payerDocumentType: orderData.payerDocumentType,
+        payerDocumentNumber: orderData.payerDocumentNumber,
+        installments: orderData.installments,
+        issuerId: orderData.issuerId,
+        paymentMethodId: orderData.paymentMethodId,
+        token: orderData.token,
+        status: orderData.status,
+        amount: orderData.transactionAmount,
+        shippingMethod: orderData.shippingMethod,
+        shippingName: orderData.billingName,
+        shippingAddress: orderData.billingAddress,
+        shippingCity: orderData.billingCity,
+        shippingRegion: orderData.billingRegion,
+        shippingPhoneNumber: orderData.billingPhoneNumber,
+        billingName: orderData.billingName,
+        billingAddress: orderData.billingAddress,
+        billingCity: orderData.billingCity,
+        billingRegion: orderData.billingRegion,
+        billingPhoneNumber: orderData.billingPhoneNumber,
+        userId: orderData.userId,
+        Item: {
+          create: orderData.cart.map((item) => ({
             productId: parseInt(item.id.split(".")[0]),
-            name: item.name,
+            title: item.title,
             color: item.color,
             imageUrl: item.url,
             quantity: item.quantity,
@@ -119,31 +111,46 @@ export async function createOrderMercadoPago(req, res) {
         },
       },
     });
+    return order;
   } catch (error) {
-    console.error("Error creating order in database:", error);
+    throw new Error(`Failed to create order in database: ${error.message}`);
+  }
+}
+
+// Controller function to handle the HTTP request for creating an order
+export async function createOrder(req, res) {
+  try {
+    const order = await createOrderLogic(req.body);
+    return responseSuccess({
+      res,
+      data: order,
+    });
+  } catch (error) {
     return responseError({
       res,
-      data: "Failed to create order in database.",
+      data: error.message,
       status: 500,
     });
   }
+}
 
-  // Prepare data for MercadoPago API call
+// Function to handle the core logic of creating a MercadoPago payment
+export async function createPaymentLogic(paymentData) {
   const mercadoPagoData = {
-    description: "Product purchase",
-    installments,
-    issuer_id: issuerId,
-    payer: { email: payerEmail },
-    payment_method_id: paymentMethodId,
-    token,
-    transaction_amount: parseFloat(transactionAmount),
-    // Additional data can be added here as needed
+    description: "Product payment",
+    installments: paymentData.installments,
+    issuer_id: paymentData.issuerId,
+    payer: { email: paymentData.payerEmail },
+    payment_method_id: paymentData.paymentMethodId,
+    token: paymentData.token,
+    transaction_amount: paymentData.transactionAmount,
   };
 
-  // Try to make the API call to MercadoPago
-  let mercadoPagoResponse;
+  // formatAmount(parseFloat(paymentData.transactionAmount))
+
   try {
-    mercadoPagoResponse = await axios.post(
+    // console.log(mercadoPagoData);
+    const mercadoPagoResponse = await axios.post(
       "https://api.mercadopago.com/v1/payments",
       mercadoPagoData,
       {
@@ -154,74 +161,106 @@ export async function createOrderMercadoPago(req, res) {
         },
       }
     );
+    return mercadoPagoResponse.data;
   } catch (error) {
-    console.error("Error calling MercadoPago API:", error);
-    return responseError({
-      res,
-      data: "Failed to process payment with MercadoPago.",
-      status: 500,
-    });
+    throw new Error(
+      `Failed to process payment with MercadoPago: ${error.message}`
+    );
   }
+}
 
-  // Update the order with the payment ID from MercadoPago
-  const paymentId = mercadoPagoResponse.data.id;
-  const updatedOrder = await prisma.order.update({
-    where: { id: order.id },
-    data: { paymentId },
-  });
-
-  // Try to update the order with the payment ID from MercadoPago
+// Controller function to handle the HTTP request for MercadoPago payment
+export async function createPayment(req, res) {
   try {
-    const paymentId = mercadoPagoResponse.data.id;
-    await prisma.order.update({
-      where: { id: order.id },
-      data: { paymentId },
-    });
+    const paymentResponse = await createPaymentLogic(req.body);
     return responseSuccess({
       res,
-      data: { orderId: order.id },
-      status: 200,
+      data: paymentResponse,
     });
   } catch (error) {
-    console.error("Error updating order with payment ID:", error);
     return responseError({
       res,
-      data: "Failed to update order with payment ID.",
+      data: error.message,
       status: 500,
     });
   }
 }
 
-export async function sendOrderEmailToUser(req, res) {
+///////////////////////////// MERCADOPAGO ////////////////////////////
+
+// CREATE MERCADOPAGO ORDER
+export async function createMercadoPagoOrder(req, res) {
   try {
-    const order = req.body; // Extract order data from the request body
+    // Step 1: Create an order using the createOrderLogic function
+    const order = await createOrderLogic(req.body);
 
-    // Send order confirmation email to the user
-    await sendOrderConfirmationEmail(order);
+    // Step 2: Prepare payment data for MercadoPago
+    const paymentData = {
+      // Extract or construct payment data from req.body or order
+      installments: req.body.installments,
+      issuerId: req.body.issuerId,
+      payerEmail: req.body.payerEmail,
+      paymentMethodId: req.body.paymentMethodId,
+      token: req.body.token,
+      transactionAmount: req.body.transactionAmount,
+    };
 
-    res.status(200).json({
-      message: "Email de confirmación de pedido enviado con éxito al usuario.",
+    // Step 3: Create a MercadoPago payment using the createMercadoPagoPaymentLogic function
+    const mercadoPagoResponse = await createPaymentLogic(paymentData);
+
+    // Step 4: Update the order with payment information from MercadoPago
+    const updatedOrder = await prisma.order.update({
+      where: { id: order.id },
+      data: { paymentId: mercadoPagoResponse.id },
+    });
+
+    // Step 5: Send a successful response with order and payment information
+    return responseSuccess({
+      res,
+      data: { order: updatedOrder, payment: mercadoPagoResponse },
+      status: 200,
     });
   } catch (error) {
-    console.error(`Error en sendOrderEmailToUser: ${error}`);
-    res.status(500).json({ message: "Error del servidor interno" });
+    // Handle any errors that occur during the process
+    console.error("Error in createMercadoPagoOrder:", error);
+    return responseError({
+      res,
+      data: error.message,
+      status: 500,
+    });
+  }
+}
+
+///////////////////////////// CORREOS ////////////////////////////
+
+export async function sendOrderEmailToUser(req, res) {
+  try {
+    const order = req.body;
+
+    await sendOrderConfirmationEmail(order);
+
+    return responseSuccess({
+      res,
+      data: "Order confirmation email successfully sent to the user.",
+      status: 200,
+    });
+  } catch (error) {
+    return responseError({ res, data: error.message });
   }
 }
 
 export async function sendOrderEmailToAdmin(req, res) {
   try {
-    const order = req.body; // Extract order data from the request body
-    const adminEmail = "r.guzmanap@gmail.com"; // Replace with the admin's email address
+    const order = req.body;
 
-    // Send order notification email to the admin
-    await sendOrderNotificationToAdmin(order, adminEmail);
+    await sendOrderNotificationToAdmin(order);
 
-    res.status(200).json({
-      message:
-        "Notificación de nuevo pedido enviada al administrador con éxito.",
+    return responseSuccess({
+      res,
+      data: "Notification of new order sent to the administrator successfully.",
+      status: 200,
     });
   } catch (error) {
-    console.error(`Error en sendOrderEmailToAdmin: ${error}`);
-    res.status(500).json({ message: "Error del servidor interno" });
+    return responseError({ res, data: error.message });
   }
 }

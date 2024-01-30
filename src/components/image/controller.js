@@ -1,7 +1,9 @@
 import { prisma } from "../../db/index.js";
 import { responseError, responseSuccess } from "../../network/responses.js";
 
-//READ
+///////////////////////////// CRUD ////////////////////////////
+
+// READ
 export async function list(req, res) {
   try {
     const images = await prisma.image.findMany();
@@ -11,7 +13,7 @@ export async function list(req, res) {
   }
 }
 
-//READ BY PRODUCT
+// READ BY PRODUCT
 export async function getbyProduct(req, res) {
   try {
     const product = await prisma.image.findMany({
@@ -30,7 +32,7 @@ export async function getbyProduct(req, res) {
   }
 }
 
-//CREATE
+// CREATE
 export async function store(req, res) {
   try {
     const existingProduct = await prisma.product.findUnique({
@@ -53,7 +55,7 @@ export async function store(req, res) {
   }
 }
 
-//UPDATE
+// UPDATE
 export async function update(req, res) {
   try {
     // Step 1: Find the image record first
@@ -82,7 +84,7 @@ export async function update(req, res) {
   }
 }
 
-//DELETE
+// DELETE
 
 export async function destroy(req, res) {
   try {

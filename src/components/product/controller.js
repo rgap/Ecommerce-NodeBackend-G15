@@ -116,21 +116,21 @@ export async function destroy(req, res) {
 function processProducts(products) {
   return products.map((product) => {
     const availableStock = product.Stock.filter(
-      (stockItem) => stockItem.quantity > 0
-    ).map((stockItem) => ({
-      ...stockItem,
-      price: stockItem.price,
-      colorName: stockItem.color.name,
-      hexCode: stockItem.color.code,
+      (Item) => Item.quantity > 0
+    ).map((Item) => ({
+      ...Item,
+      price: Item.price,
+      colorName: Item.color.name,
+      hexCode: Item.color.code,
     }));
 
     const sortedByPrice = availableStock.sort((a, b) => a.price - b.price);
     const uniqueColors = new Map();
-    sortedByPrice.forEach((stockItem) => {
-      if (!uniqueColors.has(stockItem.colorName) && uniqueColors.size < 3) {
-        uniqueColors.set(stockItem.colorName, {
-          name: stockItem.colorName,
-          hexCode: stockItem.hexCode,
+    sortedByPrice.forEach((Item) => {
+      if (!uniqueColors.has(Item.colorName) && uniqueColors.size < 3) {
+        uniqueColors.set(Item.colorName, {
+          name: Item.colorName,
+          hexCode: Item.hexCode,
         });
       }
     });
@@ -164,13 +164,17 @@ export async function getProductsPLP(req, res) {
 
     if (numberOfProducts !== "all") {
       if (numberOfProducts === "random") {
+        // Conseguir 4 products aleatorios de manera eficiente
         const totalCount = await prisma.product.count();
-        const randomOffset = Math.max(
-          0,
-          Math.floor(Math.random() * totalCount) - 2
-        );
+
+        // Calculate a random starting point within the range of totalCount - 4.
+        const randomStart = Math.floor(Math.random() * (totalCount - 3));
+
+        // Set take to 4 to get exactly 4 products.
         queryOptions.take = 4;
-        queryOptions.skip = randomOffset;
+
+        // Set skip to the calculated random start.
+        queryOptions.skip = randomStart;
       } else if (!isNaN(numberOfProducts)) {
         queryOptions.take = parseInt(numberOfProducts);
       }
@@ -266,12 +270,12 @@ export async function getProductPDP(req, res) {
     let minimumPriceSize = null;
 
     // Process each stock item
-    product.Stock.forEach((stockItem) => {
-      if (stockItem.quantity > 0) {
-        const size = stockItem.size.name;
-        const colorName = stockItem.color.name;
-        const hexCode = stockItem.color.code;
-        const price = stockItem.price.toFixed(2);
+    product.Stock.forEach((Item) => {
+      if (Item.quantity > 0) {
+        const size = Item.size.name;
+        const colorName = Item.color.name;
+        const hexCode = Item.color.code;
+        const price = Item.price.toFixed(2);
 
         // Add color and size to respective sets
         colorMap.set(colorName, hexCode);
@@ -282,7 +286,7 @@ export async function getProductPDP(req, res) {
         prices[size] = prices[size] || {};
 
         // Assign quantity and price
-        stock[size][colorName] = stockItem.quantity;
+        stock[size][colorName] = Item.quantity;
         prices[size][colorName] = price;
 
         // Update minimum price and corresponding color and size

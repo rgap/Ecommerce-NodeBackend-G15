@@ -13,7 +13,7 @@ VALUES
 -- -------------------------------------------
 
 -- Insertar colores nuevos en la base de datos
-INSERT INTO color (color_name, hex_color, created_at, updated_at) VALUES 
+INSERT INTO color (color_name, color_code, created_at, updated_at) VALUES 
 ('verde', '#008000', NOW(), NOW()),  -- Verde
 ('azul verdoso', '#008080', NOW(), NOW()),  -- Azul verdoso (Teal)
 ('crema', '#FFFDD0', NOW(), NOW()), -- Crema
@@ -42,28 +42,28 @@ INSERT INTO image (image_url, image_product_id) VALUES
 
 -- Insertar en la tabla stock para el Producto 1 con cuatro colores
 -- Talla S
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (1, 1, 1, 20, 55.00); -- verde
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (1, 2, 1, 15, 55.00); -- azul verdoso
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (1, 3, 1, 10, 55.00); -- crema
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (1, 4, 1, 12, 55.00); -- blanco
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (1, 1, 1, 20, 55.00); -- verde
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (1, 2, 1, 15, 55.00); -- azul verdoso
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (1, 3, 1, 10, 55.00); -- crema
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (1, 4, 1, 12, 55.00); -- blanco
 
 -- Talla M (repetir para verde, azul verdoso, crema, blanco)
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (1, 1, 2, 25, 65.00); -- verde
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (1, 2, 2, 20, 65.00); -- azul verdoso
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (1, 3, 2, 12, 65.00); -- crema
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (1, 4, 2, 14, 65.00); -- blanco
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (1, 1, 2, 25, 65.00); -- verde
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (1, 2, 2, 20, 65.00); -- azul verdoso
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (1, 3, 2, 12, 65.00); -- crema
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (1, 4, 2, 14, 65.00); -- blanco
 
 -- Talla L (repetir para verde, azul verdoso, crema, blanco)
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (1, 1, 3, 30, 75.00); -- verde
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (1, 2, 3, 18, 75.00); -- azul verdoso
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (1, 3, 3, 8, 75.00); -- crema
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (1, 4, 3, 16, 75.00); -- blanco
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (1, 1, 3, 30, 75.00); -- verde
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (1, 2, 3, 18, 75.00); -- azul verdoso
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (1, 3, 3, 8, 75.00); -- crema
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (1, 4, 3, 16, 75.00); -- blanco
 
 -- Talla XL (repetir para verde, azul verdoso, crema, blanco)
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (1, 1, 4, 15, 85.00); -- verde
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (1, 2, 4, 10, 85.00); -- azul verdoso
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (1, 3, 4, 5, 85.00); -- crema
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (1, 4, 4, 7, 85.00); -- blanco
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (1, 1, 4, 15, 85.00); -- verde
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (1, 2, 4, 10, 85.00); -- azul verdoso
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (1, 3, 4, 5, 85.00); -- crema
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (1, 4, 4, 7, 85.00); -- blanco
 
 
 -- ------------------------------------------- 
@@ -71,7 +71,7 @@ INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quanti
 -- -------------------------------------------
 
 -- Insertar colores nuevos en la base de datos (si no están ya insertados)
-INSERT INTO color (color_name, hex_color, created_at, updated_at) VALUES 
+INSERT INTO color (color_name, color_code, created_at, updated_at) VALUES 
 ('turquesa', '#40E0D0', NOW(), NOW()),  -- Turquesa
 ('negro', '#000000', NOW(), NOW()),     -- Negro
 ('gris', '#808080', NOW(), NOW());      -- Gris
@@ -95,28 +95,28 @@ INSERT INTO image (image_url, image_product_id) VALUES
 
 -- Insertar en la tabla stock para el Producto 2 con cuatro colores
 -- Talla S
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (2, 5, 1, 10, 55.00); -- turquesa
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (2, 6, 1, 12, 55.00); -- negro
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (2, 7, 1, 8, 55.00);  -- gris
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (2, 4, 1, 7, 55.00);  -- blanco
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (2, 5, 1, 10, 55.00); -- turquesa
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (2, 6, 1, 12, 55.00); -- negro
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (2, 7, 1, 8, 55.00);  -- gris
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (2, 4, 1, 7, 55.00);  -- blanco
 
 -- Talla M
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (2, 5, 2, 12, 65.00); -- turquesa
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (2, 6, 2, 8, 65.00); -- negro
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (2, 7, 2, 18, 65.00); -- gris
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (2, 4, 2, 14, 65.00); -- blanco
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (2, 5, 2, 12, 65.00); -- turquesa
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (2, 6, 2, 8, 65.00); -- negro
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (2, 7, 2, 18, 65.00); -- gris
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (2, 4, 2, 14, 65.00); -- blanco
 
 -- Talla L
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (2, 5, 3, 10, 75.00); -- turquesa
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (2, 6, 3, 6, 75.00); -- negro
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (2, 7, 3, 15, 75.00); -- gris
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (2, 4, 3, 16, 75.00); -- blanco
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (2, 5, 3, 10, 75.00); -- turquesa
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (2, 6, 3, 6, 75.00); -- negro
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (2, 7, 3, 15, 75.00); -- gris
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (2, 4, 3, 16, 75.00); -- blanco
 
 -- Talla XL
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (2, 5, 4, 7, 85.00); -- turquesa
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (2, 6, 4, 4, 85.00); -- negro
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (2, 7, 4, 12, 85.00); -- gris
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (2, 4, 4, 10, 85.00); -- blanco
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (2, 5, 4, 7, 85.00); -- turquesa
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (2, 6, 4, 4, 85.00); -- negro
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (2, 7, 4, 12, 85.00); -- gris
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (2, 4, 4, 10, 85.00); -- blanco
 
 
 -- ------------------------------------------- 
@@ -124,7 +124,7 @@ INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quanti
 -- -------------------------------------------
 
 -- Insertar colores nuevos si aún no están en la base de datos
-INSERT INTO color (color_name, hex_color, created_at, updated_at) VALUES 
+INSERT INTO color (color_name, color_code, created_at, updated_at) VALUES 
 ('amarillo', '#FFFF00', NOW(), NOW()),  -- Amarillo
 ('rojo', '#FF0000', NOW(), NOW()),      -- Rojo
 ('indigo', '#4B0082', NOW(), NOW());    -- Indigo
@@ -147,29 +147,29 @@ INSERT INTO image (image_url, image_product_id) VALUES
 
 -- Insertar en la tabla stock para el Producto 3 con cuatro colores
 -- Talla S
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (3, 8, 1, 18, 48.00); -- amarillo (ID 8)
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (3, 9, 1, 14, 48.00); -- rojo (ID 9)
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (3, 10, 1, 11, 48.00); -- indigo (ID 10)
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (3, 4, 1, 9, 48.00);  -- blanco (ID 4)
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (3, 8, 1, 18, 48.00); -- amarillo (ID 8)
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (3, 9, 1, 14, 48.00); -- rojo (ID 9)
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (3, 10, 1, 11, 48.00); -- indigo (ID 10)
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (3, 4, 1, 9, 48.00);  -- blanco (ID 4)
 
 -- Repetir para tallas M, L, XL ajustando la cantidad y precio
 -- Talla M
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (3, 8, 2, 16, 58.00); -- amarillo
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (3, 9, 2, 10, 58.00); -- rojo
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (3, 10, 2, 15, 58.00); -- indigo
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (3, 4, 2, 12, 58.00);  -- blanco
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (3, 8, 2, 16, 58.00); -- amarillo
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (3, 9, 2, 10, 58.00); -- rojo
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (3, 10, 2, 15, 58.00); -- indigo
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (3, 4, 2, 12, 58.00);  -- blanco
 
 -- Talla L
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (3, 8, 3, 14, 68.00); -- amarillo
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (3, 9, 3, 12, 68.00); -- rojo
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (3, 10, 3, 8, 68.00);  -- indigo
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (3, 4, 3, 10, 68.00);  -- blanco
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (3, 8, 3, 14, 68.00); -- amarillo
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (3, 9, 3, 12, 68.00); -- rojo
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (3, 10, 3, 8, 68.00);  -- indigo
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (3, 4, 3, 10, 68.00);  -- blanco
 
 -- Talla XL
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (3, 8, 4, 10, 78.00); -- amarillo
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (3, 9, 4, 8, 78.00);  -- rojo
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (3, 10, 4, 5, 78.00);  -- indigo
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (3, 4, 4, 7, 78.00);   -- blanco
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (3, 8, 4, 10, 78.00); -- amarillo
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (3, 9, 4, 8, 78.00);  -- rojo
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (3, 10, 4, 5, 78.00);  -- indigo
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (3, 4, 4, 7, 78.00);   -- blanco
 
 
 -- ------------------------------------------- 
@@ -177,7 +177,7 @@ INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quanti
 -- -------------------------------------------
 
 -- Insertar color nuevo en la base de datos (si no está ya insertado)
-INSERT INTO color (color_name, hex_color, created_at, updated_at) VALUES 
+INSERT INTO color (color_name, color_code, created_at, updated_at) VALUES 
 ('marrón', '#A52A2A', NOW(), NOW()),   -- Marrón
 ('rosado', '#FFC0CB', NOW(), NOW());    -- Rosado
 -- Asumiendo que los colores 'crema' y 'blanco' ya están insertados
@@ -200,29 +200,29 @@ INSERT INTO image (image_url, image_product_id) VALUES
 
 -- Insertar en la tabla stock para el Producto 4 con cuatro colores
 -- Talla S
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (4, 11, 1, 20, 50.00); -- marrón (ID 11)
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (4, 3, 1, 15, 50.00);  -- crema (ID 3)
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (4, 12, 1, 10, 50.00); -- rosado (ID 12)
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (4, 4, 1, 12, 50.00);  -- blanco (ID 4)
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (4, 11, 1, 20, 50.00); -- marrón (ID 11)
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (4, 3, 1, 15, 50.00);  -- crema (ID 3)
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (4, 12, 1, 10, 50.00); -- rosado (ID 12)
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (4, 4, 1, 12, 50.00);  -- blanco (ID 4)
 
 -- Repetir para tallas M, L, XL ajustando la cantidad y precio
 -- Talla M
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (4, 11, 2, 18, 60.00); -- marrón
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (4, 3, 2, 12, 60.00);  -- crema
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (4, 12, 2, 8, 60.00);  -- rosado
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (4, 4, 2, 14, 60.00);  -- blanco
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (4, 11, 2, 18, 60.00); -- marrón
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (4, 3, 2, 12, 60.00);  -- crema
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (4, 12, 2, 8, 60.00);  -- rosado
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (4, 4, 2, 14, 60.00);  -- blanco
 
 -- Talla L
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (4, 11, 3, 15, 70.00); -- marrón
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (4, 3, 3, 10, 70.00);  -- crema
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (4, 12, 3, 5, 70.00);  -- rosado
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (4, 4, 3, 16, 70.00);  -- blanco
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (4, 11, 3, 15, 70.00); -- marrón
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (4, 3, 3, 10, 70.00);  -- crema
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (4, 12, 3, 5, 70.00);  -- rosado
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (4, 4, 3, 16, 70.00);  -- blanco
 
 -- Talla XL
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (4, 11, 4, 12, 80.00); -- marrón
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (4, 3, 4, 8, 80.00);  -- crema
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (4, 12, 4, 3, 80.00);  -- rosado
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (4, 4, 4, 10, 80.00);  -- blanco
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (4, 11, 4, 12, 80.00); -- marrón
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (4, 3, 4, 8, 80.00);  -- crema
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (4, 12, 4, 3, 80.00);  -- rosado
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (4, 4, 4, 10, 80.00);  -- blanco
 
 
 -- ------------------------------------------- 
@@ -249,29 +249,29 @@ INSERT INTO image (image_url, image_product_id) VALUES
 
 -- Insertar en la tabla stock para el Producto 5 con cuatro colores
 -- Talla S
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (5, 2, 1, 22, 49.00); -- azul verdoso (teal) (ID 2)
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (5, 5, 1, 18, 49.00); -- azul (ID 5)
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (5, 7, 1, 16, 49.00); -- gris (ID 7)
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (5, 4, 1, 14, 49.00); -- blanco (ID 4)
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (5, 2, 1, 22, 49.00); -- azul verdoso (teal) (ID 2)
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (5, 5, 1, 18, 49.00); -- azul (ID 5)
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (5, 7, 1, 16, 49.00); -- gris (ID 7)
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (5, 4, 1, 14, 49.00); -- blanco (ID 4)
 
 -- Repetir para tallas M, L, XL ajustando la cantidad y precio
 -- Talla M
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (5, 2, 2, 20, 59.00); -- azul verdoso (teal)
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (5, 5, 2, 15, 59.00); -- azul
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (5, 7, 2, 14, 59.00); -- gris
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (5, 4, 2, 12, 59.00); -- blanco
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (5, 2, 2, 20, 59.00); -- azul verdoso (teal)
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (5, 5, 2, 15, 59.00); -- azul
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (5, 7, 2, 14, 59.00); -- gris
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (5, 4, 2, 12, 59.00); -- blanco
 
 -- Talla L
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (5, 2, 3, 18, 69.00); -- azul verdoso (teal)
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (5, 5, 3, 12, 69.00); -- azul
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (5, 7, 3, 10, 69.00); -- gris
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (5, 4, 3, 8, 69.00);  -- blanco
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (5, 2, 3, 18, 69.00); -- azul verdoso (teal)
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (5, 5, 3, 12, 69.00); -- azul
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (5, 7, 3, 10, 69.00); -- gris
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (5, 4, 3, 8, 69.00);  -- blanco
 
 -- Talla XL
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (5, 2, 4, 15, 79.00); -- azul verdoso (teal)
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (5, 5, 4, 10, 79.00); -- azul
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (5, 7, 4, 8, 79.00);  -- gris
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (5, 4, 4, 6, 79.00);  -- blanco
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (5, 2, 4, 15, 79.00); -- azul verdoso (teal)
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (5, 5, 4, 10, 79.00); -- azul
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (5, 7, 4, 8, 79.00);  -- gris
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (5, 4, 4, 6, 79.00);  -- blanco
 
 
 -- ------------------------------------------- 
@@ -298,29 +298,29 @@ INSERT INTO image (image_url, image_product_id) VALUES
 
 -- Insertar en la tabla stock para el Producto 6 con cuatro colores
 -- Talla S
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (6, 1, 1, 10, 43.00); -- verde (ID 1)
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (6, 8, 1, 8, 43.00);  -- amarillo (ID 8)
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (6, 4, 1, 12, 43.00); -- blanco (ID 4)
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (6, 7, 1, 9, 43.00);  -- gris (ID 7)
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (6, 1, 1, 10, 43.00); -- verde (ID 1)
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (6, 8, 1, 8, 43.00);  -- amarillo (ID 8)
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (6, 4, 1, 12, 43.00); -- blanco (ID 4)
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (6, 7, 1, 9, 43.00);  -- gris (ID 7)
 
 -- Repetir para tallas M, L, XL ajustando la cantidad y precio
 -- Talla M
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (6, 1, 2, 12, 53.00); -- verde
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (6, 8, 2, 10, 53.00); -- amarillo
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (6, 4, 2, 14, 53.00); -- blanco
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (6, 7, 2, 11, 53.00); -- gris
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (6, 1, 2, 12, 53.00); -- verde
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (6, 8, 2, 10, 53.00); -- amarillo
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (6, 4, 2, 14, 53.00); -- blanco
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (6, 7, 2, 11, 53.00); -- gris
 
 -- Talla L
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (6, 1, 3, 14, 63.00); -- verde
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (6, 8, 3, 12, 63.00); -- amarillo
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (6, 4, 3, 16, 63.00); -- blanco
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (6, 7, 3, 13, 63.00); -- gris
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (6, 1, 3, 14, 63.00); -- verde
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (6, 8, 3, 12, 63.00); -- amarillo
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (6, 4, 3, 16, 63.00); -- blanco
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (6, 7, 3, 13, 63.00); -- gris
 
 -- Talla XL
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (6, 1, 4, 16, 73.00); -- verde
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (6, 8, 4, 14, 73.00); -- amarillo
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (6, 4, 4, 18, 73.00); -- blanco
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (6, 7, 4, 15, 73.00); -- gris
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (6, 1, 4, 16, 73.00); -- verde
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (6, 8, 4, 14, 73.00); -- amarillo
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (6, 4, 4, 18, 73.00); -- blanco
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (6, 7, 4, 15, 73.00); -- gris
 
 
 -- ------------------------------------------- 
@@ -347,29 +347,29 @@ INSERT INTO image (image_url, image_product_id) VALUES
 
 -- Insertar en la tabla stock para el Producto 7 con cuatro colores
 -- Talla S
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (7, 5, 1, 15, 47.00); -- azul (ID 5)
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (7, 10, 1, 12, 47.00); -- índigo (ID 10)
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (7, 7, 1, 10, 47.00);  -- gris (ID 7)
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (7, 4, 1, 8, 47.00);   -- blanco (ID 4)
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (7, 5, 1, 15, 47.00); -- azul (ID 5)
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (7, 10, 1, 12, 47.00); -- índigo (ID 10)
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (7, 7, 1, 10, 47.00);  -- gris (ID 7)
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (7, 4, 1, 8, 47.00);   -- blanco (ID 4)
 
 -- Repetir para tallas M, L, XL ajustando la cantidad y precio
 -- Talla M
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (7, 5, 2, 13, 57.00); -- azul
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (7, 10, 2, 10, 57.00); -- índigo
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (7, 7, 2, 8, 57.00);  -- gris
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (7, 4, 2, 6, 57.00);  -- blanco
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (7, 5, 2, 13, 57.00); -- azul
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (7, 10, 2, 10, 57.00); -- índigo
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (7, 7, 2, 8, 57.00);  -- gris
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (7, 4, 2, 6, 57.00);  -- blanco
 
 -- Talla L
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (7, 5, 3, 10, 67.00); -- azul
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (7, 10, 3, 8, 67.00);  -- índigo
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (7, 7, 3, 6, 67.00);  -- gris
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (7, 4, 3, 4, 67.00);  -- blanco
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (7, 5, 3, 10, 67.00); -- azul
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (7, 10, 3, 8, 67.00);  -- índigo
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (7, 7, 3, 6, 67.00);  -- gris
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (7, 4, 3, 4, 67.00);  -- blanco
 
 -- Talla XL
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (7, 5, 4, 8, 77.00); -- azul
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (7, 10, 4, 5, 77.00);  -- índigo
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (7, 7, 4, 4, 77.00);  -- gris
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (7, 4, 4, 2, 77.00);  -- blanco
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (7, 5, 4, 8, 77.00); -- azul
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (7, 10, 4, 5, 77.00);  -- índigo
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (7, 7, 4, 4, 77.00);  -- gris
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (7, 4, 4, 2, 77.00);  -- blanco
 
 
 -- ------------------------------------------- 
@@ -377,7 +377,7 @@ INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quanti
 -- -------------------------------------------
 
 -- Insertar color nuevo en la base de datos (si no está ya insertado)
-INSERT INTO color (color_name, hex_color, created_at, updated_at) VALUES 
+INSERT INTO color (color_name, color_code, created_at, updated_at) VALUES 
 ('guinda', '#800000', NOW(), NOW());   -- Guinda
 -- Asumiendo que los colores 'negro', 'crema' y 'blanco' ya están insertados
 
@@ -399,29 +399,29 @@ INSERT INTO image (image_url, image_product_id) VALUES
 
 -- Insertar en la tabla stock para el Producto 8 con cuatro colores
 -- Talla S
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (8, 13, 1, 11, 49.00); -- guinda (ID 13)
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (8, 6, 1, 9, 49.00);  -- negro (ID 6)
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (8, 3, 1, 7, 49.00);  -- crema (ID 3)
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (8, 4, 1, 5, 49.00);  -- blanco (ID 4)
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (8, 13, 1, 11, 49.00); -- guinda (ID 13)
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (8, 6, 1, 9, 49.00);  -- negro (ID 6)
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (8, 3, 1, 7, 49.00);  -- crema (ID 3)
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (8, 4, 1, 5, 49.00);  -- blanco (ID 4)
 
 -- Repetir para tallas M, L, XL ajustando la cantidad y precio
 -- Talla M
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (8, 13, 2, 13, 59.00); -- guinda
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (8, 6, 2, 11, 59.00);  -- negro
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (8, 3, 2, 9, 59.00);  -- crema
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (8, 4, 2, 7, 59.00);  -- blanco
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (8, 13, 2, 13, 59.00); -- guinda
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (8, 6, 2, 11, 59.00);  -- negro
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (8, 3, 2, 9, 59.00);  -- crema
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (8, 4, 2, 7, 59.00);  -- blanco
 
 -- Talla L
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (8, 13, 3, 10, 69.00); -- guinda
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (8, 6, 3, 8, 69.00);  -- negro
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (8, 3, 3, 6, 69.00);  -- crema
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (8, 4, 3, 4, 69.00);  -- blanco
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (8, 13, 3, 10, 69.00); -- guinda
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (8, 6, 3, 8, 69.00);  -- negro
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (8, 3, 3, 6, 69.00);  -- crema
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (8, 4, 3, 4, 69.00);  -- blanco
 
 -- Talla XL
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (8, 13, 4, 7, 79.00); -- guinda
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (8, 6, 4, 5, 79.00);  -- negro
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (8, 3, 4, 3, 79.00);  -- crema
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (8, 4, 4, 2, 79.00);  -- blanco
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (8, 13, 4, 7, 79.00); -- guinda
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (8, 6, 4, 5, 79.00);  -- negro
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (8, 3, 4, 3, 79.00);  -- crema
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (8, 4, 4, 2, 79.00);  -- blanco
 
 
 -- ------------------------------------------- 
@@ -448,29 +448,29 @@ INSERT INTO image (image_url, image_product_id) VALUES
 
 -- Insertar en la tabla stock para el Producto 9 con cuatro colores
 -- Talla S
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (9, 6, 1, 20, 40.00); -- negro (ID 6)
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (9, 7, 1, 18, 40.00); -- gris (ID 7)
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (9, 4, 1, 15, 40.00); -- blanco (ID 4)
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (9, 5, 1, 17, 40.00); -- azul (ID 5)
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (9, 6, 1, 20, 40.00); -- negro (ID 6)
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (9, 7, 1, 18, 40.00); -- gris (ID 7)
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (9, 4, 1, 15, 40.00); -- blanco (ID 4)
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (9, 5, 1, 17, 40.00); -- azul (ID 5)
 
 -- Repetir para tallas M, L, XL ajustando la cantidad y precio
 -- Talla M
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (9, 6, 2, 18, 50.00); -- negro
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (9, 7, 2, 16, 50.00); -- gris
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (9, 4, 2, 13, 50.00); -- blanco
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (9, 5, 2, 15, 50.00); -- azul
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (9, 6, 2, 18, 50.00); -- negro
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (9, 7, 2, 16, 50.00); -- gris
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (9, 4, 2, 13, 50.00); -- blanco
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (9, 5, 2, 15, 50.00); -- azul
 
 -- Talla L
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (9, 6, 3, 15, 60.00); -- negro
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (9, 7, 3, 13, 60.00); -- gris
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (9, 4, 3, 10, 60.00); -- blanco
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (9, 5, 3, 12, 60.00); -- azul
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (9, 6, 3, 15, 60.00); -- negro
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (9, 7, 3, 13, 60.00); -- gris
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (9, 4, 3, 10, 60.00); -- blanco
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (9, 5, 3, 12, 60.00); -- azul
 
 -- Talla XL
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (9, 6, 4, 12, 70.00); -- negro
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (9, 7, 4, 10, 70.00); -- gris
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (9, 4, 4, 8, 70.00);  -- blanco
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (9, 5, 4, 9, 70.00);  -- azul
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (9, 6, 4, 12, 70.00); -- negro
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (9, 7, 4, 10, 70.00); -- gris
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (9, 4, 4, 8, 70.00);  -- blanco
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (9, 5, 4, 9, 70.00);  -- azul
 
 
 -- ------------------------------------------- 
@@ -497,29 +497,29 @@ INSERT INTO image (image_url, image_product_id) VALUES
 
 -- Insertar en la tabla stock para el Producto 10 con cuatro colores
 -- Talla S
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (10, 8, 1, 20, 47.00); -- morado (ID 8)
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (10, 9, 1, 15, 47.00); -- índigo (ID 9)
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (10, 5, 1, 10, 47.00); -- azul (ID 5)
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (10, 4, 1, 12, 47.00); -- blanco (ID 4)
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (10, 8, 1, 20, 47.00); -- morado (ID 8)
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (10, 9, 1, 15, 47.00); -- índigo (ID 9)
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (10, 5, 1, 10, 47.00); -- azul (ID 5)
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (10, 4, 1, 12, 47.00); -- blanco (ID 4)
 
 -- Repetir para tallas M, L, XL ajustando la cantidad y precio
 -- Talla M
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (10, 8, 2, 18, 57.00); -- morado
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (10, 9, 2, 12, 57.00); -- índigo
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (10, 5, 2, 8, 57.00);  -- azul
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (10, 4, 2, 14, 57.00); -- blanco
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (10, 8, 2, 18, 57.00); -- morado
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (10, 9, 2, 12, 57.00); -- índigo
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (10, 5, 2, 8, 57.00);  -- azul
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (10, 4, 2, 14, 57.00); -- blanco
 
 -- Talla L
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (10, 8, 3, 16, 67.00); -- morado
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (10, 9, 3, 10, 67.00); -- índigo
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (10, 5, 3, 6, 67.00);  -- azul
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (10, 4, 3, 16, 67.00); -- blanco
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (10, 8, 3, 16, 67.00); -- morado
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (10, 9, 3, 10, 67.00); -- índigo
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (10, 5, 3, 6, 67.00);  -- azul
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (10, 4, 3, 16, 67.00); -- blanco
 
 -- Talla XL
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (10, 8, 4, 14, 77.00); -- morado
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (10, 9, 4, 8, 77.00);  -- índigo
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (10, 5, 4, 4, 77.00);  -- azul
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (10, 4, 4, 18, 77.00); -- blanco
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (10, 8, 4, 14, 77.00); -- morado
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (10, 9, 4, 8, 77.00);  -- índigo
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (10, 5, 4, 4, 77.00);  -- azul
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (10, 4, 4, 18, 77.00); -- blanco
 
 
 -- ------------------------------------------- 
@@ -546,29 +546,29 @@ INSERT INTO image (image_url, image_product_id) VALUES
 
 -- Insertar en la tabla stock para el Producto 11 con cuatro colores
 -- Talla S
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (11, 7, 1, 20, 48.00); -- gris (ID 7)
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (11, 6, 1, 15, 48.00); -- negro (ID 6)
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (11, 4, 1, 12, 48.00); -- blanco (ID 4)
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (11, 5, 1, 14, 48.00); -- azul (ID 5)
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (11, 7, 1, 20, 48.00); -- gris (ID 7)
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (11, 6, 1, 15, 48.00); -- negro (ID 6)
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (11, 4, 1, 12, 48.00); -- blanco (ID 4)
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (11, 5, 1, 14, 48.00); -- azul (ID 5)
 
 -- Repetir para tallas M, L, XL ajustando la cantidad y precio
 -- Talla M
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (11, 7, 2, 18, 58.00); -- gris
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (11, 6, 2, 12, 58.00); -- negro
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (11, 4, 2, 10, 58.00); -- blanco
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (11, 5, 2, 13, 58.00); -- azul
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (11, 7, 2, 18, 58.00); -- gris
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (11, 6, 2, 12, 58.00); -- negro
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (11, 4, 2, 10, 58.00); -- blanco
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (11, 5, 2, 13, 58.00); -- azul
 
 -- Talla L
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (11, 7, 3, 15, 68.00); -- gris
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (11, 6, 3, 10, 68.00); -- negro
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (11, 4, 3, 8, 68.00);  -- blanco
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (11, 5, 3, 11, 68.00); -- azul
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (11, 7, 3, 15, 68.00); -- gris
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (11, 6, 3, 10, 68.00); -- negro
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (11, 4, 3, 8, 68.00);  -- blanco
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (11, 5, 3, 11, 68.00); -- azul
 
 -- Talla XL
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (11, 7, 4, 10, 78.00); -- gris
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (11, 6, 4, 7, 78.00);  -- negro
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (11, 4, 4, 5, 78.00);  -- blanco
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (11, 5, 4, 9, 78.00);  -- azul
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (11, 7, 4, 10, 78.00); -- gris
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (11, 6, 4, 7, 78.00);  -- negro
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (11, 4, 4, 5, 78.00);  -- blanco
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (11, 5, 4, 9, 78.00);  -- azul
 
 
 -- ------------------------------------------- 
@@ -595,29 +595,29 @@ INSERT INTO image (image_url, image_product_id) VALUES
 
 -- Insertar en la tabla stock para el Producto 12 con cuatro colores
 -- Talla S
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (12, 4, 1, 22, 49.00); -- blanco (ID 4)
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (12, 3, 1, 18, 49.00); -- crema (ID 3)
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (12, 7, 1, 14, 49.00); -- gris (ID 7)
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (12, 5, 1, 16, 49.00); -- azul (ID 5)
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (12, 4, 1, 22, 49.00); -- blanco (ID 4)
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (12, 3, 1, 18, 49.00); -- crema (ID 3)
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (12, 7, 1, 14, 49.00); -- gris (ID 7)
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (12, 5, 1, 16, 49.00); -- azul (ID 5)
 
 -- Repetir para tallas M, L, XL ajustando la cantidad y precio
 -- Talla M
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (12, 4, 2, 20, 59.00); -- blanco
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (12, 3, 2, 16, 59.00); -- crema
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (12, 7, 2, 12, 59.00); -- gris
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (12, 5, 2, 14, 59.00); -- azul
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (12, 4, 2, 20, 59.00); -- blanco
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (12, 3, 2, 16, 59.00); -- crema
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (12, 7, 2, 12, 59.00); -- gris
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (12, 5, 2, 14, 59.00); -- azul
 
 -- Talla L
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (12, 4, 3, 17, 69.00); -- blanco
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (12, 3, 3, 14, 69.00); -- crema
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (12, 7, 3, 10, 69.00); -- gris
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (12, 5, 3, 11, 69.00); -- azul
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (12, 4, 3, 17, 69.00); -- blanco
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (12, 3, 3, 14, 69.00); -- crema
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (12, 7, 3, 10, 69.00); -- gris
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (12, 5, 3, 11, 69.00); -- azul
 
 -- Talla XL
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (12, 4, 4, 13, 79.00); -- blanco
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (12, 3, 4, 11, 79.00); -- crema
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (12, 7, 4, 8, 79.00);  -- gris
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (12, 5, 4, 9, 79.00);  -- azul
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (12, 4, 4, 13, 79.00); -- blanco
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (12, 3, 4, 11, 79.00); -- crema
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (12, 7, 4, 8, 79.00);  -- gris
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (12, 5, 4, 9, 79.00);  -- azul
 
 
 -- ------------------------------------------- 
@@ -644,29 +644,29 @@ INSERT INTO image (image_url, image_product_id) VALUES
 
 -- Insertar en la tabla stock para el Producto 13 con cuatro colores
 -- Talla S
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (13, 10, 1, 10, 50.00); -- amarillo (ID 10)
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (13, 4, 1, 20, 50.00); -- blanco (ID 4)
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (13, 6, 1, 15, 50.00); -- negro (ID 6)
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (13, 5, 1, 17, 50.00); -- azul (ID 5)
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (13, 10, 1, 10, 50.00); -- amarillo (ID 10)
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (13, 4, 1, 20, 50.00); -- blanco (ID 4)
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (13, 6, 1, 15, 50.00); -- negro (ID 6)
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (13, 5, 1, 17, 50.00); -- azul (ID 5)
 
 -- Repetir para tallas M, L, XL ajustando la cantidad y precio
 -- Talla M
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (13, 10, 2, 12, 60.00); -- amarillo
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (13, 4, 2, 18, 60.00); -- blanco
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (13, 6, 2, 14, 60.00); -- negro
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (13, 5, 2, 16, 60.00); -- azul
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (13, 10, 2, 12, 60.00); -- amarillo
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (13, 4, 2, 18, 60.00); -- blanco
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (13, 6, 2, 14, 60.00); -- negro
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (13, 5, 2, 16, 60.00); -- azul
 
 -- Talla L
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (13, 10, 3, 8, 70.00); -- amarillo
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (13, 4, 3, 15, 70.00); -- blanco
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (13, 6, 3, 12, 70.00); -- negro
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (13, 5, 3, 14, 70.00); -- azul
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (13, 10, 3, 8, 70.00); -- amarillo
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (13, 4, 3, 15, 70.00); -- blanco
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (13, 6, 3, 12, 70.00); -- negro
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (13, 5, 3, 14, 70.00); -- azul
 
 -- Talla XL
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (13, 10, 4, 5, 80.00); -- amarillo
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (13, 4, 4, 10, 80.00); -- blanco
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (13, 6, 4, 8, 80.00); -- negro
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (13, 5, 4, 9, 80.00); -- azul
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (13, 10, 4, 5, 80.00); -- amarillo
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (13, 4, 4, 10, 80.00); -- blanco
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (13, 6, 4, 8, 80.00); -- negro
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (13, 5, 4, 9, 80.00); -- azul
 
 
 -- ------------------------------------------- 
@@ -693,29 +693,29 @@ INSERT INTO image (image_url, image_product_id) VALUES
 
 -- Insertar en la tabla stock para el Producto 14 con cuatro colores
 -- Talla S
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (14, 5, 1, 15, 52.00); -- azul (ID 5)
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (14, 6, 1, 10, 52.00); -- negro (ID 6)
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (14, 7, 1, 20, 52.00); -- gris (ID 7)
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (14, 4, 1, 18, 52.00); -- blanco (ID 4)
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (14, 5, 1, 15, 52.00); -- azul (ID 5)
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (14, 6, 1, 10, 52.00); -- negro (ID 6)
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (14, 7, 1, 20, 52.00); -- gris (ID 7)
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (14, 4, 1, 18, 52.00); -- blanco (ID 4)
 
 -- Repetir para tallas M, L, XL ajustando la cantidad y precio
 -- Talla M
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (14, 5, 2, 12, 62.00); -- azul
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (14, 6, 2, 8, 62.00); -- negro
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (14, 7, 2, 18, 62.00); -- gris
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (14, 4, 2, 16, 62.00); -- blanco
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (14, 5, 2, 12, 62.00); -- azul
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (14, 6, 2, 8, 62.00); -- negro
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (14, 7, 2, 18, 62.00); -- gris
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (14, 4, 2, 16, 62.00); -- blanco
 
 -- Talla L
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (14, 5, 3, 10, 72.00); -- azul
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (14, 6, 3, 6, 72.00); -- negro
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (14, 7, 3, 15, 72.00); -- gris
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (14, 4, 3, 14, 72.00); -- blanco
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (14, 5, 3, 10, 72.00); -- azul
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (14, 6, 3, 6, 72.00); -- negro
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (14, 7, 3, 15, 72.00); -- gris
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (14, 4, 3, 14, 72.00); -- blanco
 
 -- Talla XL
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (14, 5, 4, 7, 82.00); -- azul
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (14, 6, 4, 4, 82.00); -- negro
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (14, 7, 4, 12, 82.00); -- gris
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (14, 4, 4, 10, 82.00); -- blanco
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (14, 5, 4, 7, 82.00); -- azul
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (14, 6, 4, 4, 82.00); -- negro
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (14, 7, 4, 12, 82.00); -- gris
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (14, 4, 4, 10, 82.00); -- blanco
 
 
 -- ------------------------------------------- 
@@ -742,29 +742,29 @@ INSERT INTO image (image_url, image_product_id) VALUES
 
 -- Insertar en la tabla stock para el Producto 15 con cuatro colores
 -- Talla S
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (15, 5, 1, 20, 47.00); -- azul (ID 5)
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (15, 4, 1, 15, 47.00); -- blanco (ID 4)
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (15, 2, 1, 10, 47.00); -- verde (ID 2)
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (15, 7, 1, 12, 47.00); -- gris (ID 7)
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (15, 5, 1, 20, 47.00); -- azul (ID 5)
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (15, 4, 1, 15, 47.00); -- blanco (ID 4)
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (15, 2, 1, 10, 47.00); -- verde (ID 2)
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (15, 7, 1, 12, 47.00); -- gris (ID 7)
 
 -- Repetir para tallas M, L, XL ajustando la cantidad y precio
 -- Talla M
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (15, 5, 2, 18, 57.00); -- azul
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (15, 4, 2, 12, 57.00); -- blanco
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (15, 2, 2, 8, 57.00);  -- verde
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (15, 7, 2, 14, 57.00); -- gris
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (15, 5, 2, 18, 57.00); -- azul
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (15, 4, 2, 12, 57.00); -- blanco
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (15, 2, 2, 8, 57.00);  -- verde
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (15, 7, 2, 14, 57.00); -- gris
 
 -- Talla L
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (15, 5, 3, 15, 67.00); -- azul
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (15, 4, 3, 10, 67.00); -- blanco
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (15, 2, 3, 5, 67.00);  -- verde
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (15, 7, 3, 11, 67.00); -- gris
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (15, 5, 3, 15, 67.00); -- azul
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (15, 4, 3, 10, 67.00); -- blanco
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (15, 2, 3, 5, 67.00);  -- verde
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (15, 7, 3, 11, 67.00); -- gris
 
 -- Talla XL
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (15, 5, 4, 10, 77.00); -- azul
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (15, 4, 4, 7, 77.00);  -- blanco
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (15, 2, 4, 3, 77.00);  -- verde
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (15, 7, 4, 8, 77.00);  -- gris
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (15, 5, 4, 10, 77.00); -- azul
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (15, 4, 4, 7, 77.00);  -- blanco
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (15, 2, 4, 3, 77.00);  -- verde
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (15, 7, 4, 8, 77.00);  -- gris
 
 
 -- ------------------------------------------- 
@@ -791,29 +791,29 @@ INSERT INTO image (image_url, image_product_id) VALUES
 
 -- Insertar en la tabla stock para el Producto 16 con cuatro colores
 -- Talla S
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (16, 6, 1, 20, 48.00); -- negro (ID 6)
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (16, 7, 1, 15, 48.00); -- gris (ID 7)
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (16, 4, 1, 10, 48.00); -- blanco (ID 4)
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (16, 5, 1, 12, 48.00); -- azul (ID 5)
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (16, 6, 1, 20, 48.00); -- negro (ID 6)
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (16, 7, 1, 15, 48.00); -- gris (ID 7)
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (16, 4, 1, 10, 48.00); -- blanco (ID 4)
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (16, 5, 1, 12, 48.00); -- azul (ID 5)
 
 -- Repetir para tallas M, L, XL ajustando la cantidad y precio
 -- Talla M
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (16, 6, 2, 18, 58.00); -- negro
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (16, 7, 2, 13, 58.00); -- gris
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (16, 4, 2, 8, 58.00);  -- blanco
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (16, 5, 2, 14, 58.00); -- azul
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (16, 6, 2, 18, 58.00); -- negro
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (16, 7, 2, 13, 58.00); -- gris
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (16, 4, 2, 8, 58.00);  -- blanco
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (16, 5, 2, 14, 58.00); -- azul
 
 -- Talla L
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (16, 6, 3, 15, 68.00); -- negro
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (16, 7, 3, 10, 68.00); -- gris
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (16, 4, 3, 6, 68.00);  -- blanco
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (16, 5, 3, 11, 68.00); -- azul
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (16, 6, 3, 15, 68.00); -- negro
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (16, 7, 3, 10, 68.00); -- gris
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (16, 4, 3, 6, 68.00);  -- blanco
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (16, 5, 3, 11, 68.00); -- azul
 
 -- Talla XL
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (16, 6, 4, 12, 78.00); -- negro
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (16, 7, 4, 7, 78.00);  -- gris
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (16, 4, 4, 4, 78.00);  -- blanco
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (16, 5, 4, 9, 78.00);  -- azul
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (16, 6, 4, 12, 78.00); -- negro
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (16, 7, 4, 7, 78.00);  -- gris
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (16, 4, 4, 4, 78.00);  -- blanco
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (16, 5, 4, 9, 78.00);  -- azul
 
 
 -- ------------------------------------------- 
@@ -840,29 +840,29 @@ INSERT INTO image (image_url, image_product_id) VALUES
 
 -- Insertar en la tabla stock para el Producto 17 con cuatro colores
 -- Talla S
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (17, 7, 1, 18, 49.00); -- gris (ID 7)
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (17, 6, 1, 14, 49.00); -- negro (ID 6)
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (17, 4, 1, 11, 49.00); -- blanco (ID 4)
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (17, 5, 1, 13, 49.00); -- azul (ID 5)
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (17, 7, 1, 18, 49.00); -- gris (ID 7)
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (17, 6, 1, 14, 49.00); -- negro (ID 6)
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (17, 4, 1, 11, 49.00); -- blanco (ID 4)
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (17, 5, 1, 13, 49.00); -- azul (ID 5)
 
 -- Repetir para tallas M, L, XL ajustando la cantidad y precio
 -- Talla M
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (17, 7, 2, 16, 59.00); -- gris
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (17, 6, 2, 12, 59.00); -- negro
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (17, 4, 2, 9, 59.00);  -- blanco
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (17, 5, 2, 15, 59.00); -- azul
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (17, 7, 2, 16, 59.00); -- gris
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (17, 6, 2, 12, 59.00); -- negro
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (17, 4, 2, 9, 59.00);  -- blanco
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (17, 5, 2, 15, 59.00); -- azul
 
 -- Talla L
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (17, 7, 3, 14, 69.00); -- gris
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (17, 6, 3, 10, 69.00); -- negro
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (17, 4, 3, 7, 69.00);  -- blanco
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (17, 5, 3, 12, 69.00); -- azul
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (17, 7, 3, 14, 69.00); -- gris
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (17, 6, 3, 10, 69.00); -- negro
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (17, 4, 3, 7, 69.00);  -- blanco
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (17, 5, 3, 12, 69.00); -- azul
 
 -- Talla XL
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (17, 7, 4, 12, 79.00); -- gris
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (17, 6, 4, 8, 79.00);  -- negro
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (17, 4, 4, 5, 79.00);  -- blanco
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (17, 5, 4, 10, 79.00);  -- azul
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (17, 7, 4, 12, 79.00); -- gris
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (17, 6, 4, 8, 79.00);  -- negro
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (17, 4, 4, 5, 79.00);  -- blanco
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (17, 5, 4, 10, 79.00);  -- azul
 
 
 -- ------------------------------------------- 
@@ -889,29 +889,29 @@ INSERT INTO image (image_url, image_product_id) VALUES
 
 -- Insertar en la tabla stock para el Producto 18 con cuatro colores
 -- Talla S
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (18, 8, 1, 10, 48.00); -- rojo (ID 8)
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (18, 9, 1, 12, 48.00); -- marrón (ID 9)
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (18, 10, 1, 8, 48.00); -- rosa (ID 10)
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (18, 6, 1, 14, 48.00); -- negro (ID 6)
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (18, 8, 1, 10, 48.00); -- rojo (ID 8)
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (18, 9, 1, 12, 48.00); -- marrón (ID 9)
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (18, 10, 1, 8, 48.00); -- rosa (ID 10)
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (18, 6, 1, 14, 48.00); -- negro (ID 6)
 
 -- Repetir para tallas M, L, XL ajustando la cantidad y precio
 -- Talla M
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (18, 8, 2, 12, 58.00); -- rojo
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (18, 9, 2, 10, 58.00); -- marrón
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (18, 10, 2, 10, 58.00); -- rosa
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (18, 6, 2, 16, 58.00); -- negro
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (18, 8, 2, 12, 58.00); -- rojo
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (18, 9, 2, 10, 58.00); -- marrón
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (18, 10, 2, 10, 58.00); -- rosa
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (18, 6, 2, 16, 58.00); -- negro
 
 -- Talla L
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (18, 8, 3, 15, 68.00); -- rojo
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (18, 9, 3, 8, 68.00);  -- marrón
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (18, 10, 3, 12, 68.00); -- rosa
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (18, 6, 3, 18, 68.00); -- negro
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (18, 8, 3, 15, 68.00); -- rojo
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (18, 9, 3, 8, 68.00);  -- marrón
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (18, 10, 3, 12, 68.00); -- rosa
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (18, 6, 3, 18, 68.00); -- negro
 
 -- Talla XL
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (18, 8, 4, 18, 78.00); -- rojo
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (18, 9, 4, 6, 78.00);  -- marrón
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (18, 10, 4, 14, 78.00); -- rosa
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (18, 6, 4, 20, 78.00); -- negro
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (18, 8, 4, 18, 78.00); -- rojo
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (18, 9, 4, 6, 78.00);  -- marrón
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (18, 10, 4, 14, 78.00); -- rosa
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (18, 6, 4, 20, 78.00); -- negro
 
 
 -- ------------------------------------------- 
@@ -938,29 +938,29 @@ INSERT INTO image (image_url, image_product_id) VALUES
 
 -- Insertar en la tabla stock para el Producto 19 con cuatro colores
 -- Talla S
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (19, 1, 1, 20, 46.00); -- verde (ID 1)
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (19, 2, 1, 15, 46.00); -- azul verdoso (ID 2)
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (19, 3, 1, 10, 46.00); -- crema (ID 3)
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (19, 4, 1, 12, 46.00); -- blanco (ID 4)
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (19, 1, 1, 20, 46.00); -- verde (ID 1)
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (19, 2, 1, 15, 46.00); -- azul verdoso (ID 2)
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (19, 3, 1, 10, 46.00); -- crema (ID 3)
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (19, 4, 1, 12, 46.00); -- blanco (ID 4)
 
 -- Repetir para tallas M, L, XL ajustando la cantidad y precio
 -- Talla M
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (19, 1, 2, 18, 56.00); -- verde
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (19, 2, 2, 13, 56.00); -- azul verdoso
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (19, 3, 2, 12, 56.00); -- crema
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (19, 4, 2, 14, 56.00); -- blanco
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (19, 1, 2, 18, 56.00); -- verde
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (19, 2, 2, 13, 56.00); -- azul verdoso
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (19, 3, 2, 12, 56.00); -- crema
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (19, 4, 2, 14, 56.00); -- blanco
 
 -- Talla L
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (19, 1, 3, 16, 66.00); -- verde
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (19, 2, 3, 11, 66.00); -- azul verdoso
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (19, 3, 3, 14, 66.00); -- crema
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (19, 4, 3, 16, 66.00); -- blanco
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (19, 1, 3, 16, 66.00); -- verde
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (19, 2, 3, 11, 66.00); -- azul verdoso
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (19, 3, 3, 14, 66.00); -- crema
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (19, 4, 3, 16, 66.00); -- blanco
 
 -- Talla XL
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (19, 1, 4, 14, 76.00); -- verde
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (19, 2, 4, 9, 76.00); -- azul verdoso
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (19, 3, 4, 16, 76.00); -- crema
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (19, 4, 4, 18, 76.00); -- blanco
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (19, 1, 4, 14, 76.00); -- verde
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (19, 2, 4, 9, 76.00); -- azul verdoso
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (19, 3, 4, 16, 76.00); -- crema
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (19, 4, 4, 18, 76.00); -- blanco
 
 
 -- ------------------------------------------- 
@@ -987,29 +987,29 @@ INSERT INTO image (image_url, image_product_id) VALUES
 
 -- Insertar en la tabla stock para el Producto 20 con cuatro colores
 -- Talla S
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (20, 8, 1, 22, 49.00); -- rojo (ID 8)
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (20, 9, 1, 18, 49.00); -- marrón (ID 9)
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (20, 10, 1, 15, 49.00); -- rosa (ID 10)
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (20, 6, 1, 20, 49.00); -- negro (ID 6)
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (20, 8, 1, 22, 49.00); -- rojo (ID 8)
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (20, 9, 1, 18, 49.00); -- marrón (ID 9)
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (20, 10, 1, 15, 49.00); -- rosa (ID 10)
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (20, 6, 1, 20, 49.00); -- negro (ID 6)
 
 -- Repetir para tallas M, L, XL ajustando la cantidad y precio
 -- Talla M
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (20, 8, 2, 20, 59.00); -- rojo
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (20, 9, 2, 16, 59.00); -- marrón
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (20, 10, 2, 13, 59.00); -- rosa
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (20, 6, 2, 18, 59.00); -- negro
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (20, 8, 2, 20, 59.00); -- rojo
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (20, 9, 2, 16, 59.00); -- marrón
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (20, 10, 2, 13, 59.00); -- rosa
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (20, 6, 2, 18, 59.00); -- negro
 
 -- Talla L
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (20, 8, 3, 18, 69.00); -- rojo
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (20, 9, 3, 14, 69.00); -- marrón
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (20, 10, 3, 11, 69.00); -- rosa
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (20, 6, 3, 16, 69.00); -- negro
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (20, 8, 3, 18, 69.00); -- rojo
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (20, 9, 3, 14, 69.00); -- marrón
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (20, 10, 3, 11, 69.00); -- rosa
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (20, 6, 3, 16, 69.00); -- negro
 
 -- Talla XL
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (20, 8, 4, 16, 79.00); -- rojo
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (20, 9, 4, 12, 79.00); -- marrón
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (20, 10, 4, 9, 79.00); -- rosa
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (20, 6, 4, 14, 79.00); -- negro
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (20, 8, 4, 16, 79.00); -- rojo
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (20, 9, 4, 12, 79.00); -- marrón
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (20, 10, 4, 9, 79.00); -- rosa
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (20, 6, 4, 14, 79.00); -- negro
 
 
 -- ------------------------------------------- 
@@ -1036,29 +1036,29 @@ INSERT INTO image (image_url, image_product_id) VALUES
 
 -- Insertar en la tabla stock para el Producto 21 con cuatro colores
 -- Talla S
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (21, 1, 1, 24, 50.00); -- verde
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (21, 2, 1, 20, 50.00); -- azul verdoso
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (21, 3, 1, 16, 50.00); -- crema
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (21, 4, 1, 22, 50.00); -- blanco
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (21, 1, 1, 24, 50.00); -- verde
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (21, 2, 1, 20, 50.00); -- azul verdoso
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (21, 3, 1, 16, 50.00); -- crema
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (21, 4, 1, 22, 50.00); -- blanco
 
 -- Repetir para tallas M, L, XL ajustando la cantidad y precio
 -- Talla M
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (21, 1, 2, 22, 60.00); -- verde
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (21, 2, 2, 18, 60.00); -- azul verdoso
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (21, 3, 2, 14, 60.00); -- crema
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (21, 4, 2, 20, 60.00); -- blanco
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (21, 1, 2, 22, 60.00); -- verde
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (21, 2, 2, 18, 60.00); -- azul verdoso
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (21, 3, 2, 14, 60.00); -- crema
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (21, 4, 2, 20, 60.00); -- blanco
 
 -- Talla L
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (21, 1, 3, 20, 70.00); -- verde
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (21, 2, 3, 16, 70.00); -- azul verdoso
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (21, 3, 3, 12, 70.00); -- crema
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (21, 4, 3, 18, 70.00); -- blanco
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (21, 1, 3, 20, 70.00); -- verde
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (21, 2, 3, 16, 70.00); -- azul verdoso
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (21, 3, 3, 12, 70.00); -- crema
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (21, 4, 3, 18, 70.00); -- blanco
 
 -- Talla XL
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (21, 1, 4, 18, 80.00); -- verde
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (21, 2, 4, 14, 80.00); -- azul verdoso
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (21, 3, 4, 10, 80.00); -- crema
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (21, 4, 4, 16, 80.00); -- blanco
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (21, 1, 4, 18, 80.00); -- verde
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (21, 2, 4, 14, 80.00); -- azul verdoso
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (21, 3, 4, 10, 80.00); -- crema
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (21, 4, 4, 16, 80.00); -- blanco
 
 
 -- ------------------------------------------- 
@@ -1085,26 +1085,26 @@ INSERT INTO image (image_url, image_product_id) VALUES
 
 -- Insertar en la tabla stock para el Producto 22 con cuatro colores
 -- Talla S
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (22, 8, 1, 20, 48.00); -- rojo
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (22, 9, 1, 15, 48.00); -- marrón
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (22, 10, 1, 10, 48.00); -- rosa
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (22, 4, 1, 18, 48.00); -- blanco
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (22, 8, 1, 20, 48.00); -- rojo
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (22, 9, 1, 15, 48.00); -- marrón
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (22, 10, 1, 10, 48.00); -- rosa
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (22, 4, 1, 18, 48.00); -- blanco
 
 -- Repetir para tallas M, L, XL ajustando la cantidad y precio
 -- Talla M
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (22, 8, 2, 18, 58.00); -- rojo
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (22, 9, 2, 13, 58.00); -- marrón
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (22, 10, 2, 8, 58.00); -- rosa
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (22, 4, 2, 16, 58.00); -- blanco
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (22, 8, 2, 18, 58.00); -- rojo
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (22, 9, 2, 13, 58.00); -- marrón
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (22, 10, 2, 8, 58.00); -- rosa
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (22, 4, 2, 16, 58.00); -- blanco
 
 -- Talla L
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (22, 8, 3, 15, 68.00); -- rojo
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (22, 9, 3, 11, 68.00); -- marrón
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (22, 10, 3, 6, 68.00); -- rosa
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (22, 4, 3, 14, 68.00); -- blanco
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (22, 8, 3, 15, 68.00); -- rojo
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (22, 9, 3, 11, 68.00); -- marrón
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (22, 10, 3, 6, 68.00); -- rosa
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (22, 4, 3, 14, 68.00); -- blanco
 
 -- Talla XL
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (22, 8, 4, 12, 78.00); -- rojo
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (22, 9, 4, 9, 78.00); -- marrón
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (22, 10, 4, 4, 78.00); -- rosa
-INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, price) VALUES (22, 4, 4, 12, 78.00); -- blanco
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (22, 8, 4, 12, 78.00); -- rojo
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (22, 9, 4, 9, 78.00); -- marrón
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (22, 10, 4, 4, 78.00); -- rosa
+INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quantity, stock_price) VALUES (22, 4, 4, 12, 78.00); -- blanco

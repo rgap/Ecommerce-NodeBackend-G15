@@ -1,9 +1,9 @@
 import { prisma } from "../../db/index.js";
 import { responseError, responseSuccess } from "../../network/responses.js";
 
-/* COLOR CRUD */
+///////////////////////////// CRUD ////////////////////////////
 
-//READ
+// READ
 export async function list(req, res) {
   try {
     const colors = await prisma.color.findMany();
@@ -30,7 +30,7 @@ export async function getById(req, res) {
   }
 }
 
-//CREATE
+// CREATE
 
 export async function store(req, res) {
   try {
@@ -45,7 +45,7 @@ export async function store(req, res) {
   }
 }
 
-//UPDATE
+// UPDATE
 
 export async function update(req, res) {
   try {
@@ -66,7 +66,7 @@ export async function update(req, res) {
   }
 }
 
-//DELETE
+// DELETE
 
 export async function destroy(req, res) {
   try {

@@ -21,7 +21,7 @@ CREATE TABLE "user" (
 CREATE TABLE "color" (
     "color_id" SERIAL NOT NULL,
     "color_name" VARCHAR(255) NOT NULL,
-    "hex_color" VARCHAR(7) NOT NULL,
+    "color_code" VARCHAR(7) NOT NULL,
     "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updated_at" TIMESTAMP(3) NOT NULL,
 
@@ -68,44 +68,55 @@ CREATE TABLE "stock" (
     "stock_color_id" INTEGER NOT NULL,
     "stock_size_id" INTEGER NOT NULL,
     "stock_quantity" INTEGER NOT NULL,
-    "price" DOUBLE PRECISION NOT NULL,
+    "stock_price" DOUBLE PRECISION NOT NULL,
 
     CONSTRAINT "stock_pkey" PRIMARY KEY ("stock_product_id","stock_color_id","stock_size_id")
 );
 
 -- CreateTable
 CREATE TABLE "order" (
-    "id" SERIAL NOT NULL,
-    "payment_id" INTEGER,
-    "user_id" INTEGER NOT NULL,
-    "payment_date" TIMESTAMP(3),
-    "payer_email" VARCHAR(250) NOT NULL,
-    "payer_document_type" VARCHAR(10) NOT NULL,
-    "payer_document_number" VARCHAR(50) NOT NULL,
-    "installments" INTEGER NOT NULL,
-    "issuer_id" VARCHAR(100) NOT NULL,
-    "payment_method_id" VARCHAR(20) NOT NULL,
-    "token" VARCHAR(250) NOT NULL,
-    "status" VARCHAR(10) NOT NULL,
-    "amount" DECIMAL(65,30) NOT NULL,
+    "order_id" SERIAL NOT NULL,
+    "order_payment_id" INTEGER,
+    "order_user_id" INTEGER NOT NULL,
+    "order_payment_date" TIMESTAMP(3),
+    "order_payer_email" VARCHAR(250) NOT NULL,
+    "order_payer_document_type" VARCHAR(10) NOT NULL,
+    "order_payer_document_number" VARCHAR(50) NOT NULL,
+    "order_installments" INTEGER NOT NULL,
+    "order_issuer_id" VARCHAR(100) NOT NULL,
+    "order_payment_method_id" VARCHAR(20) NOT NULL,
+    "order_token" VARCHAR(250) NOT NULL,
+    "order_status" VARCHAR(10) NOT NULL,
+    "order_amount" DECIMAL(65,30) NOT NULL,
+    "order_shipping_method" VARCHAR(255) NOT NULL,
+    "order_shipping_name" VARCHAR(120) NOT NULL,
+    "order_shipping_address" VARCHAR(255),
+    "order_shipping_city" VARCHAR(50),
+    "order_shipping_region" VARCHAR(50),
+    "order_shipping_phone_number" VARCHAR(20),
+    "order_billing_name" VARCHAR(120) NOT NULL,
+    "order_billing_address" VARCHAR(255),
+    "order_billing_city" VARCHAR(50),
+    "order_billing_region" VARCHAR(50),
+    "order_billing_phone_number" VARCHAR(20),
     "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updated_at" TIMESTAMP(3) NOT NULL,
 
-    CONSTRAINT "order_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "order_pkey" PRIMARY KEY ("order_id")
 );
 
 -- CreateTable
-CREATE TABLE "order_item" (
-    "id" SERIAL NOT NULL,
-    "orderId" INTEGER NOT NULL,
-    "productId" INTEGER NOT NULL,
-    "name" VARCHAR(255) NOT NULL,
-    "color" VARCHAR(50) NOT NULL,
-    "imageUrl" VARCHAR(255) NOT NULL,
-    "quantity" INTEGER NOT NULL,
-    "price" DOUBLE PRECISION NOT NULL,
+CREATE TABLE "item" (
+    "item_id" SERIAL NOT NULL,
+    "item_order_id" INTEGER NOT NULL,
+    "item_product_id" INTEGER NOT NULL,
+    "item_title" VARCHAR(255) NOT NULL,
+    "item_color" VARCHAR(50) NOT NULL,
+    "item_image_url" VARCHAR(255) NOT NULL,
+    "item_quantity" INTEGER NOT NULL,
+    "item_price" DOUBLE PRECISION NOT NULL,
 
-    CONSTRAINT "order_item_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "item_pkey" PRIMARY KEY ("item_id")
 );
 
 -- CreateIndex
@@ -133,10 +144,10 @@ ALTER TABLE "stock" ADD CONSTRAINT "stock_stock_color_id_fkey" FOREIGN KEY ("sto
 ALTER TABLE "stock" ADD CONSTRAINT "stock_stock_size_id_fkey" FOREIGN KEY ("stock_size_id") REFERENCES "size"("size_id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "order" ADD CONSTRAINT "order_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "user"("user_id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "order" ADD CONSTRAINT "order_order_user_id_fkey" FOREIGN KEY ("order_user_id") REFERENCES "user"("user_id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "order_item" ADD CONSTRAINT "order_item_orderId_fkey" FOREIGN KEY ("orderId") REFERENCES "order"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "item" ADD CONSTRAINT "item_item_order_id_fkey" FOREIGN KEY ("item_order_id") REFERENCES "order"("order_id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "order_item" ADD CONSTRAINT "order_item_productId_fkey" FOREIGN KEY ("productId") REFERENCES "product"("product_id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "item" ADD CONSTRAINT "item_item_product_id_fkey" FOREIGN KEY ("item_product_id") REFERENCES "product"("product_id") ON DELETE RESTRICT ON UPDATE CASCADE;
