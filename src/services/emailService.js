@@ -80,18 +80,14 @@ const sendOrderConfirmationEmail = async (order) => {
             <div class="order-details">
               <p class="sub-header">Detalles del Pedido:</p>
               <ul>
-                <li>Fecha de Pago: ${new Date(
-                  order.paymentDate
-                ).toLocaleDateString("es-ES", {
+                <li>Fecha de Pago: ${new Date(order.paymentDate).toLocaleDateString("es-ES", {
                   year: "numeric",
                   month: "long",
                   day: "numeric",
                   hour: "2-digit",
                   minute: "2-digit",
                 })}</li>
-                <li>Monto Total: S/ ${formatAmount(
-                  parseFloat(order.transactionAmount)
-                )}</li>
+                <li>Monto Total: S/ ${formatAmount(parseFloat(order.transactionAmount))}</li>
               </ul>
             </div>
             <div class="order-items">
@@ -157,9 +153,7 @@ const sendOrderNotificationToAdmin = async (order) => {
               <p class="sub-header">Detalles de Facturación:</p>
               <ul>
                 <li>Nombre de Facturación: ${order.billingName}</li>
-                <li>Dirección de Facturación: ${order.billingAddress}, ${
-    order.billingCity
-  }, ${order.billingRegion}</li>
+                <li>Dirección de Facturación: ${order.billingAddress}, ${order.billingCity}, ${order.billingRegion}</li>
                 <li>Teléfono de Facturación: ${order.billingPhoneNumber}</li>
               </ul>
             </div>
@@ -168,30 +162,22 @@ const sendOrderNotificationToAdmin = async (order) => {
               <p class="sub-header">Detalles de Envío:</p>
               <ul>
                 <li>Nombre de Envío: ${order.shippingName ?? "N/A"}</li>
-                <li>Dirección de Envío: ${order.shippingAddress ?? "N/A"}, ${
-    order.shippingCity ?? "N/A"
-  }, ${order.shippingRegion ?? "N/A"}</li>
-                <li>Teléfono de Envío: ${
-                  order.shippingPhoneNumber ?? "N/A"
-                }</li>
+                <li>Dirección de Envío: ${order.shippingAddress ?? "N/A"}, ${order.shippingCity ?? "N/A"}, ${order.shippingRegion ?? "N/A"}</li>
+                <li>Teléfono de Envío: ${order.shippingPhoneNumber ?? "N/A"}</li>
               </ul>
             </div>
 
             <div class="details-section">
               <p class="sub-header">Detalles del Pedido:</p>
               <ul>
-                <li>Fecha de Pago: ${new Date(
-                  order.paymentDate
-                ).toLocaleDateString("es-ES", {
+                <li>Fecha de Pago: ${new Date(order.paymentDate).toLocaleDateString("es-ES", {
                   year: "numeric",
                   month: "long",
                   day: "numeric",
                   hour: "2-digit",
                   minute: "2-digit",
                 })}</li>
-                <li>Monto Total: S/ ${formatAmount(
-                  parseFloat(order.transactionAmount)
-                )}</li>
+                <li>Monto Total: S/ ${formatAmount(parseFloat(order.transactionAmount))}</li>
               </ul>
             </div>
 
@@ -224,8 +210,4 @@ const sendOrderNotificationToAdmin = async (order) => {
   });
 };
 
-export {
-  sendOrderConfirmationEmail,
-  sendOrderNotificationToAdmin,
-  sendVerificationEmail,
-};
+export { sendOrderConfirmationEmail, sendOrderNotificationToAdmin, sendVerificationEmail };

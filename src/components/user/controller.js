@@ -1,11 +1,16 @@
 import dotenv from "dotenv";
-import { generateVerificationToken, hash } from "../../crypto/index.js";
+import { OAuth2Client } from "google-auth-library"; // Import OAuth2Client
+import jwt from "jsonwebtoken";
+import { generateRandomToken, generateVerificationToken, hash } from "../../crypto/index.js";
 import { prisma, prismaError } from "../../db/index.js";
 import { responseError, responseSuccess } from "../../network/responses.js";
 import { sendVerificationEmail } from "../../services/emailService.js"; // Adjust the path as necessary
 
 // Load environment variables from .env file
 dotenv.config();
+
+// Initialize OAuth2Client with your Google Client ID
+const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
 
 ///////////////////////////// CRUD ////////////////////////////
 
@@ -196,6 +201,7 @@ export async function register(req, res) {
     // Send verification email only if not in debug mode
     if (!isDebugMode) {
       await sendVerificationEmail(email, emailToken);
+      console.log("sendVerificationEmail");
     }
 
     const message = isDebugMode
@@ -225,23 +231,40 @@ export async function register(req, res) {
 // VERIFY EMAIL
 
 export async function verifyEmail(req, res) {
-  try {
-    const { token } = req.query;
+  const { token } = req.query;
 
-    if (!token) {
+  if (!token) {
+    return responseError({
+      res,
+      data: "Verification token is required.",
+      status: 400,
+    });
+  }
+
+  jwt.verify(token, process.env.JWT_SECRET, async (err) => {
+    if (err) {
+      // The token is invalid or expired
       return responseError({
         res,
-        data: "Verification token is required.",
-        status: 400,
+        data: "Invalid or expired token.",
+        status: 404,
       });
     }
 
+    // Find the user with the given verification token
     const user = await prisma.user.findUnique({
-      where: {
-        emailToken: token,
-      },
+      where: { emailToken: token },
     });
 
+    if (!user) {
+      return responseError({
+        res,
+        data: "User not found or token is invalid.",
+        status: 404,
+      });
+    }
+
+    // Check if the user is already verified
     if (user.isVerified) {
       return responseError({
         res,
@@ -250,36 +273,31 @@ export async function verifyEmail(req, res) {
       });
     }
 
-    if (!user) {
+    // Proceed to verify the user's email
+    try {
+      await prisma.user.update({
+        where: { id: user.id },
+        data: {
+          isVerified: true,
+          emailToken: null, // Optionally clear the verification token
+        },
+      });
+
+      // Respond with a success message
+      return responseSuccess({
+        res,
+        data: "Email verified successfully. You may now log in.",
+        status: 200,
+      });
+    } catch (updateError) {
+      console.error("Failed to verify email:", updateError);
       return responseError({
         res,
-        data: "Invalid or expired token.",
-        status: 404, // or 410 if the token is known to be expired
+        data: "An error occurred during email verification. Please try again later.",
+        status: 500,
       });
     }
-
-    await prisma.user.update({
-      where: {
-        id: user.id,
-      },
-      data: {
-        isVerified: true,
-      },
-    });
-
-    return responseSuccess({
-      res,
-      data: "Email verified successfully. You may now log in.",
-      status: 200,
-    });
-  } catch (error) {
-    console.error("Failed to verify email:", error);
-    return responseError({
-      res,
-      data: "An error occurred during email verification. Please try again later.",
-      status: 500,
-    });
-  }
+  });
 }
 
 export async function getByEmail(req, res) {
@@ -308,5 +326,67 @@ export async function getByEmail(req, res) {
     return responseSuccess({ res, data: user });
   } catch (error) {
     return responseError({ res, data: `${error.message}` });
+  }
+}
+
+export async function verifyGoogleIdToken(req, res) {
+  try {
+    const { token } = req.body;
+    // console.log("token", token);
+
+    // Verify the ID token and get the ticket
+    const ticket = await client.verifyIdToken({
+      idToken: token,
+      audience: process.env.GOOGLE_CLIENT_ID,
+    });
+
+    const payload = ticket.getPayload();
+    // Check if user exists in your database
+    let user = await prisma.user.findUnique({
+      where: {
+        email: payload.email,
+      },
+    });
+    // console.log("user", user);
+
+    // If user does not exist, create a new one
+    if (!user) {
+      const hashedPlaceholderPassword = generateRandomToken();
+
+      user = await prisma.user.create({
+        data: {
+          name: payload.name,
+          email: payload.email,
+          password: hashedPlaceholderPassword,
+          isVerified: true, // User is verified through Google
+        },
+      });
+
+      // TODO: Enviar welcome email
+
+      return responseSuccess({
+        res,
+        data: {
+          email: user.email,
+        },
+        status: 201,
+      });
+    }
+
+    // Return success response with user information or a token
+    return responseSuccess({
+      res,
+      data: {
+        email: user.email,
+      },
+      status: 200, // Consider using a different status code for newly created users vs. existing users
+    });
+  } catch (error) {
+    console.error("Error verifying Google ID token:", error);
+    return responseError({
+      res,
+      data: "Failed to authenticate with Google.",
+      status: 500,
+    });
   }
 }
