@@ -1,5 +1,5 @@
+import axios from "axios";
 import dotenv from "dotenv";
-import { OAuth2Client } from "google-auth-library"; // Import OAuth2Client
 import jwt from "jsonwebtoken";
 import { generateRandomToken, generateVerificationToken, hash } from "../../crypto/index.js";
 import { prisma, prismaError } from "../../db/index.js";
@@ -8,9 +8,6 @@ import { sendVerificationEmail } from "../../services/emailService.js"; // Adjus
 
 // Load environment variables from .env file
 dotenv.config();
-
-// Initialize OAuth2Client with your Google Client ID
-const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
 
 ///////////////////////////// CRUD ////////////////////////////
 
@@ -332,22 +329,17 @@ export async function getByEmail(req, res) {
 export async function verifyGoogleIdToken(req, res) {
   try {
     const { token } = req.body;
-    // console.log("token", token);
 
-    // Verify the ID token and get the ticket
-    const ticket = await client.verifyIdToken({
-      idToken: token,
-      audience: process.env.GOOGLE_CLIENT_ID,
-    });
+    // Verify the ID token by sending a request to Google's token info endpoint
+    const response = await axios.get(`https://oauth2.googleapis.com/tokeninfo?id_token=${token}`);
+    const payload = response.data;
 
-    const payload = ticket.getPayload();
     // Check if user exists in your database
     let user = await prisma.user.findUnique({
       where: {
         email: payload.email,
       },
     });
-    // console.log("user", user);
 
     // If user does not exist, create a new one
     if (!user) {
@@ -362,27 +354,25 @@ export async function verifyGoogleIdToken(req, res) {
         },
       });
 
-      // TODO: Enviar welcome email
-
+      // TODO: Send a welcome email
       return responseSuccess({
         res,
         data: {
           email: user.email,
         },
-        status: 201,
+        status: 201, // created
       });
     }
 
-    // Return success response with user information or a token
     return responseSuccess({
       res,
       data: {
         email: user.email,
       },
-      status: 200, // Consider using a different status code for newly created users vs. existing users
+      status: 200,
     });
   } catch (error) {
-    console.error("Error verifying Google ID token:", error);
+    console.error("Error verifying Google ID token:", error.response ? error.response.data : error.message);
     return responseError({
       res,
       data: "Failed to authenticate with Google.",
