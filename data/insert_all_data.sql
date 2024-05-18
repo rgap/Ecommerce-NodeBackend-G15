@@ -28,9 +28,17 @@ INSERT INTO size (size_name, created_at, updated_at) VALUES
 
 -- Insertar en la tabla `product`
 INSERT INTO product 
-(product_title, product_description, product_short_description, product_main_image, product_material, product_care, created_at, updated_at) 
+(product_title, product_description, product_short_description, product_main_image, product_material, product_care, slug, created_at, updated_at) 
 VALUES 
-('Polo Nike Verde Claro', 'Este polo Nike en verde claro combina estilo y comodidad. Ideal para actividades al aire libre o un look casual. Material suave y duradero.', 'Confort Casual y Estilo', 'https://raw.githubusercontent.com/rgap/Ecommerce-G15-ImageRepository/main/images/polo-verde-claro-nike-m-nobg.jpg', 'Tejido de alta calidad, 60% algodón, 40% poliéster, suave al tacto.', 'Lavado a máquina con colores similares, secado en línea, planchar a baja temperatura.', NOW(), NOW());
+('Polo Nike Verde Claro', 
+ 'Este polo Nike en verde claro combina estilo y comodidad. Ideal para actividades al aire libre o un look casual. Material suave y duradero.', 
+ 'Confort Casual y Estilo', 
+ 'https://raw.githubusercontent.com/rgap/Ecommerce-G15-ImageRepository/main/images/polo-verde-claro-nike-m-nobg.jpg', 
+ 'Tejido de alta calidad, 60% algodón, 40% poliéster, suave al tacto.', 
+ 'Lavado a máquina con colores similares, secado en línea, planchar a baja temperatura.', 
+ 'polo-nike-verde-claro', 
+ NOW(), 
+ NOW());
 
 -- Insertar imágenes adicionales en la tabla `image`
 INSERT INTO image (image_url, image_product_id) VALUES 
@@ -81,9 +89,17 @@ INSERT INTO color (color_name, color_code, created_at, updated_at) VALUES
 
 -- Insertar en la tabla `product`
 INSERT INTO product 
-(product_title, product_description, product_short_description, product_main_image, product_material, product_care, created_at, updated_at) 
+(product_title, product_description, product_short_description, product_main_image, product_material, product_care, slug, created_at, updated_at) 
 VALUES 
-('Polo Quiksilver Turquesa', 'El polo Quiksilver en color turquesa ofrece un look fresco y relajado, perfecto para días soleados. Material resistente y fácil de cuidar.', 'Frescura y Estilo Veraniego', 'https://raw.githubusercontent.com/rgap/Ecommerce-G15-ImageRepository/main/images/polo-turqueza-quiksilver.jpg', 'Tejido transpirable, 70% algodón y 30% poliéster, ideal para el calor.', 'Lavar a mano o máquina con agua fría. No usar cloro. Secar colgado a la sombra.', NOW(), NOW());
+('Polo Quiksilver Turquesa', 
+ 'El polo Quiksilver en color turquesa ofrece un look fresco y relajado, perfecto para días soleados. Material resistente y fácil de cuidar.', 
+ 'Frescura y Estilo Veraniego', 
+ 'https://raw.githubusercontent.com/rgap/Ecommerce-G15-ImageRepository/main/images/polo-turqueza-quiksilver.jpg', 
+ 'Tejido transpirable, 70% algodón y 30% poliéster, ideal para el calor.', 
+ 'Lavar a mano o máquina con agua fría. No usar cloro. Secar colgado a la sombra.', 
+ 'polo-quiksilver-turquesa', 
+ NOW(), 
+ NOW());
 
 -- Insertar imágenes adicionales en la tabla `image`
 INSERT INTO image (image_url, image_product_id) VALUES 
@@ -133,9 +149,17 @@ INSERT INTO color (color_name, color_code, created_at, updated_at) VALUES
 
 -- Insertar en la tabla `product`
 INSERT INTO product 
-(product_title, product_description, product_short_description, product_main_image, product_material, product_care, created_at, updated_at) 
+(product_title, product_description, product_short_description, product_main_image, product_material, product_care, slug, created_at, updated_at) 
 VALUES 
-('Polo Billabong Amarillo', 'Este polo Billabong en amarillo vibrante es ideal para un estilo juvenil y desenfadado. Excelente para el día a día, combinando comodidad y moda.', 'Vibrante y Confortable', 'https://raw.githubusercontent.com/rgap/Ecommerce-G15-ImageRepository/main/images/polo-%20amarillo-billabong-logo.jpg', 'Confección de calidad, 50% algodón, 50% modal, perfecto para el uso diario.', 'Lavado suave en ciclo delicado. No usar secadora. Planchar a temperatura baja.', NOW(), NOW());
+('Polo Billabong Amarillo', 
+ 'Este polo Billabong en amarillo vibrante es ideal para un estilo juvenil y desenfadado. Excelente para el día a día, combinando comodidad y moda.', 
+ 'Vibrante y Confortable', 
+ 'https://raw.githubusercontent.com/rgap/Ecommerce-G15-ImageRepository/main/images/polo-%20amarillo-billabong-logo.jpg', 
+ 'Confección de calidad, 50% algodón, 50% modal, perfecto para el uso diario.', 
+ 'Lavado suave en ciclo delicado. No usar secadora. Planchar a temperatura baja.', 
+ 'polo-billabong-amarillo', 
+ NOW(), 
+ NOW());
 
 -- Insertar imágenes adicionales en la tabla `image`
 INSERT INTO image (image_url, image_product_id) VALUES 
@@ -186,9 +210,17 @@ INSERT INTO color (color_name, color_code, created_at, updated_at) VALUES
 
 -- Insertar en la tabla `product`
 INSERT INTO product 
-(product_title, product_description, product_short_description, product_main_image, product_material, product_care, created_at, updated_at) 
+(product_title, product_description, product_short_description, product_main_image, product_material, product_care, slug, created_at, updated_at) 
 VALUES 
-('Polo Ripcurl Marrón Floreado', 'El Polo Ripcurl Marrón Floreado combina estilo y confort, ideal para un look casual pero llamativo. Perfecto para cualquier ocasión.', 'Casual y Atractivo', 'https://raw.githubusercontent.com/rgap/Ecommerce-G15-ImageRepository/main/images/polo-marron-ripcurl-floreado.jpg', 'Composición mezclada: 60% algodón y 40% poliéster. Duradero y cómodo.', 'No usar lejía. Lavar a máquina temperatura normal. No secar en secadora. Planchar a temperatura media.', NOW(), NOW());
+('Polo Ripcurl Marrón Floreado', 
+ 'El Polo Ripcurl Marrón Floreado combina estilo y confort, ideal para un look casual pero llamativo. Perfecto para cualquier ocasión.', 
+ 'Casual y Atractivo', 
+ 'https://raw.githubusercontent.com/rgap/Ecommerce-G15-ImageRepository/main/images/polo-marron-ripcurl-floreado.jpg', 
+ 'Composición mezclada: 60% algodón y 40% poliéster. Duradero y cómodo.', 
+ 'No usar lejía. Lavar a máquina temperatura normal. No secar en secadora. Planchar a temperatura media.', 
+ 'polo-ripcurl-marron-floreado', 
+ NOW(), 
+ NOW());
 
 -- Insertar imágenes adicionales en la tabla `image`
 INSERT INTO image (image_url, image_product_id) VALUES 
@@ -235,9 +267,17 @@ INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quanti
 
 -- Insertar en la tabla `product`
 INSERT INTO product 
-(product_title, product_description, product_short_description, product_main_image, product_material, product_care, created_at, updated_at) 
+(product_title, product_description, product_short_description, product_main_image, product_material, product_care, slug, created_at, updated_at) 
 VALUES 
-('Polo Nike Azul Claro', 'Este polo Nike en azul claro es la combinación perfecta de comodidad y estilo, ideal para un look relajado y deportivo.', 'Cómodo y Estilizado', 'https://raw.githubusercontent.com/rgap/Ecommerce-G15-ImageRepository/main/images/polo-azul-claro-nike-m.jpg', '100% Algodón orgánico. Suave al tacto y amigable con el medio ambiente.', 'Lavado en ciclo suave con colores similares. No usar blanqueador. Secar a baja temperatura.', NOW(), NOW());
+('Polo Nike Azul Claro', 
+ 'Este polo Nike en azul claro es la combinación perfecta de comodidad y estilo, ideal para un look relajado y deportivo.', 
+ 'Cómodo y Estilizado', 
+ 'https://raw.githubusercontent.com/rgap/Ecommerce-G15-ImageRepository/main/images/polo-azul-claro-nike-m.jpg', 
+ '100% Algodón orgánico. Suave al tacto y amigable con el medio ambiente.', 
+ 'Lavado en ciclo suave con colores similares. No usar blanqueador. Secar a baja temperatura.', 
+ 'polo-nike-azul-claro', 
+ NOW(), 
+ NOW());
 
 -- Insertar imágenes adicionales en la tabla `image`
 INSERT INTO image (image_url, image_product_id) VALUES 
@@ -284,9 +324,17 @@ INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quanti
 
 -- Insertar en la tabla `product`
 INSERT INTO product 
-(product_title, product_description, product_short_description, product_main_image, product_material, product_care, created_at, updated_at) 
+(product_title, product_description, product_short_description, product_main_image, product_material, product_care, slug, created_at, updated_at) 
 VALUES 
-('Polo Quiksilver Verde Claro', 'Polo Quiksilver en tono verde claro, perfecto para un estilo casual y moderno. Ideal para el día a día y salidas casuales.', 'Casual y Moderno', 'https://raw.githubusercontent.com/rgap/Ecommerce-G15-ImageRepository/main/images/polo-verde-claro-quiksilver.jpg', 'Material premium: 75% algodón y 25% poliéster. Resistente y fresco.', 'Lavar a mano con agua tibia. No usar secadora. Planchar a baja temperatura. Evitar el uso de blanqueadores.', NOW(), NOW());
+('Polo Quiksilver Verde Claro', 
+ 'Polo Quiksilver en tono verde claro, perfecto para un estilo casual y moderno. Ideal para el día a día y salidas casuales.', 
+ 'Casual y Moderno', 
+ 'https://raw.githubusercontent.com/rgap/Ecommerce-G15-ImageRepository/main/images/polo-verde-claro-quiksilver.jpg', 
+ 'Material premium: 75% algodón y 25% poliéster. Resistente y fresco.', 
+ 'Lavar a mano con agua tibia. No usar secadora. Planchar a baja temperatura. Evitar el uso de blanqueadores.', 
+ 'polo-quiksilver-verde-claro', 
+ NOW(), 
+ NOW());
 
 -- Insertar imágenes adicionales en la tabla `image`
 INSERT INTO image (image_url, image_product_id) VALUES 
@@ -333,9 +381,17 @@ INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quanti
 
 -- Insertar en la tabla `product`
 INSERT INTO product 
-(product_title, product_description, product_short_description, product_main_image, product_material, product_care, created_at, updated_at) 
+(product_title, product_description, product_short_description, product_main_image, product_material, product_care, slug, created_at, updated_at) 
 VALUES 
-('Polo Ripcurl Azul Claro', 'Este Polo Ripcurl en azul claro es perfecto para un estilo relajado y versátil, adaptándose a diversas ocasiones y estilos.', 'Versátil y Relajado', 'https://raw.githubusercontent.com/rgap/Ecommerce-G15-ImageRepository/main/images/polo-azul-claro-ripcurl.jpg', 'Composición: 80% algodón, 20% poliéster. Ideal para confort diario.', 'Lavado a máquina con colores similares. No usar cloro. Secar al aire libre.', NOW(), NOW());
+('Polo Ripcurl Azul Claro', 
+ 'Este Polo Ripcurl en azul claro es perfecto para un estilo relajado y versátil, adaptándose a diversas ocasiones y estilos.', 
+ 'Versátil y Relajado', 
+ 'https://raw.githubusercontent.com/rgap/Ecommerce-G15-ImageRepository/main/images/polo-azul-claro-ripcurl.jpg', 
+ 'Composición: 80% algodón, 20% poliéster. Ideal para confort diario.', 
+ 'Lavado a máquina con colores similares. No usar cloro. Secar al aire libre.', 
+ 'polo-ripcurl-azul-claro', 
+ NOW(), 
+ NOW());
 
 -- Insertar imágenes adicionales en la tabla `image`
 INSERT INTO image (image_url, image_product_id) VALUES 
@@ -385,9 +441,17 @@ INSERT INTO color (color_name, color_code, created_at, updated_at) VALUES
 
 -- Insertar en la tabla `product`
 INSERT INTO product 
-(product_title, product_description, product_short_description, product_main_image, product_material, product_care, created_at, updated_at) 
+(product_title, product_description, product_short_description, product_main_image, product_material, product_care, slug, created_at, updated_at) 
 VALUES 
-('Polo Ripcurl Guinda', 'El Polo Ripcurl en tono guinda combina comodidad y elegancia, ideal para un estilo sofisticado en cualquier ocasión.', 'Elegante y Cómodo', 'https://raw.githubusercontent.com/rgap/Ecommerce-G15-ImageRepository/main/images/polo-guinda-ripcurl.jpg', 'Tela suave y resistente, 60% algodón y 40% poliéster, para un uso prolongado.', 'Lavar a mano en agua fría. No exprimir. Secar a la sombra para mantener el color.', NOW(), NOW());
+('Polo Ripcurl Guinda', 
+ 'El Polo Ripcurl en tono guinda combina comodidad y elegancia, ideal para un estilo sofisticado en cualquier ocasión.', 
+ 'Elegante y Cómodo', 
+ 'https://raw.githubusercontent.com/rgap/Ecommerce-G15-ImageRepository/main/images/polo-guinda-ripcurl.jpg', 
+ 'Tela suave y resistente, 60% algodón y 40% poliéster, para un uso prolongado.', 
+ 'Lavar a mano en agua fría. No exprimir. Secar a la sombra para mantener el color.', 
+ 'polo-ripcurl-guinda', 
+ NOW(), 
+ NOW());
 
 -- Insertar imágenes adicionales en la tabla `image`
 INSERT INTO image (image_url, image_product_id) VALUES 
@@ -434,9 +498,17 @@ INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quanti
 
 -- Insertar en la tabla `product`
 INSERT INTO product 
-(product_title, product_description, product_short_description, product_main_image, product_material, product_care, created_at, updated_at) 
+(product_title, product_description, product_short_description, product_main_image, product_material, product_care, slug, created_at, updated_at) 
 VALUES 
-('Polo Volcom Negro', 'Polo Volcom en color negro, un básico indispensable con un diseño moderno y materiales de calidad superior.', 'Moderno y Versátil', 'https://raw.githubusercontent.com/rgap/Ecommerce-G15-ImageRepository/main/images/polo-negro-volcom.jpg', 'Hecho con 100% algodón orgánico, suave al tacto y amigable con el medio ambiente.', 'Lavar a máquina con colores similares, agua fría. No usar secadora. Planchar a temperatura baja.', NOW(), NOW());
+('Polo Volcom Negro', 
+ 'Polo Volcom en color negro, un básico indispensable con un diseño moderno y materiales de calidad superior.', 
+ 'Moderno y Versátil', 
+ 'https://raw.githubusercontent.com/rgap/Ecommerce-G15-ImageRepository/main/images/polo-negro-volcom.jpg', 
+ 'Hecho con 100% algodón orgánico, suave al tacto y amigable con el medio ambiente.', 
+ 'Lavar a máquina con colores similares, agua fría. No usar secadora. Planchar a temperatura baja.', 
+ 'polo-volcom-negro', 
+ NOW(), 
+ NOW());
 
 -- Insertar imágenes adicionales en la tabla `image`
 INSERT INTO image (image_url, image_product_id) VALUES 
@@ -483,9 +555,17 @@ INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quanti
 
 -- Insertar en la tabla `product`
 INSERT INTO product 
-(product_title, product_description, product_short_description, product_main_image, product_material, product_care, created_at, updated_at) 
+(product_title, product_description, product_short_description, product_main_image, product_material, product_care, slug, created_at, updated_at) 
 VALUES 
-('Polo Adidas Morado', 'Con un diseño único y moderno, este polo morado de Adidas es perfecto para cualquier ocasión, combinando estilo y confort.', 'Estilo Único y Fresco', 'https://raw.githubusercontent.com/rgap/Ecommerce-G15-ImageRepository/main/images/polo-morado-adidas.jpg', 'Fabricado con una mezcla perfecta de algodón (60%) y poliéster (40%), garantizando comodidad y resistencia.', 'Recomendable lavar a máquina en programa delicado. No usar secadora. Planchar a baja temperatura.', NOW(), NOW());
+('Polo Adidas Morado', 
+ 'Con un diseño único y moderno, este polo morado de Adidas es perfecto para cualquier ocasión, combinando estilo y confort.', 
+ 'Estilo Único y Fresco', 
+ 'https://raw.githubusercontent.com/rgap/Ecommerce-G15-ImageRepository/main/images/polo-morado-adidas.jpg', 
+ 'Fabricado con una mezcla perfecta de algodón (60%) y poliéster (40%), garantizando comodidad y resistencia.', 
+ 'Recomendable lavar a máquina en programa delicado. No usar secadora. Planchar a baja temperatura.', 
+ 'polo-adidas-morado', 
+ NOW(), 
+ NOW());
 
 -- Insertar imágenes adicionales en la tabla `image`
 INSERT INTO image (image_url, image_product_id) VALUES 
@@ -532,9 +612,17 @@ INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quanti
 
 -- Insertar en la tabla `product`
 INSERT INTO product 
-(product_title, product_description, product_short_description, product_main_image, product_material, product_care, created_at, updated_at) 
+(product_title, product_description, product_short_description, product_main_image, product_material, product_care, slug, created_at, updated_at) 
 VALUES 
-('Polo Nike Gris Naranja', 'Este polo gris con naranja de Nike es la combinación perfecta de estilo y comodidad, ideal para el uso diario y ocasiones casuales.', 'Cómodo y Estilizado', 'https://raw.githubusercontent.com/rgap/Ecommerce-G15-ImageRepository/main/images/polo-melange-nike.jpg', 'Hecho con un 80% de algodón y 20% poliéster, ofrece confort y durabilidad en su uso diario.', 'Lavar en máquina en programa para prendas delicadas, secar colgado, no usar blanqueador.', NOW(), NOW());
+('Polo Nike Gris Naranja', 
+ 'Este polo gris con naranja de Nike es la combinación perfecta de estilo y comodidad, ideal para el uso diario y ocasiones casuales.', 
+ 'Cómodo y Estilizado', 
+ 'https://raw.githubusercontent.com/rgap/Ecommerce-G15-ImageRepository/main/images/polo-melange-nike.jpg', 
+ 'Hecho con un 80% de algodón y 20% poliéster, ofrece confort y durabilidad en su uso diario.', 
+ 'Lavar en máquina en programa para prendas delicadas, secar colgado, no usar blanqueador.', 
+ 'polo-nike-gris-naranja', 
+ NOW(), 
+ NOW());
 
 -- Insertar imágenes adicionales en la tabla `image`
 INSERT INTO image (image_url, image_product_id) VALUES 
@@ -581,9 +669,17 @@ INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quanti
 
 -- Insertar en la tabla `product`
 INSERT INTO product 
-(product_title, product_description, product_short_description, product_main_image, product_material, product_care, created_at, updated_at) 
+(product_title, product_description, product_short_description, product_main_image, product_material, product_care, slug, created_at, updated_at) 
 VALUES 
-('Polo Quiksilver Blanco', 'El polo Quiksilver blanco es una pieza esencial para un estilo casual y relajado, perfecto para el día a día o actividades al aire libre.', 'Casual y Ecológico', 'https://raw.githubusercontent.com/rgap/Ecommerce-G15-ImageRepository/main/images/polo-blanco-quiksilver.jpg', 'Fabricado con 100% algodón orgánico, brinda una experiencia de uso suave y respetuosa con el medio ambiente.', 'Lavar a mano o en ciclo suave, no usar secadora, planchar a baja temperatura.', NOW(), NOW());
+('Polo Quiksilver Blanco', 
+ 'El polo Quiksilver blanco es una pieza esencial para un estilo casual y relajado, perfecto para el día a día o actividades al aire libre.', 
+ 'Casual y Ecológico', 
+ 'https://raw.githubusercontent.com/rgap/Ecommerce-G15-ImageRepository/main/images/polo-blanco-quiksilver.jpg', 
+ 'Fabricado con 100% algodón orgánico, brinda una experiencia de uso suave y respetuosa con el medio ambiente.', 
+ 'Lavar a mano o en ciclo suave, no usar secadora, planchar a baja temperatura.', 
+ 'polo-quiksilver-blanco', 
+ NOW(), 
+ NOW());
 
 -- Insertar imágenes adicionales en la tabla `image`
 INSERT INTO image (image_url, image_product_id) VALUES 
@@ -630,9 +726,17 @@ INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quanti
 
 -- Insertar en la tabla `product`
 INSERT INTO product 
-(product_title, product_description, product_short_description, product_main_image, product_material, product_care, created_at, updated_at) 
+(product_title, product_description, product_short_description, product_main_image, product_material, product_care, slug, created_at, updated_at) 
 VALUES 
-('Polo Adidas Amarillo', 'El polo amarillo de Adidas combina estilo y comodidad, perfecto para actividades deportivas o un look casual diario.', 'Deporte y Estilo Diario', 'https://raw.githubusercontent.com/rgap/Ecommerce-G15-ImageRepository/main/images/polo-amarillo-adidas.jpg', 'Tejido 90% algodón y 10% elastano para mayor comodidad y flexibilidad durante todo el día.', 'Lavar a máquina a 30ºC. No usar blanqueador. No apto para secadora. Planchar a temperatura media.', NOW(), NOW());
+('Polo Adidas Amarillo', 
+ 'El polo amarillo de Adidas combina estilo y comodidad, perfecto para actividades deportivas o un look casual diario.', 
+ 'Deporte y Estilo Diario', 
+ 'https://raw.githubusercontent.com/rgap/Ecommerce-G15-ImageRepository/main/images/polo-amarillo-adidas.jpg', 
+ 'Tejido 90% algodón y 10% elastano para mayor comodidad y flexibilidad durante todo el día.', 
+ 'Lavar a máquina a 30ºC. No usar blanqueador. No apto para secadora. Planchar a temperatura media.', 
+ 'polo-adidas-amarillo', 
+ NOW(), 
+ NOW());
 
 -- Insertar imágenes adicionales en la tabla `image`
 INSERT INTO image (image_url, image_product_id) VALUES 
@@ -679,9 +783,17 @@ INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quanti
 
 -- Insertar en la tabla `product`
 INSERT INTO product 
-(product_title, product_description, product_short_description, product_main_image, product_material, product_care, created_at, updated_at) 
+(product_title, product_description, product_short_description, product_main_image, product_material, product_care, slug, created_at, updated_at) 
 VALUES 
-('Polo Nike Azul', 'Este polo Nike en tono azul es ideal para cualquier actividad, ofreciendo confort y un estilo moderno y versátil.', 'Confort y Estilo Moderno', 'https://raw.githubusercontent.com/rgap/Ecommerce-G15-ImageRepository/main/images/polo-azul-nike.jpg', '100% algodón de alta calidad, garantiza durabilidad y una sensación agradable al tacto.', 'Lavado a máquina en agua fría con colores similares. No usar lejía. Secar en horizontal. No planchar los estampados.', NOW(), NOW());
+('Polo Nike Azul', 
+ 'Este polo Nike en tono azul es ideal para cualquier actividad, ofreciendo confort y un estilo moderno y versátil.', 
+ 'Confort y Estilo Moderno', 
+ 'https://raw.githubusercontent.com/rgap/Ecommerce-G15-ImageRepository/main/images/polo-azul-nike.jpg', 
+ '100% algodón de alta calidad, garantiza durabilidad y una sensación agradable al tacto.', 
+ 'Lavado a máquina en agua fría con colores similares. No usar lejía. Secar en horizontal. No planchar los estampados.', 
+ 'polo-nike-azul', 
+ NOW(), 
+ NOW());
 
 -- Insertar imágenes adicionales en la tabla `image`
 INSERT INTO image (image_url, image_product_id) VALUES 
@@ -728,9 +840,17 @@ INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quanti
 
 -- Insertar en la tabla `product`
 INSERT INTO product 
-(product_title, product_description, product_short_description, product_main_image, product_material, product_care, created_at, updated_at) 
+(product_title, product_description, product_short_description, product_main_image, product_material, product_care, slug, created_at, updated_at) 
 VALUES 
-('Polo Quiksilver Celeste', 'Este polo celeste es perfecto para un look casual de fin de semana. Combina estilo y confort de manera única.', 'Estilo Casual de Finde', 'https://raw.githubusercontent.com/rgap/Ecommerce-G15-ImageRepository/main/images/polo-celeste-quiksilver.jpg', 'Confeccionado con 95% algodón y 5% spandex, brindando elasticidad y comodidad todo el día.', 'Lavado suave a máquina a 30°C. No usar cloro. Secar a baja temperatura. No lavar en seco. Planchar a temperatura baja.', NOW(), NOW());
+('Polo Quiksilver Celeste', 
+ 'Este polo celeste es perfecto para un look casual de fin de semana. Combina estilo y confort de manera única.', 
+ 'Estilo Casual de Finde', 
+ 'https://raw.githubusercontent.com/rgap/Ecommerce-G15-ImageRepository/main/images/polo-celeste-quiksilver.jpg', 
+ 'Confeccionado con 95% algodón y 5% spandex, brindando elasticidad y comodidad todo el día.', 
+ 'Lavado suave a máquina a 30°C. No usar cloro. Secar a baja temperatura. No lavar en seco. Planchar a temperatura baja.', 
+ 'polo-quiksilver-celeste', 
+ NOW(), 
+ NOW());
 
 -- Insertar imágenes adicionales en la tabla `image`
 INSERT INTO image (image_url, image_product_id) VALUES 
@@ -777,9 +897,17 @@ INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quanti
 
 -- Insertar en la tabla `product`
 INSERT INTO product 
-(product_title, product_description, product_short_description, product_main_image, product_material, product_care, created_at, updated_at) 
+(product_title, product_description, product_short_description, product_main_image, product_material, product_care, slug, created_at, updated_at) 
 VALUES 
-('Polo Volcom Negro', 'El Polo Volcom Negro ofrece un estilo atemporal con su diseño minimalista. Ideal para combinar con cualquier atuendo.', 'Estilo Minimalista', 'https://raw.githubusercontent.com/rgap/Ecommerce-G15-ImageRepository/main/images/polo-negro-volcom.jpg', 'Fabricado con tejido premium de 100% algodón para máxima comodidad y durabilidad.', 'Lavar a máquina en frío. No usar cloro. Secar al aire libre. No planchar sobre el estampado. Lavar colores oscuros por separado.', NOW(), NOW());
+('Polo Volcom Gris', 
+ 'El Polo Volcom Gris ofrece un estilo atemporal con su diseño minimalista. Ideal para combinar con cualquier atuendo.', 
+ 'Estilo Minimalista', 
+ 'https://raw.githubusercontent.com/rgap/Ecommerce-G15-ImageRepository/main/images/polo-gris-volcom.png', 
+ 'Fabricado con tejido premium de 100% algodón para máxima comodidad y durabilidad.', 
+ 'Lavar a máquina en frío. No usar cloro. Secar al aire libre. No planchar sobre el estampado. Lavar colores oscuros por separado.', 
+ 'polo-volcom-gris', 
+ NOW(), 
+ NOW());
 
 -- Insertar imágenes adicionales en la tabla `image`
 INSERT INTO image (image_url, image_product_id) VALUES 
@@ -826,9 +954,17 @@ INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quanti
 
 -- Insertar en la tabla `product`
 INSERT INTO product 
-(product_title, product_description, product_short_description, product_main_image, product_material, product_care, created_at, updated_at) 
+(product_title, product_description, product_short_description, product_main_image, product_material, product_care, slug, created_at, updated_at) 
 VALUES 
-('Polo Nike Gris', 'Elegante polo gris Nike, con diseño moderno y material de alta calidad. Ideal para el día a día o para hacer deporte.', 'Elegante y Moderno', 'https://raw.githubusercontent.com/rgap/Ecommerce-G15-ImageRepository/main/images/polo-gris-nike.jpg', 'Fabricado con 80% algodón y 20% poliéster, garantiza comodidad y resistencia a largo plazo.', 'Lavado en máquina con agua tibia. No usar cloro. Secar colgado en sombra. No planchar sobre estampado.', NOW(), NOW());
+('Polo Nike Gris', 
+ 'Elegante polo gris Nike, con diseño moderno y material de alta calidad. Ideal para el día a día o para hacer deporte.', 
+ 'Elegante y Moderno', 
+ 'https://raw.githubusercontent.com/rgap/Ecommerce-G15-ImageRepository/main/images/polo-gris-nike.jpg', 
+ 'Fabricado con 80% algodón y 20% poliéster, garantiza comodidad y resistencia a largo plazo.', 
+ 'Lavado en máquina con agua tibia. No usar cloro. Secar colgado en sombra. No planchar sobre estampado.', 
+ 'polo-nike-gris', 
+ NOW(), 
+ NOW());
 
 -- Insertar imágenes adicionales en la tabla `image`
 INSERT INTO image (image_url, image_product_id) VALUES 
@@ -875,9 +1011,17 @@ INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quanti
 
 -- Insertar en la tabla `product`
 INSERT INTO product 
-(product_title, product_description, product_short_description, product_main_image, product_material, product_care, created_at, updated_at) 
+(product_title, product_description, product_short_description, product_main_image, product_material, product_care, slug, created_at, updated_at) 
 VALUES 
-('Polo Adidas Rojo', 'Polo rojo vibrante de Adidas, perfecto para un look llamativo. Confortable y versátil para cualquier ocasión.', 'Vibrante y Confortable', 'https://raw.githubusercontent.com/rgap/Ecommerce-G15-ImageRepository/main/images/polo-rojo-adidas.jpg', 'Tejido suave y resistente, 60% algodón y 40% poliéster, ideal para uso frecuente.', 'Lavado suave a máquina en frío. No usar lejía. Secar en plano. Planchar a temperatura media si es necesario.', NOW(), NOW());
+('Polo Adidas Rojo', 
+ 'Polo rojo vibrante de Adidas, perfecto para un look llamativo. Confortable y versátil para cualquier ocasión.', 
+ 'Vibrante y Confortable', 
+ 'https://raw.githubusercontent.com/rgap/Ecommerce-G15-ImageRepository/main/images/polo-rojo-adidas.jpg', 
+ 'Tejido suave y resistente, 60% algodón y 40% poliéster, ideal para uso frecuente.', 
+ 'Lavado suave a máquina en frío. No usar lejía. Secar en plano. Planchar a temperatura media si es necesario.', 
+ 'polo-adidas-rojo', 
+ NOW(), 
+ NOW());
 
 -- Insertar imágenes adicionales en la tabla `image`
 INSERT INTO image (image_url, image_product_id) VALUES 
@@ -924,9 +1068,17 @@ INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quanti
 
 -- Insertar en la tabla `product`
 INSERT INTO product 
-(product_title, product_description, product_short_description, product_main_image, product_material, product_care, created_at, updated_at) 
+(product_title, product_description, product_short_description, product_main_image, product_material, product_care, slug, created_at, updated_at) 
 VALUES 
-('Polo Quiksilver Verde Pasto', 'Este polo Quiksilver en tono verde pasto combina estilo y sostenibilidad. Ideal para un look casual y relajado.', 'Estilo Sustentable', 'https://raw.githubusercontent.com/rgap/Ecommerce-G15-ImageRepository/main/images/polo-verdepasto-quiksilver.jpg', 'Confeccionado en 100% algodón orgánico, ofrece una textura suave y amigable con el ambiente.', 'Lavar a mano con agua fría. No usar secadora. No blanquear. Planchar a baja temperatura si es necesario.', NOW(), NOW());
+('Polo Quiksilver Verde Pasto', 
+ 'Este polo Quiksilver en tono verde pasto combina estilo y sostenibilidad. Ideal para un look casual y relajado.', 
+ 'Estilo Sustentable', 
+ 'https://raw.githubusercontent.com/rgap/Ecommerce-G15-ImageRepository/main/images/polo-verdepasto-quiksilver.jpg', 
+ 'Confeccionado en 100% algodón orgánico, ofrece una textura suave y amigable con el ambiente.', 
+ 'Lavar a mano con agua fría. No usar secadora. No blanquear. Planchar a baja temperatura si es necesario.', 
+ 'polo-quiksilver-verde-pasto', 
+ NOW(), 
+ NOW());
 
 -- Insertar imágenes adicionales en la tabla `image`
 INSERT INTO image (image_url, image_product_id) VALUES 
@@ -973,9 +1125,17 @@ INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quanti
 
 -- Insertar en la tabla `product`
 INSERT INTO product 
-(product_title, product_description, product_short_description, product_main_image, product_material, product_care, created_at, updated_at) 
+(product_title, product_description, product_short_description, product_main_image, product_material, product_care, slug, created_at, updated_at) 
 VALUES 
-('Polo Quiksilver Jaspeado Rojo', 'El polo Quiksilver jaspeado rojo combina estilo y comodidad. Ideal para un look casual y deportivo.', 'Estilo Casual Jaspeado', 'https://raw.githubusercontent.com/rgap/Ecommerce-G15-ImageRepository/main/images/polo-rojojaspeado-quiksilver.jpg', 'Material resistente, 70% algodón, 30% poliéster, perfecto para el uso diario y actividades al aire libre.', 'Lavado a máquina en ciclo suave. No usar cloro. Secado en tendedero. Planchado a temperatura baja.', NOW(), NOW());
+('Polo Quiksilver Jaspeado Rojo', 
+ 'El polo Quiksilver jaspeado rojo combina estilo y comodidad. Ideal para un look casual y deportivo.', 
+ 'Estilo Casual Jaspeado', 
+ 'https://raw.githubusercontent.com/rgap/Ecommerce-G15-ImageRepository/main/images/polo-rojojaspeado-quiksilver.jpg', 
+ 'Material resistente, 70% algodón, 30% poliéster, perfecto para el uso diario y actividades al aire libre.', 
+ 'Lavado a máquina en ciclo suave. No usar cloro. Secado en tendedero. Planchado a temperatura baja.', 
+ 'polo-quiksilver-jaspeado-rojo', 
+ NOW(), 
+ NOW());
 
 -- Insertar imágenes adicionales en la tabla `image`
 INSERT INTO image (image_url, image_product_id) VALUES 
@@ -1022,9 +1182,17 @@ INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quanti
 
 -- Insertar en la tabla `product`
 INSERT INTO product 
-(product_title, product_description, product_short_description, product_main_image, product_material, product_care, created_at, updated_at) 
+(product_title, product_description, product_short_description, product_main_image, product_material, product_care, slug, created_at, updated_at) 
 VALUES 
-('Polo Ripcurl Verde Suave', 'Polo Ripcurl de tono verde suave, perfecto para cualquier ocasión. Cómodo, duradero y fácil de combinar.', 'Confort y Estilo Diario', 'https://raw.githubusercontent.com/rgap/Ecommerce-G15-ImageRepository/main/images/polo-verdesuave-ripcurl.jpg', 'Confeccionado con 80% algodón orgánico y 20% poliéster reciclado para mayor comodidad y durabilidad.', 'Lavar en agua fría. No usar blanqueador. Secar a la sombra. Planchar a temperatura moderada.', NOW(), NOW());
+('Polo Ripcurl Verde Suave', 
+ 'Polo Ripcurl de tono verde suave, perfecto para cualquier ocasión. Cómodo, duradero y fácil de combinar.', 
+ 'Confort y Estilo Diario', 
+ 'https://raw.githubusercontent.com/rgap/Ecommerce-G15-ImageRepository/main/images/polo-verdesuave-ripcurl.jpg', 
+ 'Confeccionado con 80% algodón orgánico y 20% poliéster reciclado para mayor comodidad y durabilidad.', 
+ 'Lavar en agua fría. No usar blanqueador. Secar a la sombra. Planchar a temperatura moderada.', 
+ 'polo-ripcurl-verde-suave', 
+ NOW(), 
+ NOW());
 
 -- Insertar imágenes adicionales en la tabla `image`
 INSERT INTO image (image_url, image_product_id) VALUES 
@@ -1071,9 +1239,17 @@ INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quanti
 
 -- Insertar en la tabla `product`
 INSERT INTO product 
-(product_title, product_description, product_short_description, product_main_image, product_material, product_care, created_at, updated_at) 
+(product_title, product_description, product_short_description, product_main_image, product_material, product_care, slug, created_at, updated_at) 
 VALUES 
-('Polo Billabong Rojo Clásico', 'Este polo Billabong en rojo clásico combina estilo y comodidad, perfecto para un look casual.', 'Estilo Rojo Billabong', 'https://raw.githubusercontent.com/rgap/Ecommerce-G15-ImageRepository/main/images/polo-rojo-billabong2.jpg', 'Tejido de alta calidad, 85% algodón y 15% poliéster, ideal para comodidad y durabilidad.', 'Lavar en ciclo suave con agua fría. No usar secadora. Planchar a baja temperatura si es necesario.', NOW(), NOW());
+('Polo Billabong Rojo Clásico', 
+ 'Este polo Billabong en rojo clásico combina estilo y comodidad, perfecto para un look casual.', 
+ 'Estilo Rojo Billabong', 
+ 'https://raw.githubusercontent.com/rgap/Ecommerce-G15-ImageRepository/main/images/polo-rojo-billabong2.jpg', 
+ 'Tejido de alta calidad, 85% algodón y 15% poliéster, ideal para comodidad y durabilidad.', 
+ 'Lavar en ciclo suave con agua fría. No usar secadora. Planchar a baja temperatura si es necesario.', 
+ 'polo-billabong-rojo-clasico', 
+ NOW(), 
+ NOW());
 
 -- Insertar imágenes adicionales en la tabla `image`
 INSERT INTO image (image_url, image_product_id) VALUES 
