@@ -114,10 +114,8 @@ export async function destroy(req, res) {
 
 // Shared function to process products
 function processProducts(products) {
-  return products.map((product) => {
-    const availableStock = product.Stock.filter(
-      (Item) => Item.quantity > 0
-    ).map((Item) => ({
+  return products.map(product => {
+    const availableStock = product.Stock.filter(Item => Item.quantity > 0).map(Item => ({
       ...Item,
       price: Item.price,
       colorName: Item.color.name,
@@ -126,7 +124,7 @@ function processProducts(products) {
 
     const sortedByPrice = availableStock.sort((a, b) => a.price - b.price);
     const uniqueColors = new Map();
-    sortedByPrice.forEach((Item) => {
+    sortedByPrice.forEach(Item => {
       if (!uniqueColors.has(Item.colorName) && uniqueColors.size < 3) {
         uniqueColors.set(Item.colorName, {
           name: Item.colorName,
@@ -136,8 +134,7 @@ function processProducts(products) {
     });
 
     const colors = Array.from(uniqueColors.values());
-    const minimumPrice =
-      sortedByPrice.length > 0 ? sortedByPrice[0].price : null;
+    const minimumPrice = sortedByPrice.length > 0 ? sortedByPrice[0].price : null;
 
     return {
       ...product,
@@ -213,7 +210,7 @@ export async function getRelatedProducts(req, res) {
       },
     });
     let relatedProducts = products
-      .map((product) => ({
+      .map(product => ({
         ...product,
         similarity: jaccardSimilarity(title, product.title),
       }))
@@ -231,7 +228,7 @@ export async function getRelatedProducts(req, res) {
 function jaccardSimilarity(str1, str2) {
   const set1 = new Set(str1.split(" "));
   const set2 = new Set(str2.split(" "));
-  const intersection = new Set([...set1].filter((x) => set2.has(x)));
+  const intersection = new Set([...set1].filter(x => set2.has(x)));
   const union = new Set([...set1, ...set2]);
   return intersection.size / union.size;
 }
@@ -264,13 +261,104 @@ export async function getProductPDP(req, res) {
     const prices = {};
     const colorMap = new Map();
     const sizeSet = new Set();
-    const imageArray = product.Image.map((img) => img.url); // Extract image URLs
+    const imageArray = product.Image.map(img => img.url); // Extract image URLs
     let minPrice = Number.MAX_VALUE;
     let minimumPriceColor = null;
     let minimumPriceSize = null;
 
     // Process each stock item
-    product.Stock.forEach((Item) => {
+    product.Stock.forEach(Item => {
+      if (Item.quantity > 0) {
+        const size = Item.size.name;
+        const colorName = Item.color.name;
+        const hexCode = Item.color.code;
+        const price = Item.price.toFixed(2);
+
+        // Add color and size to respective sets
+        colorMap.set(colorName, hexCode);
+        sizeSet.add(size);
+
+        // Initialize nested objects if not already present
+        stock[size] = stock[size] || {};
+        prices[size] = prices[size] || {};
+
+        // Assign quantity and price
+        stock[size][colorName] = Item.quantity;
+        prices[size][colorName] = price;
+
+        // Update minimum price and corresponding color and size
+        if (parseFloat(price) < minPrice) {
+          minPrice = parseFloat(price);
+          minimumPriceColor = colorName;
+          minimumPriceSize = size;
+        }
+      }
+    });
+
+    // Convert sets and maps to arrays
+    const availableSizes = Array.from(sizeSet);
+    const availableColors = Array.from(colorMap, ([name, hexCode]) => ({
+      name,
+      hexCode,
+    }));
+
+    // Construct the response object
+    const processedProduct = {
+      ...product,
+      availableSizes,
+      availableColors,
+      stock,
+      prices,
+      imageArray,
+      minimumPriceColor,
+      minimumPriceSize,
+      Stock: undefined, // Exclude the original Stock array
+      Image: undefined, // Exclude the original Image array
+    };
+
+    // Return the processed product
+    return responseSuccess({ res, data: processedProduct, status: 200 });
+  } catch (error) {
+    // Handle any errors
+    return responseError({ res, data: error.message });
+  }
+}
+
+export async function getProductPDPBySlug(req, res) {
+  try {
+    // Fetch the product with the given ID, including the related Stock, Color, Size, and Images
+    const product = await prisma.product.findUnique({
+      where: {
+        slug: req.params.slug,
+      },
+      include: {
+        Stock: {
+          include: {
+            color: true,
+            size: true,
+          },
+        },
+        Image: true, // Include related images
+      },
+    });
+
+    // Check if the product exists
+    if (!product) {
+      return responseError({ res, data: "Product not found", status: 404 });
+    }
+
+    // Initialize structures for stock, prices, sizes, colors, and image array
+    const stock = {};
+    const prices = {};
+    const colorMap = new Map();
+    const sizeSet = new Set();
+    const imageArray = product.Image.map(img => img.url); // Extract image URLs
+    let minPrice = Number.MAX_VALUE;
+    let minimumPriceColor = null;
+    let minimumPriceSize = null;
+
+    // Process each stock item
+    product.Stock.forEach(Item => {
       if (Item.quantity > 0) {
         const size = Item.size.name;
         const colorName = Item.color.name;

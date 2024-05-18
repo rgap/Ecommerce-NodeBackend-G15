@@ -9,6 +9,8 @@ const productRouter = Router();
 productRouter.route("/get-products-plp/:numberOfProducts").get(verifyStaticToken, Controller.getProductsPLP);
 // PDP PRODUCT
 productRouter.route("/get-product-pdp/:id").get(verifyStaticToken, Controller.getProductPDP);
+// PDP PRODUCT BY SLUG
+productRouter.route("/get-product-pdp-by-slug/:slug").get(verifyStaticToken, Controller.getProductPDPBySlug);
 
 // GET RELATED PRODUCTS BY TITLE
 productRouter.route("/related/:numberOfProducts").post(verifyStaticToken, Controller.getRelatedProducts);
