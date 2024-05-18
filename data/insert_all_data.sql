@@ -28,7 +28,7 @@ INSERT INTO size (size_name, created_at, updated_at) VALUES
 
 -- Insertar en la tabla `product`
 INSERT INTO product 
-(product_title, product_description, product_short_description, product_main_image, product_material, product_care, slug, created_at, updated_at) 
+(product_title, product_description, product_short_description, product_main_image, product_material, product_care, product_slug, created_at, updated_at) 
 VALUES 
 ('Polo Nike Verde Claro', 
  'Este polo Nike en verde claro combina estilo y comodidad. Ideal para actividades al aire libre o un look casual. Material suave y duradero.', 
@@ -89,7 +89,7 @@ INSERT INTO color (color_name, color_code, created_at, updated_at) VALUES
 
 -- Insertar en la tabla `product`
 INSERT INTO product 
-(product_title, product_description, product_short_description, product_main_image, product_material, product_care, slug, created_at, updated_at) 
+(product_title, product_description, product_short_description, product_main_image, product_material, product_care, product_slug, created_at, updated_at) 
 VALUES 
 ('Polo Quiksilver Turquesa', 
  'El polo Quiksilver en color turquesa ofrece un look fresco y relajado, perfecto para días soleados. Material resistente y fácil de cuidar.', 
@@ -149,7 +149,7 @@ INSERT INTO color (color_name, color_code, created_at, updated_at) VALUES
 
 -- Insertar en la tabla `product`
 INSERT INTO product 
-(product_title, product_description, product_short_description, product_main_image, product_material, product_care, slug, created_at, updated_at) 
+(product_title, product_description, product_short_description, product_main_image, product_material, product_care, product_slug, created_at, updated_at) 
 VALUES 
 ('Polo Billabong Amarillo', 
  'Este polo Billabong en amarillo vibrante es ideal para un estilo juvenil y desenfadado. Excelente para el día a día, combinando comodidad y moda.', 
@@ -210,7 +210,7 @@ INSERT INTO color (color_name, color_code, created_at, updated_at) VALUES
 
 -- Insertar en la tabla `product`
 INSERT INTO product 
-(product_title, product_description, product_short_description, product_main_image, product_material, product_care, slug, created_at, updated_at) 
+(product_title, product_description, product_short_description, product_main_image, product_material, product_care, product_slug, created_at, updated_at) 
 VALUES 
 ('Polo Ripcurl Marrón Floreado', 
  'El Polo Ripcurl Marrón Floreado combina estilo y confort, ideal para un look casual pero llamativo. Perfecto para cualquier ocasión.', 
@@ -267,7 +267,7 @@ INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quanti
 
 -- Insertar en la tabla `product`
 INSERT INTO product 
-(product_title, product_description, product_short_description, product_main_image, product_material, product_care, slug, created_at, updated_at) 
+(product_title, product_description, product_short_description, product_main_image, product_material, product_care, product_slug, created_at, updated_at) 
 VALUES 
 ('Polo Nike Azul Claro', 
  'Este polo Nike en azul claro es la combinación perfecta de comodidad y estilo, ideal para un look relajado y deportivo.', 
@@ -324,7 +324,7 @@ INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quanti
 
 -- Insertar en la tabla `product`
 INSERT INTO product 
-(product_title, product_description, product_short_description, product_main_image, product_material, product_care, slug, created_at, updated_at) 
+(product_title, product_description, product_short_description, product_main_image, product_material, product_care, product_slug, created_at, updated_at) 
 VALUES 
 ('Polo Quiksilver Verde Claro', 
  'Polo Quiksilver en tono verde claro, perfecto para un estilo casual y moderno. Ideal para el día a día y salidas casuales.', 
@@ -381,7 +381,7 @@ INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quanti
 
 -- Insertar en la tabla `product`
 INSERT INTO product 
-(product_title, product_description, product_short_description, product_main_image, product_material, product_care, slug, created_at, updated_at) 
+(product_title, product_description, product_short_description, product_main_image, product_material, product_care, product_slug, created_at, updated_at) 
 VALUES 
 ('Polo Ripcurl Azul Claro', 
  'Este Polo Ripcurl en azul claro es perfecto para un estilo relajado y versátil, adaptándose a diversas ocasiones y estilos.', 
@@ -441,7 +441,7 @@ INSERT INTO color (color_name, color_code, created_at, updated_at) VALUES
 
 -- Insertar en la tabla `product`
 INSERT INTO product 
-(product_title, product_description, product_short_description, product_main_image, product_material, product_care, slug, created_at, updated_at) 
+(product_title, product_description, product_short_description, product_main_image, product_material, product_care, product_slug, created_at, updated_at) 
 VALUES 
 ('Polo Ripcurl Guinda', 
  'El Polo Ripcurl en tono guinda combina comodidad y elegancia, ideal para un estilo sofisticado en cualquier ocasión.', 
@@ -498,7 +498,7 @@ INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quanti
 
 -- Insertar en la tabla `product`
 INSERT INTO product 
-(product_title, product_description, product_short_description, product_main_image, product_material, product_care, slug, created_at, updated_at) 
+(product_title, product_description, product_short_description, product_main_image, product_material, product_care, product_slug, created_at, updated_at) 
 VALUES 
 ('Polo Volcom Negro', 
  'Polo Volcom en color negro, un básico indispensable con un diseño moderno y materiales de calidad superior.', 
@@ -555,7 +555,7 @@ INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quanti
 
 -- Insertar en la tabla `product`
 INSERT INTO product 
-(product_title, product_description, product_short_description, product_main_image, product_material, product_care, slug, created_at, updated_at) 
+(product_title, product_description, product_short_description, product_main_image, product_material, product_care, product_slug, created_at, updated_at) 
 VALUES 
 ('Polo Adidas Morado', 
  'Con un diseño único y moderno, este polo morado de Adidas es perfecto para cualquier ocasión, combinando estilo y confort.', 
@@ -612,7 +612,7 @@ INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quanti
 
 -- Insertar en la tabla `product`
 INSERT INTO product 
-(product_title, product_description, product_short_description, product_main_image, product_material, product_care, slug, created_at, updated_at) 
+(product_title, product_description, product_short_description, product_main_image, product_material, product_care, product_slug, created_at, updated_at) 
 VALUES 
 ('Polo Nike Gris Naranja', 
  'Este polo gris con naranja de Nike es la combinación perfecta de estilo y comodidad, ideal para el uso diario y ocasiones casuales.', 
@@ -669,7 +669,7 @@ INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quanti
 
 -- Insertar en la tabla `product`
 INSERT INTO product 
-(product_title, product_description, product_short_description, product_main_image, product_material, product_care, slug, created_at, updated_at) 
+(product_title, product_description, product_short_description, product_main_image, product_material, product_care, product_slug, created_at, updated_at) 
 VALUES 
 ('Polo Quiksilver Blanco', 
  'El polo Quiksilver blanco es una pieza esencial para un estilo casual y relajado, perfecto para el día a día o actividades al aire libre.', 
@@ -726,7 +726,7 @@ INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quanti
 
 -- Insertar en la tabla `product`
 INSERT INTO product 
-(product_title, product_description, product_short_description, product_main_image, product_material, product_care, slug, created_at, updated_at) 
+(product_title, product_description, product_short_description, product_main_image, product_material, product_care, product_slug, created_at, updated_at) 
 VALUES 
 ('Polo Adidas Amarillo', 
  'El polo amarillo de Adidas combina estilo y comodidad, perfecto para actividades deportivas o un look casual diario.', 
@@ -783,7 +783,7 @@ INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quanti
 
 -- Insertar en la tabla `product`
 INSERT INTO product 
-(product_title, product_description, product_short_description, product_main_image, product_material, product_care, slug, created_at, updated_at) 
+(product_title, product_description, product_short_description, product_main_image, product_material, product_care, product_slug, created_at, updated_at) 
 VALUES 
 ('Polo Nike Azul', 
  'Este polo Nike en tono azul es ideal para cualquier actividad, ofreciendo confort y un estilo moderno y versátil.', 
@@ -840,7 +840,7 @@ INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quanti
 
 -- Insertar en la tabla `product`
 INSERT INTO product 
-(product_title, product_description, product_short_description, product_main_image, product_material, product_care, slug, created_at, updated_at) 
+(product_title, product_description, product_short_description, product_main_image, product_material, product_care, product_slug, created_at, updated_at) 
 VALUES 
 ('Polo Quiksilver Celeste', 
  'Este polo celeste es perfecto para un look casual de fin de semana. Combina estilo y confort de manera única.', 
@@ -897,7 +897,7 @@ INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quanti
 
 -- Insertar en la tabla `product`
 INSERT INTO product 
-(product_title, product_description, product_short_description, product_main_image, product_material, product_care, slug, created_at, updated_at) 
+(product_title, product_description, product_short_description, product_main_image, product_material, product_care, product_slug, created_at, updated_at) 
 VALUES 
 ('Polo Volcom Gris', 
  'El Polo Volcom Gris ofrece un estilo atemporal con su diseño minimalista. Ideal para combinar con cualquier atuendo.', 
@@ -954,7 +954,7 @@ INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quanti
 
 -- Insertar en la tabla `product`
 INSERT INTO product 
-(product_title, product_description, product_short_description, product_main_image, product_material, product_care, slug, created_at, updated_at) 
+(product_title, product_description, product_short_description, product_main_image, product_material, product_care, product_slug, created_at, updated_at) 
 VALUES 
 ('Polo Nike Gris', 
  'Elegante polo gris Nike, con diseño moderno y material de alta calidad. Ideal para el día a día o para hacer deporte.', 
@@ -1011,7 +1011,7 @@ INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quanti
 
 -- Insertar en la tabla `product`
 INSERT INTO product 
-(product_title, product_description, product_short_description, product_main_image, product_material, product_care, slug, created_at, updated_at) 
+(product_title, product_description, product_short_description, product_main_image, product_material, product_care, product_slug, created_at, updated_at) 
 VALUES 
 ('Polo Adidas Rojo', 
  'Polo rojo vibrante de Adidas, perfecto para un look llamativo. Confortable y versátil para cualquier ocasión.', 
@@ -1068,7 +1068,7 @@ INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quanti
 
 -- Insertar en la tabla `product`
 INSERT INTO product 
-(product_title, product_description, product_short_description, product_main_image, product_material, product_care, slug, created_at, updated_at) 
+(product_title, product_description, product_short_description, product_main_image, product_material, product_care, product_slug, created_at, updated_at) 
 VALUES 
 ('Polo Quiksilver Verde Pasto', 
  'Este polo Quiksilver en tono verde pasto combina estilo y sostenibilidad. Ideal para un look casual y relajado.', 
@@ -1125,7 +1125,7 @@ INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quanti
 
 -- Insertar en la tabla `product`
 INSERT INTO product 
-(product_title, product_description, product_short_description, product_main_image, product_material, product_care, slug, created_at, updated_at) 
+(product_title, product_description, product_short_description, product_main_image, product_material, product_care, product_slug, created_at, updated_at) 
 VALUES 
 ('Polo Quiksilver Jaspeado Rojo', 
  'El polo Quiksilver jaspeado rojo combina estilo y comodidad. Ideal para un look casual y deportivo.', 
@@ -1182,7 +1182,7 @@ INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quanti
 
 -- Insertar en la tabla `product`
 INSERT INTO product 
-(product_title, product_description, product_short_description, product_main_image, product_material, product_care, slug, created_at, updated_at) 
+(product_title, product_description, product_short_description, product_main_image, product_material, product_care, product_slug, created_at, updated_at) 
 VALUES 
 ('Polo Ripcurl Verde Suave', 
  'Polo Ripcurl de tono verde suave, perfecto para cualquier ocasión. Cómodo, duradero y fácil de combinar.', 
@@ -1239,7 +1239,7 @@ INSERT INTO stock (stock_product_id, stock_color_id, stock_size_id, stock_quanti
 
 -- Insertar en la tabla `product`
 INSERT INTO product 
-(product_title, product_description, product_short_description, product_main_image, product_material, product_care, slug, created_at, updated_at) 
+(product_title, product_description, product_short_description, product_main_image, product_material, product_care, product_slug, created_at, updated_at) 
 VALUES 
 ('Polo Billabong Rojo Clásico', 
  'Este polo Billabong en rojo clásico combina estilo y comodidad, perfecto para un look casual.', 
