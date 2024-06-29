@@ -1,14 +1,12 @@
-import axios from "axios";
 import dotenv from "dotenv";
+import mercadopago from "mercadopago"; // Import MercadoPago SDK
 import { prisma } from "../../db/index.js";
 import { responseError, responseSuccess } from "../../network/responses.js";
-import {
-  sendOrderConfirmationEmail,
-  sendOrderNotificationToAdmin,
-} from "../../services/emailService.js";
-import { formatAmount } from "../../utils/utils.js";
+import { sendOrderConfirmationEmail, sendOrderNotificationToAdmin } from "../../services/emailService.js";
 
 dotenv.config();
+
+mercadopago.configurations.setAccessToken(process.env.MERCADO_PAGO_TOKEN);
 
 ///////////////////////////// CRUD ////////////////////////////
 
@@ -34,9 +32,6 @@ export async function getOrdersByUserId(req, res) {
       where: {
         userId: userId,
       },
-      // include: {
-      //   Item: true, // Para incluir order items en la respuesta
-      // },
     });
 
     if (orders.length === 0) {
@@ -53,7 +48,7 @@ export async function getOrdersByUserId(req, res) {
   }
 }
 
-// Delete an order
+// DELETE an order
 export async function destroy(req, res) {
   try {
     const orderId = parseInt(req.params.id);
@@ -72,7 +67,7 @@ export async function destroy(req, res) {
   }
 }
 
-// Function to handle the core logic of creating an order
+// CREATE an order logic
 export async function createOrderLogic(orderData) {
   try {
     const order = await prisma.order.create({
@@ -82,9 +77,7 @@ export async function createOrderLogic(orderData) {
         payerDocumentType: orderData.payerDocumentType,
         payerDocumentNumber: orderData.payerDocumentNumber,
         installments: orderData.installments,
-        issuerId: orderData.issuerId,
         paymentMethodId: orderData.paymentMethodId,
-        token: orderData.token,
         status: orderData.status,
         amount: orderData.transactionAmount,
         shippingMethod: orderData.shippingMethod,
@@ -100,7 +93,7 @@ export async function createOrderLogic(orderData) {
         billingPhoneNumber: orderData.billingPhoneNumber,
         userId: orderData.userId,
         Item: {
-          create: orderData.cart.map((item) => ({
+          create: orderData.cart.map(item => ({
             productId: parseInt(item.id.split(".")[0]),
             title: item.title,
             color: item.color,
@@ -117,7 +110,7 @@ export async function createOrderLogic(orderData) {
   }
 }
 
-// Controller function to handle the HTTP request for creating an order
+// CREATE an order
 export async function createOrder(req, res) {
   try {
     const order = await createOrderLogic(req.body);
@@ -134,39 +127,30 @@ export async function createOrder(req, res) {
   }
 }
 
-// Function to handle the core logic of creating a MercadoPago payment
+// CREATE MercadoPago payment logic
 export async function createPaymentLogic(paymentData) {
-  const mercadoPagoData = {
-    description: "Product payment",
-    installments: paymentData.installments,
-    issuer_id: paymentData.issuerId,
-    payer: { email: paymentData.payerEmail },
-    payment_method_id: paymentData.paymentMethodId,
-    token: paymentData.token,
+  const paymentPayload = {
     transaction_amount: paymentData.transactionAmount,
+    description: "Product payment",
+    payment_method_id: paymentData.paymentMethodId,
+    payer: { email: paymentData.payerEmail },
+    installments: paymentData.installments,
+    token: paymentData.token,
+    issuer_id: paymentData.issuerId,
   };
 
   try {
-    const mercadoPagoResponse = await axios.post(
-      "https://api.mercadopago.com/v1/payments",
-      mercadoPagoData,
-      {
-        headers: {
-          "X-Idempotency-Key": "0d5020ed-1af6-469c-ae06-c3bec19954bb",
-          Authorization: `Bearer ${process.env.MERCADO_PAGO_TOKEN}`,
-          "Content-Type": "application/json",
-        },
-      }
-    );
-    return mercadoPagoResponse.data;
+    // console.log(paymentData);
+    console.log("createPaymentLogic", paymentData.payerEmail, "About to create a payment...");
+    const payment = await mercadopago.payment.create(paymentPayload);
+    console.log("createPaymentLogic", paymentData.payerEmail, "Payment created");
+    return payment.response;
   } catch (error) {
-    throw new Error(
-      `Failed to process payment with MercadoPago: ${error.message}`
-    );
+    throw new Error(`Failed to process payment with MercadoPago: ${error.message}`);
   }
 }
 
-// Controller function to handle the HTTP request for MercadoPago payment
+// CREATE MercadoPago payment
 export async function createPayment(req, res) {
   try {
     const paymentResponse = await createPaymentLogic(req.body);
@@ -185,33 +169,74 @@ export async function createPayment(req, res) {
 
 ///////////////////////////// MERCADOPAGO ////////////////////////////
 
-// CREATE MERCADOPAGO ORDER
+export async function generateCardTokenLogic(cardData) {
+  // console.log(cardData);
+  try {
+    // Create card token
+    // This validates the card data and returns a token
+    const responseCreateCardToken = await mercadopago.card_token.create({
+      card_number: cardData.cardNumber,
+      expiration_month: cardData.cardExpirationMonth,
+      expiration_year: cardData.cardExpirationYear,
+      security_code: cardData.securityCode,
+      cardholder: {
+        name: cardData.cardholderName,
+        identification: {
+          type: cardData.docType,
+          number: cardData.docNumber,
+        },
+      },
+    });
+
+    const tokenData = responseCreateCardToken.response;
+    const cardTokenResponse = {
+      token: tokenData.id,
+    };
+    return cardTokenResponse;
+  } catch (error) {
+    throw new Error(`Error creating card token: ${error.message}`);
+  }
+}
+
+// TODO: This one is actually never because of the bricks
+export async function generateCardToken(req, res) {
+  try {
+    const tokenResponse = await generateCardTokenLogic(req.body);
+    return responseSuccess({
+      res,
+      data: tokenResponse,
+      status: 200,
+    });
+  } catch (error) {
+    return responseError({
+      res,
+      data: error.message,
+      status: 500,
+    });
+  }
+}
+
+// CREATE MercadoPago order
 export async function createMercadoPagoOrder(req, res) {
   try {
-    // Step 1: Create an order using the createOrderLogic function
     const order = await createOrderLogic(req.body);
-
-    // Step 2: Prepare payment data for MercadoPago
     const paymentData = {
-      // Extract or construct payment data from req.body or order
-      installments: req.body.installments,
-      issuerId: req.body.issuerId,
-      payerEmail: req.body.payerEmail,
-      paymentMethodId: req.body.paymentMethodId,
-      token: req.body.token,
       transactionAmount: req.body.transactionAmount,
+      description: "Product payment",
+      paymentMethodId: req.body.paymentMethodId,
+      payerEmail: req.body.payerEmail,
+      installments: req.body.installments,
+      token: req.body.token,
+      issuerId: req.body.issuerId,
     };
 
-    // Step 3: Create a MercadoPago payment using the createMercadoPagoPaymentLogic function
     const mercadoPagoResponse = await createPaymentLogic(paymentData);
 
-    // Step 4: Update the order with payment information from MercadoPago
     const updatedOrder = await prisma.order.update({
       where: { id: order.id },
       data: { paymentId: mercadoPagoResponse.id },
     });
 
-    // Step 5: Send a successful response with order and payment information
     return responseSuccess({
       res,
       data: { order: updatedOrder, payment: mercadoPagoResponse },
@@ -227,14 +252,12 @@ export async function createMercadoPagoOrder(req, res) {
   }
 }
 
-///////////////////////////// CORREOS ////////////////////////////
+///////////////////////////// EMAIL ////////////////////////////
 
 export async function sendOrderEmailToUser(req, res) {
   try {
     const order = req.body;
-
     await sendOrderConfirmationEmail(order);
-
     return responseSuccess({
       res,
       data: "Order confirmation email successfully sent to the user.",
@@ -248,9 +271,7 @@ export async function sendOrderEmailToUser(req, res) {
 export async function sendOrderEmailToAdmin(req, res) {
   try {
     const order = req.body;
-
     await sendOrderNotificationToAdmin(order);
-
     return responseSuccess({
       res,
       data: "Notification of new order sent to the administrator successfully.",

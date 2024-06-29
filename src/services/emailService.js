@@ -17,10 +17,10 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-const sendEmail = async (mailOptions) => {
+const sendEmail = async mailOptions => {
   try {
     const info = await transporter.sendMail(mailOptions);
-    console.log(`Email sent: ${info.messageId}`);
+    // console.log(`Email sent: ${info.messageId}`);
   } catch (error) {
     console.error(`Error sending email: ${error}`);
     throw error;
@@ -53,7 +53,7 @@ const sendVerificationEmail = async (email, token) => {
   });
 };
 
-const sendOrderConfirmationEmail = async (order) => {
+const sendOrderConfirmationEmail = async order => {
   let emailBody = `
     <html>
       <head>
@@ -94,7 +94,7 @@ const sendOrderConfirmationEmail = async (order) => {
               <p class="sub-header">Artículos en tu Pedido:</p>
               <ul>`;
 
-  order.cart.forEach((product) => {
+  order.cart.forEach(product => {
     emailBody += `
                 <li>
                   ${product.title} - ${product.color} - Cantidad: ${product.quantity} - Precio: S/ ${product.price}
@@ -118,7 +118,7 @@ const sendOrderConfirmationEmail = async (order) => {
   });
 };
 
-const sendOrderNotificationToAdmin = async (order) => {
+const sendOrderNotificationToAdmin = async order => {
   let emailBody = `
     <html>
       <head>
@@ -185,7 +185,7 @@ const sendOrderNotificationToAdmin = async (order) => {
               <p class="sub-header">Artículos en el Pedido:</p>
               <ul>`;
 
-  order.cart.forEach((product) => {
+  order.cart.forEach(product => {
     emailBody += `
                 <li>
                   ${product.title} - ${product.color} - Cantidad: ${product.quantity} - Precio: S/ ${product.price}

@@ -47,6 +47,7 @@ CREATE TABLE "product" (
     "product_main_image" VARCHAR(255) NOT NULL,
     "product_material" VARCHAR(255) NOT NULL,
     "product_care" VARCHAR(255) NOT NULL,
+    "product_slug" VARCHAR(255) NOT NULL,
     "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updated_at" TIMESTAMP(3) NOT NULL,
 
@@ -83,9 +84,7 @@ CREATE TABLE "order" (
     "order_payer_document_type" VARCHAR(10) NOT NULL,
     "order_payer_document_number" VARCHAR(50) NOT NULL,
     "order_installments" INTEGER NOT NULL,
-    "order_issuer_id" VARCHAR(100) NOT NULL,
     "order_payment_method_id" VARCHAR(20) NOT NULL,
-    "order_token" VARCHAR(250) NOT NULL,
     "order_status" VARCHAR(10) NOT NULL,
     "order_amount" DECIMAL(65,30) NOT NULL,
     "order_shipping_method" VARCHAR(255) NOT NULL,
@@ -130,6 +129,9 @@ CREATE UNIQUE INDEX "color_color_name_key" ON "color"("color_name");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "size_size_name_key" ON "size"("size_name");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "product_product_slug_key" ON "product"("product_slug");
 
 -- AddForeignKey
 ALTER TABLE "image" ADD CONSTRAINT "image_image_product_id_fkey" FOREIGN KEY ("image_product_id") REFERENCES "product"("product_id") ON DELETE RESTRICT ON UPDATE CASCADE;
