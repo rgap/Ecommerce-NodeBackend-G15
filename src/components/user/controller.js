@@ -173,7 +173,7 @@ export async function register(req, res) {
     const { name, email, password } = req.body;
     const hashedPassword = hash(password);
     const isDebugMode = process.env.DEBUG_MODE === "true";
-    console.log("isDebugMode", isDebugMode);
+    // console.log("isDebugMode", isDebugMode);
     // Generate email verification token only if not in debug mode
     const emailToken = isDebugMode ? null : generateVerificationToken();
 
@@ -198,7 +198,7 @@ export async function register(req, res) {
     // Send verification email only if not in debug mode
     if (!isDebugMode) {
       await sendVerificationEmail(email, emailToken);
-      console.log("sendVerificationEmail");
+      // console.log("sendVerificationEmail");
     }
 
     const message = isDebugMode
@@ -238,7 +238,7 @@ export async function verifyEmail(req, res) {
     });
   }
 
-  jwt.verify(token, process.env.JWT_SECRET, async (err) => {
+  jwt.verify(token, process.env.JWT_SECRET, async err => {
     if (err) {
       // The token is invalid or expired
       return responseError({

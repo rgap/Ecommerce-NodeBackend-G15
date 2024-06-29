@@ -17,6 +17,7 @@ orderRouter.route("/send-order-email-to-admin").post(verifyStaticToken, Controll
 
 // Protecting payment-related routes
 // CREATE ORDER - MERCADOPAGO
+orderRouter.route("/generate-card-token").post(verifyStaticToken, Controller.generateCardToken);
 orderRouter.route("/create-payment").post(verifyStaticToken, Controller.createPayment);
 orderRouter.route("/create-mercadopago-order").post(verifyStaticToken, Controller.createMercadoPagoOrder);
 
